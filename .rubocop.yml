@@ -1,0 +1,19 @@
+require:
+  - rubocop
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - "pkg/**/*"
+    - "vendor/**/*"
+    - "coverage/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+
+Style/Documentation:
+  Exclude:
+    - "lib/chemml/cml/**/*.rb"

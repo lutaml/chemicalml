@@ -1,0 +1,66 @@
+= ChemML
+
+ChemML provides a https://www.xml-cml.org/[Chemical Markup Language (CML)]
+object model for Ruby, built on
+{lutaml-model}[https://github.com/lutaml/lutaml-model].
+
+== Purpose
+
+CML is the established XML standard for chemistry. Existing Ruby
+libraries either don't exist or use hand-rolled XML manipulation that
+drifts from the CML schema. ChemML gives CML a proper model layer
+with declarative attribute/mapping definitions and framework-backed
+serialization.
+
+== Install
+
+Add to your Gemfile:
+
+[source,ruby]
+----
+gem "chemml"
+----
+
+Or install directly:
+
+[source,sh]
+----
+$ gem install chemml
+----
+
+== Usage
+
+Parse a CML document:
+
+[source,ruby]
+----
+require "chemml"
+
+doc = Chemml::Cml::Document.from_xml(File.read("ethanol.cml"))
+doc.molecules.first.atoms.first.element_type # => "C"
+----
+
+Build a document programmatically:
+
+[source,ruby]
+----
+atom = Chemml::Cml::Atom.new(id: "a1", element_type: "C")
+mol  = Chemml::Cml::Molecule.new(id: "m1", atoms: [atom])
+doc  = Chemml::Cml::Document.new(molecules: [mol])
+
+doc.to_xml # => well-formed CML XML
+----
+
+== Design
+
+Each CML element is a `Lutaml::Model::Serializable` subclass with
+declared attributes and an XML mapping block. Serialization goes
+through lutaml-model — no hand-rolled XML.
+
+The library is designed as a sibling model layer to other chemistry
+tooling. AsciiChem (https://www.asciichem.org) uses ChemML for CML
+round-trip support via a translator adapter.
+
+== License
+
+BSD-2-Clause. See link:LICENSE[LICENSE].
