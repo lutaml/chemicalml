@@ -1,0 +1,14 @@
+# Index of built-in CML dictionaries shipped with ChemicalML.
+#
+# Each entry maps the dictionary short name (used as the YAML
+# filename stem under data/dictionaries/) to its wire prefix.
+
+---
+compchem:
+  prefix: compchem
+unit_type:
+  prefix: unitType
+unit_si:
+  prefix: si
+unit_non_si:
+  prefix: nonsi

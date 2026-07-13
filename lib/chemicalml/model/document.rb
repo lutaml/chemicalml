@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-require "chemicalml/model/molecule"
-require "chemicalml/model/reaction"
-require "chemicalml/model/reaction_list"
-
-module ChemicalML
+module Chemicalml
   module Model
     # Top-level container: the canonical document. Parallel to
     # `AsciiChem::Model::Formula`. Holds an ordered list of

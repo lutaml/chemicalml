@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::Reactant.
+module Chemicalml
   module Cml
-    # CML `<reactant>` element. Wraps a `<substance>` that plays the
-    # reactant role on the left side of a reaction arrow.
-    class Reactant < Lutaml::Model::Serializable
-      attribute :substance, Substance
-
-      xml do
-        root "reactant"
-        map_element "substance", to: :substance
-      end
-    end
+    remove_const(:Reactant) if const_defined?(:Reactant, false)
+    const_set(:Reactant, Chemicalml::Cml::Schema3::Reactant)
   end
 end

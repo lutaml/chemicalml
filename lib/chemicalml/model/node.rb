@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # Base class for every canonical model node. Mirrors the contract
     # of `AsciiChem::Model::Node` so visitors written against one

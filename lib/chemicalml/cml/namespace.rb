@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
 
-module ChemicalML
+module Chemicalml
   module Cml
     # The default CML XML namespace. CML itself doesn't actually
     # declare a mandatory namespace URI on its root — most published

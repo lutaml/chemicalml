@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cml xmlns="http://www.xml-cml.org/schema"
+     xmlns:convention="http://www.xml-cml.org/convention/"
+     xmlns:cmlDict="http://www.xml-cml.org/dictionary/cml/"
+     xmlns:unit="http://www.xml-cml.org/unit/si/"
+     xmlns:unitType="http://www.xml-cml.org/unit/unitType/"
+     convention="convention:molecular">
+  <molecule id="m1">
+    <name>water</name>
+    <atomArray>
+      <atom id="a1" elementType="O" x3="0" y3="0" z3="0"/>
+      <atom id="a2" elementType="H" x3="0.96" y3="0" z3="0"/>
+      <atom id="a3" elementType="H" x3="-0.24" y3="0.93" z3="0"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="a1 a2" order="S"/>
+      <bond atomRefs2="a1 a3" order="S"/>
+    </bondArray>
+    <property dictRef="cmlDict:molmass" title="molar mass">
+      <scalar dataType="xsd:double" units="unit:g" unitType="unitType:mass">18.015</scalar>
+    </property>
+    <property dictRef="cmlDict:bp" title="boiling point">
+      <scalar dataType="xsd:double" units="unit:K" unitType="unitType:temperature">373.15</scalar>
+    </property>
+  </molecule>
+</cml>

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "chemicalml/model/product"
-
-module ChemicalML
+module Chemicalml
   module Model
     class ProductList < Node
       attr_accessor :products

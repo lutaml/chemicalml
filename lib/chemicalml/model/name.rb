@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # A molecule name. The `convention` field tags the naming scheme
     # (e.g. `"iupac:systematic"`, `"trivial"`).

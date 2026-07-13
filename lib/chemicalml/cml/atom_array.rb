@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::AtomArray.
+module Chemicalml
   module Cml
-    # CML `<atomArray>` element — container for `<atom>` children.
-    class AtomArray < Lutaml::Model::Serializable
-      attribute :atoms, Atom, collection: true
-
-      xml do
-        root "atomArray"
-        map_element "atom", to: :atoms
-      end
-    end
+    remove_const(:AtomArray) if const_defined?(:AtomArray, false)
+    const_set(:AtomArray, Chemicalml::Cml::Schema3::AtomArray)
   end
 end

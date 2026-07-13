@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unitList xmlns="http://www.xml-cml.org/schema"
+          xmlns:convention="http://www.xml-cml.org/convention/"
+          xmlns:siUnits="http://www.xml-cml.org/unit/si/"
+          xmlns:unitType="http://www.xml-cml.org/unit/unitType/"
+          convention="convention:unit-dictionary"
+          title="Common SI Units"
+          namespace="http://www.xml-cml.org/unit/si/">
+  <unit id="m" title="metre" symbol="m"
+        parentSI="siUnits:m" multiplierToSI="1"
+        unitType="unitType:length">
+    <definition>The SI base unit of length.</definition>
+  </unit>
+  <unit id="kg" title="kilogram" symbol="kg"
+        parentSI="siUnits:kg" multiplierToSI="1"
+        unitType="unitType:mass">
+    <definition>The SI base unit of mass.</definition>
+  </unit>
+  <unit id="s" title="second" symbol="s"
+        parentSI="siUnits:s" multiplierToSI="1"
+        unitType="unitType:time">
+    <definition>The SI base unit of time.</definition>
+  </unit>
+  <unit id="K" title="kelvin" symbol="K"
+        parentSI="siUnits:K" multiplierToSI="1"
+        unitType="unitType:temperature">
+    <definition>The SI base unit of thermodynamic temperature.</definition>
+  </unit>
+</unitList>

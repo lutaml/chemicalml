@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # A molecule: ordered atom list + optional bond list + optional
     # names and identifiers + optional count (multiplicity in a

@@ -1,25 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::Bond.
+module Chemicalml
   module Cml
-    # CML `<bond>` element. `atom_refs2` is a space-separated pair of
-    # atom IDs. `order` is one of `S` (single), `D` (double), `T`
-    # (triple), `Q` (quadruple), `A` (aromatic), or a number.
-    class Bond < Lutaml::Model::Serializable
-      attribute :id, :string
-      attribute :atom_refs2, :string
-      attribute :order, :string
-      attribute :title, :string
-
-      xml do
-        root "bond"
-        map_attribute "id", to: :id
-        map_attribute "atomRefs2", to: :atom_refs2
-        map_attribute "order", to: :order
-        map_attribute "title", to: :title
-      end
-    end
+    remove_const(:Bond) if const_defined?(:Bond, false)
+    const_set(:Bond, Chemicalml::Cml::Schema3::Bond)
   end
 end

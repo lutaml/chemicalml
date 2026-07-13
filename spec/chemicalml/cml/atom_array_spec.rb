@@ -2,11 +2,11 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Cml::AtomArray do
+RSpec.describe Chemicalml::Cml::AtomArray do
   let(:atoms) do
     [
-      ChemicalML::Cml::Atom.new(id: "a1", element_type: "H"),
-      ChemicalML::Cml::Atom.new(id: "a2", element_type: "O", hydrogen_count: "2")
+      Chemicalml::Cml::Atom.new(id: "a1", element_type: "H"),
+      Chemicalml::Cml::Atom.new(id: "a2", element_type: "O", hydrogen_count: "2")
     ]
   end
 
@@ -18,8 +18,8 @@ RSpec.describe ChemicalML::Cml::AtomArray do
   it "serialises to <atomArray><atom/>...</atomArray>" do
     array = described_class.new(atoms: atoms)
     xml = array.to_xml
-    expect(xml).to include("<atomArray>")
-    expect(xml.scan("<atom ").length).to eq(2)
+    expect(xml).to match(%r{<atomArray\b})
+    expect(xml.scan(/<atom\b/).length).to eq(2)
   end
 
   it "round-trips through XML" do

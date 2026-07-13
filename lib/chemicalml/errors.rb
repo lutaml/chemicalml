@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   class Error < StandardError; end
 
   class ParseError < Error; end

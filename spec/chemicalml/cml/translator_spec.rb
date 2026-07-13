@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Model do
-  describe ChemicalML::Model::Atom do
+RSpec.describe Chemicalml::Model do
+  describe Chemicalml::Model::Atom do
     it "stores all canonical fields" do
       atom = described_class.new(element: "C", id: "a1", isotope: "14",
                                  formal_charge: "2+", count: "2",
@@ -23,13 +23,13 @@ RSpec.describe ChemicalML::Model do
     end
   end
 
-  describe ChemicalML::Model::Molecule do
+  describe Chemicalml::Model::Molecule do
     it "holds atoms, bonds, names, identifiers" do
       mol = described_class.new(
         id: "m1",
-        atoms: [ChemicalML::Model::Atom.new(element: "H")],
-        bonds: [ChemicalML::Model::Bond.new(atom_refs: ["a1", "a2"], kind: :single)],
-        names: [ChemicalML::Model::Name.new(content: "water")]
+        atoms: [Chemicalml::Model::Atom.new(element: "H")],
+        bonds: [Chemicalml::Model::Bond.new(atom_refs: ["a1", "a2"], kind: :single)],
+        names: [Chemicalml::Model::Name.new(content: "water")]
       )
       expect(mol.atoms.length).to eq(1)
       expect(mol.bonds.first.kind).to eq(:single)
@@ -38,14 +38,14 @@ RSpec.describe ChemicalML::Model do
 
     it "exposes children for traversal" do
       mol = described_class.new(
-        atoms: [ChemicalML::Model::Atom.new(element: "H")],
-        bonds: [ChemicalML::Model::Bond.new(atom_refs: [])]
+        atoms: [Chemicalml::Model::Atom.new(element: "H")],
+        bonds: [Chemicalml::Model::Bond.new(atom_refs: [])]
       )
       expect(mol.children.length).to eq(2)
     end
   end
 
-  describe ChemicalML::Model::Bond do
+  describe Chemicalml::Model::Bond do
     it "maps kind to CML order code" do
       expect(described_class.new(atom_refs: [], kind: :single).cml_order).to eq("S")
       expect(described_class.new(atom_refs: [], kind: :double).cml_order).to eq("D")
@@ -54,17 +54,17 @@ RSpec.describe ChemicalML::Model do
     end
   end
 
-  describe ChemicalML::Model::Reaction do
+  describe Chemicalml::Model::Reaction do
     it "holds reactant and product lists" do
       rxn = described_class.new(
-        reactant_list: ChemicalML::Model::ReactantList.new(
-          reactants: [ChemicalML::Model::Reactant.new(
-            substance: ChemicalML::Model::Substance.new(
-              molecule: ChemicalML::Model::Molecule.new
+        reactant_list: Chemicalml::Model::ReactantList.new(
+          reactants: [Chemicalml::Model::Reactant.new(
+            substance: Chemicalml::Model::Substance.new(
+              molecule: Chemicalml::Model::Molecule.new
             )
           )]
         ),
-        product_list: ChemicalML::Model::ProductList.new,
+        product_list: Chemicalml::Model::ProductList.new,
         arrow: :equilibrium
       )
       expect(rxn.reactant_list.reactants.length).to eq(1)
@@ -72,18 +72,18 @@ RSpec.describe ChemicalML::Model do
     end
   end
 
-  describe ChemicalML::Model::Document do
+  describe Chemicalml::Model::Document do
     it "is the top-level container" do
-      doc = described_class.new(molecules: [ChemicalML::Model::Molecule.new])
+      doc = described_class.new(molecules: [Chemicalml::Model::Molecule.new])
       expect(doc.molecules.length).to eq(1)
       expect(doc.children.length).to eq(1)
     end
   end
 end
 
-RSpec.describe ChemicalML::Cml::Translator do
+RSpec.describe Chemicalml::Cml::Translator do
   def render_canonical(xml)
-    doc = ChemicalML::Cml::Document.from_xml(xml)
+    doc = Chemicalml::Cml::Document.from_xml(xml)
     described_class.to_canonical(doc)
   end
 
@@ -114,11 +114,11 @@ RSpec.describe ChemicalML::Cml::Translator do
 
   describe ".from_canonical (canonical model -> CML XML)" do
     it "serialises atoms with correct CML attributes" do
-      doc = ChemicalML::Model::Document.new(
-        molecules: [ChemicalML::Model::Molecule.new(
+      doc = Chemicalml::Model::Document.new(
+        molecules: [Chemicalml::Model::Molecule.new(
           id: "m1",
           atoms: [
-            ChemicalML::Model::Atom.new(id: "a1", element: "C", isotope: "14")
+            Chemicalml::Model::Atom.new(id: "a1", element: "C", isotope: "14")
           ]
         )]
       )
@@ -129,13 +129,13 @@ RSpec.describe ChemicalML::Cml::Translator do
     end
 
     it "serialises bond with CML order code" do
-      doc = ChemicalML::Model::Document.new(
-        molecules: [ChemicalML::Model::Molecule.new(
+      doc = Chemicalml::Model::Document.new(
+        molecules: [Chemicalml::Model::Molecule.new(
           atoms: [
-            ChemicalML::Model::Atom.new(id: "a1", element: "C"),
-            ChemicalML::Model::Atom.new(id: "a2", element: "O")
+            Chemicalml::Model::Atom.new(id: "a1", element: "C"),
+            Chemicalml::Model::Atom.new(id: "a2", element: "O")
           ],
-          bonds: [ChemicalML::Model::Bond.new(id: "b1", atom_refs: %w[a1 a2], kind: :double)]
+          bonds: [Chemicalml::Model::Bond.new(id: "b1", atom_refs: %w[a1 a2], kind: :double)]
         )]
       )
       wire = described_class.from_canonical(doc)

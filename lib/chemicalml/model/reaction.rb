@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require "chemicalml/model/reactant_list"
-require "chemicalml/model/product_list"
-
-module ChemicalML
+module Chemicalml
   module Model
     # A chemical reaction. Reactants, products, arrow kind, optional
     # conditions (above / below the arrow).

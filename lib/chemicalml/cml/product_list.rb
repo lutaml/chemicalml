@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::ProductList.
+module Chemicalml
   module Cml
-    # CML `<productList>` element. Container for `<product>` children.
-    class ProductList < Lutaml::Model::Serializable
-      attribute :products, Product, collection: true
-
-      xml do
-        root "productList"
-        map_element "product", to: :products
-      end
-    end
+    remove_const(:ProductList) if const_defined?(:ProductList, false)
+    const_set(:ProductList, Chemicalml::Cml::Schema3::ProductList)
   end
 end

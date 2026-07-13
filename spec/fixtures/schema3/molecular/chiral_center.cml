@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cml xmlns="http://www.xml-cml.org/schema"
+     xmlns:convention="http://www.xml-cml.org/convention/"
+     convention="convention:molecular">
+  <molecule id="m1">
+    <name>(R)-bromochlorofluoromethane</name>
+    <atomArray>
+      <atom id="a1" elementType="C" x3="0" y3="0" z3="0">
+        <atomParity atomRefs4="a2 a3 a4 a5">1</atomParity>
+      </atom>
+      <atom id="a2" elementType="Br" x3="1.9" y3="0" z3="0"/>
+      <atom id="a3" elementType="Cl" x3="-0.6" y3="1.8" z3="0"/>
+      <atom id="a4" elementType="F" x3="-0.6" y3="-0.9" z3="1.6"/>
+      <atom id="a5" elementType="H" x3="-0.6" y3="-0.9" z3="-1.6"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="a1 a2" order="S"/>
+      <bond atomRefs2="a1 a3" order="S"/>
+      <bond atomRefs2="a1 a4" order="S"/>
+      <bond atomRefs2="a1 a5" order="S"/>
+    </bondArray>
+  </molecule>
+</cml>

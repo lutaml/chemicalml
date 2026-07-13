@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # A reaction participant. Wraps a `Molecule` with a `role`
     # (e.g. `:reactant`, `:product`, `:catalyst`, `:solvent`).

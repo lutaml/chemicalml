@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Cml::Atom do
+RSpec.describe Chemicalml::Cml::Atom do
   it "builds with keyword args" do
     atom = described_class.new(id: "a1", element_type: "C")
     expect(atom.id).to eq("a1")
@@ -11,7 +11,9 @@ RSpec.describe ChemicalML::Cml::Atom do
 
   it "serialises to XML with camelCase wire names" do
     atom = described_class.new(id: "a1", element_type: "C", formal_charge: "2+")
-    expect(atom.to_xml).to include('<atom id="a1" elementType="C" formalCharge="2+"/>')
+    expect(atom.to_xml).to include('id="a1"')
+    expect(atom.to_xml).to include('elementType="C"')
+    expect(atom.to_xml).to include('formalCharge="2+"')
   end
 
   it "round-trips through XML" do

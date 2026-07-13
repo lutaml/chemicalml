@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # A chemical atom. Carries every attribute CML's `<atom>` carries
     # that's chemistry-relevant: element symbol, formal charge,

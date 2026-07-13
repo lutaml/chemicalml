@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <reaction id="r1" title="combustion of methane" type="forward">
+    <reactantList>
+      <reactant>
+        <substance>
+          <molecule id="ch4">
+            <name>methane</name>
+            <formula concise="C 1 H 4"/>
+          </molecule>
+        </substance>
+      </reactant>
+      <reactant>
+        <substance>
+          <molecule id="o2">
+            <name>oxygen</name>
+            <formula concise="O 2"/>
+          </molecule>
+        </substance>
+      </reactant>
+    </reactantList>
+    <productList>
+      <product>
+        <substance>
+          <molecule id="co2">
+            <name>carbon dioxide</name>
+            <formula concise="C 1 O 2"/>
+          </molecule>
+        </substance>
+      </product>
+      <product>
+        <substance>
+          <molecule id="h2o">
+            <name>water</name>
+            <formula concise="H 2 O 1"/>
+          </molecule>
+        </substance>
+      </product>
+    </productList>
+  </reaction>
+</cml>

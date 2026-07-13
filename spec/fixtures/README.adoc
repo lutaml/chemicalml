@@ -1,0 +1,38 @@
+= CML fixtures
+
+Example CML documents used by the spec suite. Each fixture exercises
+one CML feature so regressions are easy to localize.
+
+== Provenance
+
+All fixtures in this directory are **synthetic** — written for this
+gem, not scraped from upstream. They are licensed under the gem's
+BSD-2-Clause license, not the upstream CC-BY-3.0.
+
+(Scraping the full upstream corpus requires `bundle exec rake
+fixtures:scrape`, which writes additional files into these
+directories. Those would be CC-BY-3.0 and would carry a per-file
+attribution header.)
+
+== Layout
+
+`schema3/molecular/`::  Molecules — atomArrays, bondArrays, formulas,
+                        names, identifiers, properties, stereo, parity
+`schema3/compchem/`::   CompChem modules — jobList / job / init /
+                        calc / final / env, parameters, properties
+`schema3/dictionary/`:: Dictionaries — entries with definitions
+`schema3/unit/`::       Unit lists — SI and non-SI units
+`schema24/`::           Schema 2.4 examples (including crystal)
+
+== Running
+
+Every fixture is round-tripped by
+`spec/chemicalml/fixtures_round_trip_spec.rb`:
+
+  bundle exec rspec spec/chemicalml/fixtures_round_trip_spec.rb
+
+== Adding a fixture
+
+1. Pick a feature not yet covered (e.g. `<spectrum>`, `<peakList>`).
+2. Write a minimal `.cml` file demonstrating the feature.
+3. Run the round-trip spec to confirm it loads and re-serializes.

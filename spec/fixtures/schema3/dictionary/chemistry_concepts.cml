@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary xmlns="http://www.xml-cml.org/schema"
+            xmlns:convention="http://www.xml-cml.org/convention/"
+            xmlns:xhtml="http://www.w3.org/1999/xhtml"
+            convention="convention:dictionary"
+            title="Fundamental Chemistry Concepts"
+            namespace="http://www.xml-cml.org/dictionary/cml/"
+            dictionaryPrefix="cmlDict">
+  <description>
+    <xhtml:p>Common chemistry concepts referenced from CML attributes.</xhtml:p>
+  </description>
+  <entry id="molmass" term="Molar Mass"
+         dataType="xsd:double"
+         unitType="unitType:mass"
+         units="unit:g">
+    <definition>
+      <xhtml:p>Mass per amount of substance.</xhtml:p>
+    </definition>
+  </entry>
+  <entry id="bp" term="Boiling Point"
+         dataType="xsd:double"
+         unitType="unitType:temperature"
+         units="unit:K">
+    <definition>
+      <xhtml:p>The temperature at which a substance boils.</xhtml:p>
+    </definition>
+  </entry>
+  <entry id="mp" term="Melting Point"
+         dataType="xsd:double"
+         unitType="unitType:temperature"
+         units="unit:K">
+    <definition>
+      <xhtml:p>The temperature at which a substance melts.</xhtml:p>
+    </definition>
+  </entry>
+</dictionary>

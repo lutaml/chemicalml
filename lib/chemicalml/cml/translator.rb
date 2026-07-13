@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Cml
-    # Adapter between the canonical `ChemicalML::Model` and the CML XML
-    # wire-format layer (`ChemicalML::Cml::*` lutaml-model classes).
+    # Adapter between the canonical `Chemicalml::Model` and the CML XML
+    # wire-format layer (`Chemicalml::Cml::*` lutaml-model classes).
     #
     # Pure transformation. No I/O. Two class methods, one per
     # direction. Adding a new CML element means updating the
     # translator's mapping rules; the canonical classes and the CML
     # wire classes stay independent.
     class Translator
-      # CML wire format -> canonical.
+      autoload :ValueTranslations, "chemicalml/cml/translator/value_translations"
+
+      # CML wire format -> canonical. Accepts either Schema3 or
+      # Schema24 wire documents; dispatches based on class.
       def self.to_canonical(document)
         Model::Document.new(
           molecules: document.molecules.map { |m| molecule_to_canonical(m) },
@@ -18,13 +21,25 @@ module ChemicalML
         )
       end
 
-      # Canonical -> CML wire format.
-      def self.from_canonical(document)
-        Cml::Document.new(
+      # Canonical -> CML wire format. `schema:` selects the target
+      # version (`:schema3` default, or `:schema24`).
+      def self.from_canonical(document, schema: :schema3)
+        wire_class = document_class_for(schema)
+        wire_class.new(
           molecules: document.molecules.map { |m| molecule_from_canonical(m) },
           reactions: document.reactions.map { |r| reaction_from_canonical(r) }
         )
       end
+
+      def self.document_class_for(schema)
+        case schema.to_sym
+        when :schema3  then Chemicalml::Cml::Schema3::Document
+        when :schema24 then Chemicalml::Cml::Schema24::Document
+        else
+          raise ArgumentError, "unsupported schema: #{schema.inspect}"
+        end
+      end
+      private_class_method :document_class_for
 
       # -- CML -> canonical --------------------------------------------
 
@@ -211,6 +226,8 @@ module ChemicalML
       end
 
       private_class_method :cml_order_to_kind, :type_to_arrow
+
+      extend ValueTranslations::ClassMethods
     end
   end
 end
