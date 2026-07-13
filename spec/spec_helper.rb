@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "chemml"
+require "chemicalml"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

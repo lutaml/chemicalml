@@ -18,14 +18,14 @@ Add to your Gemfile:
 
 [source,ruby]
 ----
-gem "chemml"
+gem "chemicalml"
 ----
 
 Or install directly:
 
 [source,sh]
 ----
-$ gem install chemml
+$ gem install chemicalml
 ----
 
 == Usage
@@ -34,9 +34,9 @@ Parse a CML document:
 
 [source,ruby]
 ----
-require "chemml"
+require "chemicalml"
 
-doc = Chemml::Cml::Document.from_xml(File.read("ethanol.cml"))
+doc = ChemicalML::Cml::Document.from_xml(File.read("ethanol.cml"))
 doc.molecules.first.atoms.first.element_type # => "C"
 ----
 
@@ -44,9 +44,9 @@ Build a document programmatically:
 
 [source,ruby]
 ----
-atom = Chemml::Cml::Atom.new(id: "a1", element_type: "C")
-mol  = Chemml::Cml::Molecule.new(id: "m1", atoms: [atom])
-doc  = Chemml::Cml::Document.new(molecules: [mol])
+atom = ChemicalML::Cml::Atom.new(id: "a1", element_type: "C")
+mol  = ChemicalML::Cml::Molecule.new(id: "m1", atoms: [atom])
+doc  = ChemicalML::Cml::Document.new(molecules: [mol])
 
 doc.to_xml # => well-formed CML XML
 ----
