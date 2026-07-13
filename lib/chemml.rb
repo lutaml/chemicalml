@@ -15,6 +15,7 @@ require "lutaml/model"
 module Chemml
   autoload :Cml, "chemml/cml"
   autoload :Error, "chemml/errors"
+  autoload :Model, "chemml/model"
   autoload :ParseError, "chemml/errors"
   autoload :VERSION, "chemml/version"
 end

@@ -22,5 +22,6 @@ module Chemml
     autoload :Reactant, "chemml/cml/reactant"
     autoload :ReactantList, "chemml/cml/reactant_list"
     autoload :Substance, "chemml/cml/substance"
+    autoload :Translator, "chemml/cml/translator"
   end
 end
