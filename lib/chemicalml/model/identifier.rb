@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # An external identifier: InChI, SMILES, CAS-RN, etc. The
     # `convention` field tags the identifier kind.

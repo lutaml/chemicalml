@@ -8,6 +8,8 @@ AllCops:
     - "pkg/**/*"
     - "vendor/**/*"
     - "coverage/**/*"
+    - "reference-docs/**/*"
+    - "spec/fixtures/**/*"
 
 Metrics/BlockLength:
   Exclude:
@@ -15,5 +17,4 @@ Metrics/BlockLength:
     - "*.gemspec"
 
 Style/Documentation:
-  Exclude:
-    - "lib/chemml/cml/**/*.rb"
+  Enabled: false

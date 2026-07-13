@@ -4,7 +4,7 @@ require_relative "lib/chemicalml/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "chemicalml"
-  spec.version       = ChemicalML::VERSION
+  spec.version       = Chemicalml::VERSION
   spec.authors       = ["Ribose Inc."]
   spec.email         = ["open.source@ribose.com"]
 

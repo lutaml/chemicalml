@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xml-cml.org/schema"
+        xmlns:convention="http://www.xml-cml.org/convention/"
+        xmlns:compchem="http://www.xml-cml.org/dictionary/compchem/"
+        xmlns:nonsi="http://www.xml-cml.org/unit/nonSi/"
+        xmlns:si="http://www.xml-cml.org/unit/si/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        convention="convention:compchem">
+  <module dictRef="compchem:jobList" id="jobList-1">
+    <module dictRef="compchem:job" id="job-1" title="single point">
+      <module dictRef="compchem:environment" id="env-1">
+        <parameterList>
+          <parameter dictRef="compchem:program">
+            <scalar dataType="xsd:string">NWChem</scalar>
+          </parameter>
+          <parameter dictRef="compchem:programVersion">
+            <scalar dataType="xsd:string">6.1</scalar>
+          </parameter>
+          <parameter dictRef="compchem:hostName">
+            <scalar dataType="xsd:string">node-001</scalar>
+          </parameter>
+          <parameter dictRef="compchem:numProc">
+            <scalar dataType="xsd:integer">4</scalar>
+          </parameter>
+        </parameterList>
+      </module>
+      <module dictRef="compchem:initialization" id="init-1">
+        <molecule id="co2" convention="convention:molecular">
+          <atomArray>
+            <atom id="a1" elementType="C" x3="0" y3="0" z3="0"/>
+            <atom id="a2" elementType="O" x3="0" y3="0" z3="1.16"/>
+            <atom id="a3" elementType="O" x3="0" y3="0" z3="-1.16"/>
+          </atomArray>
+        </molecule>
+        <parameterList>
+          <parameter dictRef="compchem:method">
+            <scalar dataType="xsd:string">dft</scalar>
+          </parameter>
+          <parameter dictRef="compchem:task">
+            <scalar dataType="xsd:string">energy</scalar>
+          </parameter>
+          <parameter dictRef="compchem:charge">
+            <scalar dataType="xsd:double" units="nonsi:elementary_charge">0.0</scalar>
+          </parameter>
+          <parameter dictRef="compchem:spinMultiplicity">
+            <scalar dataType="xsd:integer">1</scalar>
+          </parameter>
+        </parameterList>
+      </module>
+      <module dictRef="compchem:finalization" id="fin-1">
+        <propertyList>
+          <property dictRef="compchem:totalEnergy" title="total energy">
+            <scalar dataType="xsd:double" units="nonsi:hartree">-186.064</scalar>
+          </property>
+          <property dictRef="compchem:nuclearRepulsionEnergy">
+            <scalar dataType="xsd:double" units="nonsi:hartree">62.55</scalar>
+          </property>
+          <property dictRef="compchem:cpuTime">
+            <scalar dataType="xsd:double" units="si:s">1.2</scalar>
+          </property>
+          <property dictRef="compchem:wallTime">
+            <scalar dataType="xsd:double" units="si:s">3.4</scalar>
+          </property>
+        </propertyList>
+      </module>
+    </module>
+  </module>
+</module>

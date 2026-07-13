@@ -2,14 +2,14 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Cml::Molecule do
+RSpec.describe Chemicalml::Cml::Molecule do
   let(:water) do
     described_class.new(
       id: "m1",
-      atom_array: ChemicalML::Cml::AtomArray.new(
+      atom_array: Chemicalml::Cml::AtomArray.new(
         atoms: [
-          ChemicalML::Cml::Atom.new(id: "a1", element_type: "H", count: "2"),
-          ChemicalML::Cml::Atom.new(id: "a2", element_type: "O")
+          Chemicalml::Cml::Atom.new(id: "a1", element_type: "H", count: "2"),
+          Chemicalml::Cml::Atom.new(id: "a2", element_type: "O")
         ]
       )
     )
@@ -43,8 +43,8 @@ RSpec.describe ChemicalML::Cml::Molecule do
   it "carries names and identifiers" do
     mol = described_class.new(
       id: "m1",
-      names: [ChemicalML::Cml::Name.new(content: "water")],
-      identifiers: [ChemicalML::Cml::Identifier.new(value: "InChI=1/H2O/h1H2", convention: "iupac:inchi")]
+      names: [Chemicalml::Cml::Name.new(content: "water")],
+      identifiers: [Chemicalml::Cml::Identifier.new(value: "InChI=1/H2O/h1H2", convention: "iupac:inchi")]
     )
     re_parsed = described_class.from_xml(mol.to_xml)
     expect(re_parsed.names.first.content).to eq("water")

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <molecule id="nacl">
+    <name>sodium chloride</name>
+    <formula concise="Na 1 Cl 1"/>
+    <crystal z="4">
+      <scalar dataType="xsd:double" units="unit:angstrom">5.64</scalar>
+      <scalar dataType="xsd:double" units="unit:angstrom">5.64</scalar>
+      <scalar dataType="xsd:double" units="unit:angstrom">5.64</scalar>
+      <scalar dataType="xsd:double">90</scalar>
+      <scalar dataType="xsd:double">90</scalar>
+      <scalar dataType="xsd:double">90</scalar>
+    </crystal>
+  </molecule>
+</cml>

@@ -1,22 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::Identifier.
+module Chemicalml
   module Cml
-    # CML `<identifier>` element. Carries an external identifier
-    # (InChI, SMILES, etc.) in its `value` attribute.
-    class Identifier < Lutaml::Model::Serializable
-      attribute :value, :string
-      attribute :convention, :string
-      attribute :dict_ref, :string
-
-      xml do
-        root "identifier"
-        map_attribute "value", to: :value
-        map_attribute "convention", to: :convention
-        map_attribute "dictRef", to: :dict_ref
-      end
-    end
+    remove_const(:Identifier) if const_defined?(:Identifier, false)
+    const_set(:Identifier, Chemicalml::Cml::Schema3::Identifier)
   end
 end

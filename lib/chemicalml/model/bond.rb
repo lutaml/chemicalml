@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ChemicalML
+module Chemicalml
   module Model
     # A bond between two atoms. Endpoint references are string IDs
     # matching `Atom#id`; the kind enum follows CML conventions.

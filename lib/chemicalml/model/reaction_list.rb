@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "chemicalml/model/reaction"
-
-module ChemicalML
+module Chemicalml
   module Model
     # A reaction cascade: ordered list of `Reaction` instances where
     # each step's products are the next step's reactants.

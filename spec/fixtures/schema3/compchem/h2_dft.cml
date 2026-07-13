@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xml-cml.org/schema"
+        xmlns:convention="http://www.xml-cml.org/convention/"
+        xmlns:compchem="http://www.xml-cml.org/dictionary/compchem/"
+        convention="convention:compchem">
+
+  <module dictRef="compchem:jobList" id="jobList-1">
+    <module dictRef="compchem:job" id="job-1" title="single point energy">
+      <module dictRef="compchem:environment" id="env-1">
+        <parameterList>
+          <parameter dictRef="compchem:program">
+            <scalar dataType="xsd:string">NWChem</scalar>
+          </parameter>
+          <parameter dictRef="compchem:programVersion">
+            <scalar dataType="xsd:string">6.1</scalar>
+          </parameter>
+        </parameterList>
+      </module>
+      <module dictRef="compchem:initialization" id="init-1">
+        <molecule id="h2" convention="convention:molecular">
+          <atomArray>
+            <atom id="a1" elementType="H" x3="0" y3="0" z3="0.37"/>
+            <atom id="a2" elementType="H" x3="0" y3="0" z3="-0.37"/>
+          </atomArray>
+        </molecule>
+        <parameterList>
+          <parameter dictRef="compchem:method">
+            <scalar dataType="xsd:string">dft</scalar>
+          </parameter>
+          <parameter dictRef="compchem:task">
+            <scalar dataType="xsd:string">energy</scalar>
+          </parameter>
+        </parameterList>
+      </module>
+      <module dictRef="compchem:finalization" id="fin-1">
+        <propertyList>
+          <property dictRef="compchem:totalEnergy" title="total energy">
+            <scalar dataType="xsd:double" units="nonsi:hartree">-1.123</scalar>
+          </property>
+        </propertyList>
+      </module>
+    </module>
+  </module>
+</module>

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Cml::Document do
+RSpec.describe Chemicalml::Cml::Document do
   it "parses a full CML document with one molecule" do
     xml = <<~XML
       <cml>
@@ -62,22 +62,22 @@ RSpec.describe ChemicalML::Cml::Document do
   end
 
   it "round-trips a complex document preserving all fields" do
-    original = ChemicalML::Cml::Document.new(
+    original = Chemicalml::Cml::Document.new(
       molecules: [
-        ChemicalML::Cml::Molecule.new(
+        Chemicalml::Cml::Molecule.new(
           id: "m1",
-          names: [ChemicalML::Cml::Name.new(content: "methanol")],
-          atom_array: ChemicalML::Cml::AtomArray.new(
+          names: [Chemicalml::Cml::Name.new(content: "methanol")],
+          atom_array: Chemicalml::Cml::AtomArray.new(
             atoms: [
-              ChemicalML::Cml::Atom.new(id: "a1", element_type: "C"),
-              ChemicalML::Cml::Atom.new(id: "a2", element_type: "O"),
-              ChemicalML::Cml::Atom.new(id: "a3", element_type: "H", count: "4")
+              Chemicalml::Cml::Atom.new(id: "a1", element_type: "C"),
+              Chemicalml::Cml::Atom.new(id: "a2", element_type: "O"),
+              Chemicalml::Cml::Atom.new(id: "a3", element_type: "H", count: "4")
             ]
           ),
-          bond_array: ChemicalML::Cml::BondArray.new(
+          bond_array: Chemicalml::Cml::BondArray.new(
             bonds: [
-              ChemicalML::Cml::Bond.new(id: "b1", atom_refs2: "a1 a2", order: "S"),
-              ChemicalML::Cml::Bond.new(id: "b2", atom_refs2: "a1 a3", order: "S")
+              Chemicalml::Cml::Bond.new(id: "b1", atom_refs2: "a1 a2", order: "S"),
+              Chemicalml::Cml::Bond.new(id: "b2", atom_refs2: "a1 a3", order: "S")
             ]
           )
         )

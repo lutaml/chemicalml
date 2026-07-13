@@ -1,0 +1,481 @@
+# CompChem Dictionary — canonical CML concepts used by the CompChem convention.
+#
+# Source: http://www.xml-cml.org/dictionary/compchem/
+# Authors: Peter Murray-Rust, Weerapong Phadungsukanan, Jens Thomas
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+#
+# Each entry below mirrors the upstream <entry> elements. Descriptions
+# are paraphrased for length; the upstream XML remains authoritative.
+
+---
+namespace: http://www.xml-cml.org/dictionary/compchem/
+prefix: compchem
+title: Computational Chemistry Core Concepts
+description: |
+  Toplevel dictionary for computational chemistry. Concepts in this
+  dictionary are general throughout computational chemistry and are
+  used extensively in the CompChem convention to describe the
+  structure of computational chemistry.
+
+entries:
+  - id: jobList
+    term: Job List
+    definition: A list of sequential computational jobs.
+    description: |
+      A quantum chemistry calculation is often comprised of a series of
+      subtasks (e.g. coarse optimisation -> fine optimisation -> NMR
+      spectrum analysis). The jobList concept captures these successive
+      subtasks and links the information from one subtask to the next.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: job
+    term: Job
+    definition: A computational job performed by quantum chemistry software.
+    description: |
+      The job concept represents a computational job performed by
+      quantum chemistry software, e.g. geometry optimisation,
+      frequency analysis. The job can be considered as the unit of
+      work that would be submitted to a computational resource.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: initialization
+    term: Initialization
+    definition: An initialization module for a computational job or calculation.
+    description: |
+      Represents the concept of the model parameters and inputs. The
+      module defines the calculation, so that it should be possible to
+      reproduce the calculation based solely on the data in this
+      module.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: calculation
+    term: Calculation
+    definition: A calculation module for a computational job.
+    description: |
+      Represents the concept of the model calculation, optimisation or
+      iteration processes for a computational job. Calculations can be
+      nested to any level.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: finalization
+    term: Finalization
+    definition: A finalization module for a computational job or calculation.
+    description: |
+      Represents the concept of the model results for a computational
+      job or calculation. Usually the output properties of the final
+      calculation carried out by the job.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: environment
+    term: Environment
+    definition: A module describing the computing environment.
+    description: |
+      Refers to the hardware platform, software application, the
+      operating system, and any hardware and software configurations
+      used to run the job or computational task.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: program
+    term: Program
+    definition: The name of the computational chemistry program being run.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: open
+      values:
+        - nwchem
+        - gaussian
+        - gulp
+
+  - id: programVersion
+    term: Program Version
+    definition: The version of the code that was used to run the calculation.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: hostName
+    term: Host Name
+    definition: The name of the host that the program was run on.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: executable
+    term: Executable
+    definition: The path to the executable program.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: runDate
+    term: Run Date
+    definition: The date that the job commenced.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: compileDate
+    term: Compile Date
+    definition: The date that the executable was compiled.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: numProc
+    term: Number of Processors
+    definition: The number of processors used to run the job.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: method
+    term: Method
+    definition: The type of computational method used in the calculation.
+    description: |
+      Identifies the broad class of computation. Examples: SCF, DFT, MP2.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: open
+      values:
+        - scf
+        - dft
+        - mp2
+        - cc
+        - semiempirical
+
+  - id: task
+    term: Task
+    definition: The task being carried out by the job or calculation.
+    description: |
+      Describes what the job or calculation aims to do. Example values:
+      energy, frequency, geometry_optimization, gradient,
+      initial_guess, iteration, step.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: open
+      values:
+        - energy
+        - frequency
+        - geometry_optimization
+        - gradient
+        - initial_guess
+        - iteration
+        - step
+
+  - id: iterationIndex
+    term: Iteration Index
+    definition: The serial number of an iteration.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: charge
+    term: Total Charge
+    definition: The total charge on the system in elementary charge units.
+    data_type: xsd:double
+    unit_type: unitType:electricCharge
+    units: unit:e
+
+  - id: spinMultiplicity
+    term: Spin Multiplicity
+    definition: |
+      The spin multiplicity, equal to (number of alpha electrons) -
+      (number of beta electrons) + 1.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numAtoms
+    term: Number of Atoms
+    definition: The total number of atoms in a molecule or other collection.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numElectrons
+    term: Number of Electrons
+    definition: The total number of electrons in a system.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numAlphaElectrons
+    term: Number of Alpha Electrons
+    definition: The total number of alpha spin electrons in a system.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numBetaElectrons
+    term: Number of Beta Electrons
+    definition: The total number of beta spin electrons in a system.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numClosedShells
+    term: Number of Closed Shells
+    definition: The number of closed shells.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: numOpenShells
+    term: Number of Open Shells
+    definition: The number of open shells.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: pointGroup
+    term: Point Group
+    definition: The molecular point group in Schoenflies notation.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: wavefunctionType
+    term: Wavefunction Type
+    definition: The type of wavefunction.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: open
+      values:
+        - closed
+        - open
+        - restricted open
+
+  - id: basisSet
+    term: Basis Set
+    definition: A list container for all information related to the basis set.
+    description: |
+      The basis set is the set of functions from which the electron
+      orbitals are constructed.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: basisSetLabel
+    term: Basis Set Label
+    definition: The name of the basis set.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: basisSetType
+    term: Basis Set Type
+    definition: The type of the basis set.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: closed
+      values:
+        - orbital
+        - dftorb
+        - dftxfit
+        - dftcfit
+        - periodic
+        - ecporb
+        - spinorb
+        - polarization
+        - diffuse
+        - tight
+        - rydberg
+
+  - id: basisSetHarmonicType
+    term: Basis Set Harmonic Type
+    definition: The type of the angular functions used in the basis set.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: closed
+      values:
+        - cartesian
+        - spherical
+
+  - id: basisSetContractionType
+    term: Basis Set Contraction Type
+    definition: How the gaussian functions in the basis are contracted.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: closed
+      values:
+        - segmented
+        - general
+        - uncontracted
+
+  - id: basisSetShell
+    term: Basis Set Shell
+    definition: The label for the contraction shell.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: closed
+      values:
+        - S
+        - P
+        - SP
+        - D
+        - F
+        - G
+        - H
+        - I
+        - K
+        - L
+        - M
+
+  - id: dftFunctional
+    term: DFT Functional
+    definition: A list container for all information related to a DFT functional.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: dftFunctionalLabel
+    term: DFT Functional Label
+    definition: The name of the DFT functional used.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: totalEnergy
+    term: Total Energy
+    definition: The total energy for a system of electrons and nuclei.
+    description: |
+      Formed from the sum of the nuclear, one- and two-electron
+      energies. The exact meaning is determined by the parameters in
+      the initialization module of the calculation.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: scfEnergy
+    term: SCF Energy
+    definition: The Hartree-Fock Self-Consistent Field component of the energy.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: nuclearRepulsionEnergy
+    term: Nuclear Repulsion Energy
+    definition: |
+      The potential energy arising from Coulombic nuclei-nuclei
+      repulsions.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: e1Energy
+    term: One-electron Energy
+    definition: The one-electron kinetic energy component of the Hamiltonian.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: e2Energy
+    term: Two-electron Energy
+    definition: The two-electron energy.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: coulombEnergy
+    term: Coulomb Energy
+    definition: |
+      The Coulomb component of the electronic energy in a Density
+      Functional Calculation.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: xcEnergy
+    term: Exchange-Correlation Energy
+    definition: The exchange-correlation energy.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: correlationEnergy
+    term: Correlation Energy
+    definition: The correlation energy.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:hartree
+
+  - id: cpuTime
+    term: CPU Time
+    definition: Elapsed CPU time.
+    data_type: xsd:double
+    unit_type: unitType:time
+    units: unit:s
+
+  - id: wallTime
+    term: Wall Time
+    definition: Elapsed wall-clock time.
+    data_type: xsd:double
+    unit_type: unitType:time
+    units: unit:s
+
+  - id: title
+    term: Title
+    definition: An arbitrary human-readable title for the calculation.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: UUID
+    term: UUID
+    definition: A Universally Unique Identifier as per RFC 4122.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: atomType
+    term: Atom Type
+    definition: The type of the element (the atomic symbol).
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: numElectronsReplaced
+    term: Number of Electrons Replaced
+    definition: The number of electrons replaced by an Effective Core Potential.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: inputFile
+    term: Input File
+    definition: A module for a single literal representation of an input file.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: inputFileList
+    term: Input File List
+    definition: A module containing a list of input files.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: inputFileName
+    term: Input File Name
+    definition: A representation of the name of a single input file.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none

@@ -5,6 +5,8 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
+  gem "canon"
+  gem "nokogiri"
   gem "rake", "~> 13.2"
   gem "rspec", "~> 3.13"
   gem "rubocop", "~> 1.66", require: false

@@ -1,0 +1,113 @@
+# Unit Types Dictionary
+#
+# Source: http://www.xml-cml.org/unit/unitType/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/unit/unitType/
+prefix: unitType
+title: CML Unit Types
+description: |
+  Unit types abstract over units: e.g. the units metre, angstrom and
+  picometre are all of type *length*; Kelvin is of type *temperature*.
+
+entries:
+  - id: length
+    term: Length
+    definition: A measure of one-dimensional distance.
+  - id: mass
+    term: Mass
+    definition: A measure of the amount of matter in an object.
+  - id: time
+    term: Time
+    definition: A measure of duration.
+  - id: temperature
+    term: Temperature
+    definition: A measure of thermal energy.
+  - id: electricCurrent
+    term: Electric Current
+    definition: A measure of the flow of electric charge.
+  - id: amountOfSubstance
+    term: Amount of Substance
+    definition: A measure of the number of particles in a sample.
+  - id: luminousIntensity
+    term: Luminous Intensity
+    definition: A measure of the wavelength-weighted power emitted by a light source.
+  - id: angle
+    term: Angle
+    definition: A measure of a plane angle.
+  - id: solidAngle
+    term: Solid Angle
+    definition: A measure of a two-dimensional angle in three-dimensional space.
+  - id: area
+    term: Area
+    definition: A measure of two-dimensional extent.
+  - id: volume
+    term: Volume
+    definition: A measure of three-dimensional extent.
+  - id: velocity
+    term: Velocity
+    definition: A measure of the rate of change of position.
+  - id: acceleration
+    term: Acceleration
+    definition: A measure of the rate of change of velocity.
+  - id: force
+    term: Force
+    definition: A measure of an influence that changes the motion of an object.
+  - id: pressure
+    term: Pressure
+    definition: A measure of force per unit area.
+  - id: energy
+    term: Energy
+    definition: A measure of the capacity to do work.
+  - id: power
+    term: Power
+    definition: A measure of the rate of doing work.
+  - id: electricCharge
+    term: Electric Charge
+    definition: A measure of the quantity of electricity.
+  - id: electricPotential
+    term: Electric Potential
+    definition: A measure of the electric potential energy per unit charge.
+  - id: electricCapacitance
+    term: Electric Capacitance
+    definition: A measure of the ability to store electric charge.
+  - id: electricResistance
+    term: Electric Resistance
+    definition: A measure of opposition to the flow of electric current.
+  - id: electricConductance
+    term: Electric Conductance
+    definition: A measure of how easily electric current flows.
+  - id: magneticFlux
+    term: Magnetic Flux
+    definition: A measure of the quantity of magnetism.
+  - id: magneticFluxDensity
+    term: Magnetic Flux Density
+    definition: A measure of the magnetic field strength.
+  - id: inductance
+    term: Inductance
+    definition: A measure of the property of an electric conductor to oppose changes in current.
+  - id: frequency
+    term: Frequency
+    definition: A measure of the number of occurrences of a repeating event per unit time.
+  - id: wavenumber
+    term: Wavenumber
+    definition: A measure of the spatial frequency of a wave.
+  - id: molarMass
+    term: Molar Mass
+    definition: A measure of the mass per amount of substance.
+  - id: molarEnergy
+    term: Molar Energy
+    definition: A measure of energy per amount of substance.
+  - id: dipoleMoment
+    term: Dipole Moment
+    definition: A measure of the separation of positive and negative charges.
+  - id: polarizability
+    term: Polarizability
+    definition: A measure of the tendency of a charge distribution to be distorted by an external electric field.
+  - id: dimensionless
+    term: Dimensionless
+    definition: A quantity with no physical dimensions.
+  - id: none
+    term: None
+    definition: Used for entries that conceptually have no units.

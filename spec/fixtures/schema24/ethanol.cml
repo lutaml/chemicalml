@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <molecule id="m1">
+    <name>ethanol</name>
+    <formula concise="C 2 H 6 O 1"/>
+    <atomArray>
+      <atom id="a1" elementType="C"/>
+      <atom id="a2" elementType="C"/>
+      <atom id="a3" elementType="O"/>
+      <atom id="a4" elementType="H" count="6"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="a1 a2" order="S"/>
+      <bond atomRefs2="a2 a3" order="S"/>
+    </bondArray>
+  </molecule>
+</cml>

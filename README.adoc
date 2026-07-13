@@ -36,7 +36,7 @@ Parse a CML document:
 ----
 require "chemicalml"
 
-doc = ChemicalML::Cml::Document.from_xml(File.read("ethanol.cml"))
+doc = Chemicalml::Cml::Document.from_xml(File.read("ethanol.cml"))
 doc.molecules.first.atoms.first.element_type # => "C"
 ----
 
@@ -44,9 +44,9 @@ Build a document programmatically:
 
 [source,ruby]
 ----
-atom = ChemicalML::Cml::Atom.new(id: "a1", element_type: "C")
-mol  = ChemicalML::Cml::Molecule.new(id: "m1", atoms: [atom])
-doc  = ChemicalML::Cml::Document.new(molecules: [mol])
+atom = Chemicalml::Cml::Atom.new(id: "a1", element_type: "C")
+mol  = Chemicalml::Cml::Molecule.new(id: "m1", atoms: [atom])
+doc  = Chemicalml::Cml::Document.new(molecules: [mol])
 
 doc.to_xml # => well-formed CML XML
 ----
@@ -60,6 +60,27 @@ through lutaml-model — no hand-rolled XML.
 The library is designed as a sibling model layer to other chemistry
 tooling. AsciiChem (https://www.asciichem.org) uses ChemML for CML
 round-trip support via a translator adapter.
+
+Both Schema 2.4 and Schema 3 are supported via
+`Chemicalml::Cml::Schema3` and `Chemicalml::Cml::Schema24` namespaces
+(see `lib/chemicalml/schema.rb`).
+
+The CML conventions (molecular, compchem, dictionary, unit-dictionary,
+unitType-dictionary) are implemented as registered constraint sets in
+`Chemicalml::Convention`. Built-in dictionaries ship as YAML under
+`data/dictionaries/`.
+
+== Acknowledgements
+
+CML is the work of the http://www.xml-cml.org/[xml-cml.org] community,
+edited by Sam Adams, Joe Townsend, Weerapong Phadungsukanan, and Jens
+Thomas, with originator Peter Murray-Rust and contributors Alex Wade,
+Nick England, Daniel Lowe, Hannah Barjat, and Egon Willighagen. The
+schema, conventions, dictionaries, and examples are licensed by
+xml-cml.org under
+http://creativecommons.org/licenses/by/3.0/[CC-BY-3.0]. See
+link:NOTICES.adoc[NOTICES.adoc] for full attribution of upstream
+content redistributed in this gem.
 
 == License
 

@@ -1,0 +1,115 @@
+= Chemicalml — Third-Party Notices
+
+Chemicalml is distributed under the BSD-2-Clause license. See
+link:LICENSE[LICENSE] for the full text.
+
+== Acknowledgements
+
+Chemicalml builds directly on the Chemical Markup Language (CML), a
+long-running community project hosted at http://www.xml-cml.org/. The
+CML schema, conventions, dictionaries, and example documents are the
+work of many people over more than two decades. We acknowledge with
+gratitude the people who built CML and continue to maintain it.
+
+=== Editors and authors of the convention specifications
+
+* **Sam Adams** (University of Cambridge) — editor of the molecular,
+  compchem, dictionary, unit-dictionary, and unitType-dictionary
+  convention specifications
+* **Joe Townsend** (University of Cambridge) — editor of the molecular,
+  compchem, dictionary, unit-dictionary, and unitType-dictionary
+  convention specifications
+* **Weerapong Phadungsukanan** (University of Cambridge) — editor of
+  the CompChem convention; author of the CompChem dictionary
+* **Jens Thomas** (STFC Daresbury Laboratory) — editor of the CompChem
+  convention
+* **Peter Murray-Rust** (University of Cambridge) — originator of CML,
+  author of the CompChem dictionary, driving force behind CML's
+  evolution
+* **Alex Wade**, **Nick England**, **Daniel Lowe**, **Hannah Barjat**,
+  **Egon Willighagen** — contributors to the convention specifications
+  and dictionaries
+
+=== The xml-cml.org project
+
+The http://www.xml-cml.org/[xml-cml.org] website is the canonical home
+of CML — schema files, convention specifications, dictionaries, example
+documents, and validation tooling. We are grateful to the entire CML
+community for keeping the project alive and openly licensed.
+
+== Third-party content redistributed in this repository
+
+The following files derive from upstream sources at xml-cml.org and are
+licensed under the
+http://creativecommons.org/licenses/by/3.0/[Creative Commons Attribution
+3.0 Unported License (CC-BY-3.0)]:
+
+=== CML schema XSDs
+
+* `reference-docs/schemas/schema3/schema.xsd` — the official CML
+  Schema 3 XSD
+* `reference-docs/schemas/schema24/schema.xsd` — the official CML
+  Schema 2.4 XSD
+
+=== Convention specifications (HTML originals archived as Markdown)
+
+* `reference-docs/conventions/index.md`
+* `reference-docs/conventions/molecular.md`
+* `reference-docs/conventions/compchem.md`
+* `reference-docs/conventions/dictionary.md`
+* `reference-docs/conventions/unit-dictionary.md`
+* `reference-docs/conventions/unitType-dictionary.md`
+
+=== Dictionary source content
+
+* `reference-docs/dictionaries/index.md` — landing page
+* `reference-docs/dictionaries/compchem.md` — CompChem dictionary
+  source content
+
+The YAML representation of the CompChem dictionary at
+`data/dictionaries/compchem.yaml` is derived from the upstream XML at
+http://www.xml-cml.org/dictionary/compchem/[xml-cml.org/dictionary/compchem/].
+
+=== Example CML documents
+
+Example CML files under `spec/fixtures/` are derived from
+http://www.xml-cml.org/examples/[xml-cml.org/examples/]. Each
+subdirectory corresponds to an upstream category:
+
+* `spec/fixtures/schema3/molecular/` — Schema 3 molecular examples
+* `spec/fixtures/schema3/compchem/` — Schema 3 compchem examples
+* `spec/fixtures/schema24/` — Schema 2.4 examples
+
+Some seed fixtures in this directory are synthetic (created for this
+gem) and are not subject to the upstream license; the BSD-2-Clause
+license of this gem applies to those.
+
+== Creative Commons Attribution 3.0 Unported License
+
+For the upstream content listed above:
+
+----
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
+CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS
+PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE
+WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS
+PROHIBITED.
+
+BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND
+AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS
+LICENSE MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU
+THE RIGHTS CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH
+TERMS AND CONDITIONS.
+
+Full license text: http://creativecommons.org/licenses/by/3.0/legalcode
+----
+
+== Attribution for derived works
+
+The Ruby wire-format classes in `lib/chemicalml/cml/`, the canonical
+model in `lib/chemicalml/model/`, the convention framework in
+`lib/chemicalml/convention/`, and the dictionary layer in
+`lib/chemicalml/dictionary/` are original work of the Chemicalml gem
+authors, distributed under the BSD-2-Clause license of this gem. They
+implement the semantics described by the upstream CML specifications
+but contain no upstream source code or text.

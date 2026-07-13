@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
-
-module ChemicalML
+# Backward-compatible alias. New code should reference the versioned
+# class directly: Chemicalml::Cml::Schema3::BondArray.
+module Chemicalml
   module Cml
-    # CML `<bondArray>` element — container for `<bond>` children.
-    class BondArray < Lutaml::Model::Serializable
-      attribute :bonds, Bond, collection: true
-
-      xml do
-        root "bondArray"
-        map_element "bond", to: :bonds
-      end
-    end
+    remove_const(:BondArray) if const_defined?(:BondArray, false)
+    const_set(:BondArray, Chemicalml::Cml::Schema3::BondArray)
   end
 end

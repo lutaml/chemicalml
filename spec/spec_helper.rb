@@ -2,6 +2,23 @@
 
 require "chemicalml"
 
+# Ensure both schema contexts are populated before any spec runs —
+# construction (not just parsing) needs type resolution.
+Chemicalml::Cml::Schema3::Configuration.ensure_registered!
+Chemicalml::Cml::Schema24::Configuration.ensure_registered!
+
+require "lutaml/model"
+Lutaml::Model::Config.configure do |config|
+  config.xml_adapter_type = :nokogiri
+end
+
+require "canon"
+Canon::Config.configure do |config|
+  config.xml.match.profile = :spec_friendly
+  config.xml.diff.algorithm = :semantic
+  config.xml.diff.max_node_count = 50_000
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

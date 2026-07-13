@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "chemicalml/model/substance"
-
-module ChemicalML
+module Chemicalml
   module Model
       class Reactant < Node
         attr_accessor :substance

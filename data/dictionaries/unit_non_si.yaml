@@ -1,0 +1,53 @@
+# Non-SI Units Dictionary
+#
+# Source: http://www.xml-cml.org/unit/nonSi/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/unit/nonSi/
+prefix: nonsi
+title: Non-SI Units
+description: |
+  Common non-SI units accepted for use with CML, with their parent SI
+  unit and conversion factor.
+
+entries:
+  - id: angstrom
+    term: ångström
+    definition: A unit of length equal to 1e-10 metre.
+  - id: hartree
+    term: hartree
+    definition: The atomic unit of energy, ~4.359744e-18 J.
+  - id: bohr
+    term: bohr
+    definition: The atomic unit of length, ~5.29177e-11 m.
+  - id: dalton
+    term: dalton
+    definition: A unit of mass equal to the unified atomic mass unit.
+  - id: elementary_charge
+    term: elementary charge
+    definition: A unit of electric charge equal to ~1.602176634e-19 C.
+  - id: degree
+    term: degree
+    definition: A unit of angle equal to pi/180 radian.
+  - id: minute
+    term: minute
+    definition: A unit of time equal to 60 seconds.
+  - id: hour
+    term: hour
+    definition: A unit of time equal to 3600 seconds.
+  - id: day
+    term: day
+    definition: A unit of time equal to 86 400 seconds.
+  - id: electronvolt
+    term: electronvolt
+    definition: A unit of energy equal to the work done on an electron moving through 1 volt of potential difference.
+  - id: liter
+    term: liter
+    definition: A unit of volume equal to 1e-3 cubic metre.
+  - id: bar
+    term: bar
+    definition: A unit of pressure equal to 1e5 pascal.
+  - id: atmosphere
+    term: atmosphere
+    definition: A unit of pressure equal to ~101 325 pascal.

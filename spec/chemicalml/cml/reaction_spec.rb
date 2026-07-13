@@ -2,36 +2,36 @@
 
 require "spec_helper"
 
-RSpec.describe ChemicalML::Cml::Reaction do
+RSpec.describe Chemicalml::Cml::Reaction do
   let(:reaction) do
     described_class.new(
       id: "r1",
       title: "Haber",
       type: "equilibrium",
-      reactant_list: ChemicalML::Cml::ReactantList.new(
+      reactant_list: Chemicalml::Cml::ReactantList.new(
         reactants: [
-          ChemicalML::Cml::Reactant.new(
-            substance: ChemicalML::Cml::Substance.new(
-              molecule: ChemicalML::Cml::Molecule.new(
+          Chemicalml::Cml::Reactant.new(
+            substance: Chemicalml::Cml::Substance.new(
+              molecule: Chemicalml::Cml::Molecule.new(
                 id: "r-m1",
-                atom_array: ChemicalML::Cml::AtomArray.new(
-                  atoms: [ChemicalML::Cml::Atom.new(id: "a1", element_type: "N", count: "1")]
+                atom_array: Chemicalml::Cml::AtomArray.new(
+                  atoms: [Chemicalml::Cml::Atom.new(id: "a1", element_type: "N", count: "1")]
                 )
               )
             )
           )
         ]
       ),
-      product_list: ChemicalML::Cml::ProductList.new(
+      product_list: Chemicalml::Cml::ProductList.new(
         products: [
-          ChemicalML::Cml::Product.new(
-            substance: ChemicalML::Cml::Substance.new(
-              molecule: ChemicalML::Cml::Molecule.new(
+          Chemicalml::Cml::Product.new(
+            substance: Chemicalml::Cml::Substance.new(
+              molecule: Chemicalml::Cml::Molecule.new(
                 id: "p-m1",
-                atom_array: ChemicalML::Cml::AtomArray.new(
+                atom_array: Chemicalml::Cml::AtomArray.new(
                   atoms: [
-                    ChemicalML::Cml::Atom.new(id: "pa1", element_type: "N", count: "1"),
-                    ChemicalML::Cml::Atom.new(id: "pa2", element_type: "H", count: "3")
+                    Chemicalml::Cml::Atom.new(id: "pa1", element_type: "N", count: "1"),
+                    Chemicalml::Cml::Atom.new(id: "pa2", element_type: "H", count: "3")
                   ]
                 )
               )

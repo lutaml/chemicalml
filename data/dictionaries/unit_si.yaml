@@ -1,0 +1,87 @@
+# SI Units Dictionary
+#
+# Source: http://www.xml-cml.org/unit/si/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/unit/si/
+prefix: si
+title: SI Units
+description: |
+  The International System of Units (SI). Each entry maps a unit id
+  (abbreviation) to its full title, symbol, parentSI reference,
+  multiplier/constant to SI, and unit type.
+
+entries:
+  - id: m
+    term: metre
+    definition: The SI base unit of length.
+  - id: kg
+    term: kilogram
+    definition: The SI base unit of mass.
+  - id: s
+    term: second
+    definition: The SI base unit of time.
+  - id: A
+    term: ampere
+    definition: The SI base unit of electric current.
+  - id: K
+    term: kelvin
+    definition: The SI base unit of thermodynamic temperature.
+  - id: mol
+    term: mole
+    definition: The SI base unit of amount of substance.
+  - id: cd
+    term: candela
+    definition: The SI base unit of luminous intensity.
+  - id: rad
+    term: radian
+    definition: The SI derived unit of angle.
+  - id: sr
+    term: steradian
+    definition: The SI derived unit of solid angle.
+  - id: Hz
+    term: hertz
+    definition: The SI derived unit of frequency.
+  - id: N
+    term: newton
+    definition: The SI derived unit of force.
+  - id: Pa
+    term: pascal
+    definition: The SI derived unit of pressure.
+  - id: J
+    term: joule
+    definition: The SI derived unit of energy.
+  - id: W
+    term: watt
+    definition: The SI derived unit of power.
+  - id: C
+    term: coulomb
+    definition: The SI derived unit of electric charge.
+  - id: V
+    term: volt
+    definition: The SI derived unit of electric potential.
+  - id: F
+    term: farad
+    definition: The SI derived unit of electric capacitance.
+  - id: ohm
+    term: ohm
+    definition: The SI derived unit of electric resistance.
+  - id: S
+    term: siemens
+    definition: The SI derived unit of electric conductance.
+  - id: Wb
+    term: weber
+    definition: The SI derived unit of magnetic flux.
+  - id: T
+    term: tesla
+    definition: The SI derived unit of magnetic flux density.
+  - id: H
+    term: henry
+    definition: The SI derived unit of inductance.
+  - id: none
+    term: none
+    definition: |
+      Used as the units for an entry that conceptually should not have
+      units (per the CML dictionary convention, MUST be referenced via
+      http://www.xml-cml.org/unit/si#none when unitType is `none`).
