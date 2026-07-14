@@ -14,7 +14,6 @@ require "lutaml/model"
 # framework-backed — no hand-rolled XML in this library.
 module Chemicalml
   autoload :Cml, "chemicalml/cml"
-  autoload :Configuration, "chemicalml/configuration"
   autoload :ContextConfiguration, "chemicalml/context_configuration"
   autoload :Convention, "chemicalml/convention"
   autoload :Dictionary, "chemicalml/dictionary"
@@ -28,6 +27,9 @@ module Chemicalml
   module_function
 
   def parse(xml, schema: :schema3, namespace_exist: true)
+    raise ArgumentError, "xml must not be nil" if xml.nil?
+    raise ArgumentError, "xml must not be empty" if xml.to_s.strip.empty?
+
     parser_for(schema).parse(xml, namespace_exist: namespace_exist)
   end
 

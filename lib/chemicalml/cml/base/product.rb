@@ -10,7 +10,7 @@ module Chemicalml
             attribute :substance, :substance
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "product"
               map_element "substance", to: :substance
             end

@@ -13,7 +13,7 @@ module Chemicalml
             attribute :description, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "unitType"
               map_attribute "id", to: :id
               map_attribute "name", to: :name

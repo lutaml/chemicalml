@@ -14,7 +14,7 @@ module Chemicalml
             attribute :identifiers, :identifier, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "substance"
               map_attribute "title", to: :title
               map_attribute "role", to: :role

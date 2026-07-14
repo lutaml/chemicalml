@@ -19,7 +19,7 @@ module Chemicalml
             attribute :lists, :list, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "module"
               map_attribute "id", to: :id
               map_attribute "title", to: :title

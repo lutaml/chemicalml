@@ -11,7 +11,7 @@ module Chemicalml
             attribute :content, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "atomParity"
               map_attribute "atomRefs4", to: :atom_refs4
               map_content to: :content

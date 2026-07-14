@@ -10,7 +10,9 @@ module Chemicalml
   module Model
     autoload :Array, "chemicalml/model/cml_array"
     autoload :Atom, "chemicalml/model/atom"
+    autoload :AtomParity, "chemicalml/model/atom_parity"
     autoload :Bond, "chemicalml/model/bond"
+    autoload :BondStereo, "chemicalml/model/bond_stereo"
     autoload :Document, "chemicalml/model/document"
     autoload :Formula, "chemicalml/model/formula"
     autoload :Identifier, "chemicalml/model/identifier"

@@ -48,6 +48,36 @@ entries:
   - id: bar
     term: bar
     definition: A unit of pressure equal to 1e5 pascal.
+  - id: g_cm3
+    term: grams per cubic centimeter
+    definition: A unit of density equal to 1 g/cm³.
+  - id: Pa_s
+    term: pascal-second
+    definition: The SI derived unit of dynamic viscosity.
+  - id: N_m
+    term: newton per meter
+    definition: A unit of surface tension.
+  - id: D
+    term: debye
+    definition: A unit of electric dipole moment, equal to ~3.33564e-30 C·m.
+  - id: A3
+    term: cubic angstrom
+    definition: A unit of volume equal to 1e-30 m³.
+  - id: kJ_mol
+    term: kilojoule per mole
+    definition: A unit of molar energy equal to 1000 J/mol.
+  - id: J_molK
+    term: joule per mole-kelvin
+    definition: A unit of molar entropy or molar heat capacity.
+  - id: eV
+    term: electronvolt
+    definition: A unit of energy equal to ~1.602e-19 J.
+  - id: angstrom2
+    term: square angstrom
+    definition: A unit of area equal to 1e-20 m².
+  - id: angstrom3
+    term: cubic angstrom
+    definition: A unit of volume equal to 1e-30 m³.
   - id: atmosphere
     term: atmosphere
     definition: A unit of pressure equal to ~101 325 pascal.

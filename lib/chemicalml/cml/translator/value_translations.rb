@@ -5,8 +5,9 @@ module Chemicalml
     class Translator
       # Canonical-form translations for the value-container and module
       # elements introduced when the compchem / molecular conventions
-      # were added. Each method is symmetric with the existing
-      # molecule/atom/bond translators.
+      # were added. Each `*_from_canonical` method takes `schema:` and
+      # resolves wire classes via `WireClassRegistry` so Schema24
+      # output uses Schema24 wire classes throughout.
       module ValueTranslations
         module ClassMethods
           def scalar_to_canonical(cml_scalar)
@@ -22,10 +23,10 @@ module Chemicalml
             )
           end
 
-          def scalar_from_canonical(scalar)
+          def scalar_from_canonical(scalar, schema: :schema3)
             return nil unless scalar
 
-            Cml::Scalar.new(
+            wire_class_for(schema, Chemicalml::Cml::Role::Scalar).new(
               content: scalar.value,
               data_type: scalar.data_type,
               units: scalar.units,
@@ -49,11 +50,11 @@ module Chemicalml
             )
           end
 
-          def array_from_canonical(array)
+          def array_from_canonical(array, schema: :schema3)
             return nil unless array
 
-            Cml::Array.new(
-              content: Array(array.values).join(" "),
+            wire_class_for(schema, Chemicalml::Cml::Role::Array).new(
+              content: [*array.values].join(" "),
               data_type: array.data_type,
               units: array.units,
               size: array.size,
@@ -78,11 +79,11 @@ module Chemicalml
             )
           end
 
-          def matrix_from_canonical(matrix)
+          def matrix_from_canonical(matrix, schema: :schema3)
             return nil unless matrix
 
-            Cml::Matrix.new(
-              content: Array(matrix.values).join(" "),
+            wire_class_for(schema, Chemicalml::Cml::Role::Matrix).new(
+              content: [*matrix.values].join(" "),
               rows: matrix.rows,
               columns: matrix.columns,
               data_type: matrix.data_type,
@@ -96,20 +97,20 @@ module Chemicalml
           def value_container_to_canonical(cml_value)
             return nil unless cml_value
 
-            if cml_value.is_a?(Cml::Matrix)
+            if cml_value.is_a?(Chemicalml::Cml::Role::Matrix)
               matrix_to_canonical(cml_value)
-            elsif cml_value.is_a?(Cml::Array)
+            elsif cml_value.is_a?(Chemicalml::Cml::Role::Array)
               array_to_canonical(cml_value)
-            elsif cml_value.is_a?(Cml::Scalar)
+            elsif cml_value.is_a?(Chemicalml::Cml::Role::Scalar)
               scalar_to_canonical(cml_value)
             end
           end
 
-          def value_container_from_canonical(value)
+          def value_container_from_canonical(value, schema: :schema3)
             case value
-            when Model::Matrix then matrix_from_canonical(value)
-            when Model::Array  then array_from_canonical(value)
-            when Model::Scalar then scalar_from_canonical(value)
+            when Model::Matrix then matrix_from_canonical(value, schema: schema)
+            when Model::Array  then array_from_canonical(value, schema: schema)
+            when Model::Scalar then scalar_from_canonical(value, schema: schema)
             end
           end
 
@@ -125,18 +126,18 @@ module Chemicalml
             )
           end
 
-          def property_from_canonical(prop)
+          def property_from_canonical(prop, schema: :schema3)
             return nil unless prop
 
-            value = value_container_from_canonical(prop.value)
-            Cml::Property.new(
+            value = value_container_from_canonical(prop.value, schema: schema)
+            wire_class_for(schema, Chemicalml::Cml::Role::Property).new(
               id: prop.id,
               title: prop.title,
               dict_ref: prop.dict_ref,
               convention: prop.convention,
-              scalar: value.is_a?(Cml::Scalar) ? value : nil,
-              array: value.is_a?(Cml::Array) ? value : nil,
-              matrix: value.is_a?(Cml::Matrix) ? value : nil
+              scalar: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Scalar)) ? value : nil,
+              array: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Array)) ? value : nil,
+              matrix: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Matrix)) ? value : nil
             )
           end
 
@@ -152,18 +153,18 @@ module Chemicalml
             )
           end
 
-          def parameter_from_canonical(param)
+          def parameter_from_canonical(param, schema: :schema3)
             return nil unless param
 
-            value = value_container_from_canonical(param.value)
-            Cml::Parameter.new(
+            value = value_container_from_canonical(param.value, schema: schema)
+            wire_class_for(schema, Chemicalml::Cml::Role::Parameter).new(
               id: param.id,
               title: param.title,
               dict_ref: param.dict_ref,
               convention: param.convention,
-              scalar: value.is_a?(Cml::Scalar) ? value : nil,
-              array: value.is_a?(Cml::Array) ? value : nil,
-              matrix: value.is_a?(Cml::Matrix) ? value : nil
+              scalar: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Scalar)) ? value : nil,
+              array: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Array)) ? value : nil,
+              matrix: value.is_a?(wire_class_for(schema, Chemicalml::Cml::Role::Matrix)) ? value : nil
             )
           end
 
@@ -178,10 +179,10 @@ module Chemicalml
             )
           end
 
-          def label_from_canonical(label)
+          def label_from_canonical(label, schema: :schema3)
             return nil unless label
 
-            Cml::Label.new(
+            wire_class_for(schema, Chemicalml::Cml::Role::Label).new(
               id: label.id,
               value: label.value,
               dict_ref: label.dict_ref,
@@ -201,10 +202,10 @@ module Chemicalml
             )
           end
 
-          def metadata_from_canonical(md)
+          def metadata_from_canonical(md, schema: :schema3)
             return nil unless md
 
-            Cml::Metadata.new(
+            wire_class_for(schema, Chemicalml::Cml::Role::Metadata).new(
               id: md.id,
               name: md.name,
               content: md.content,
@@ -228,10 +229,10 @@ module Chemicalml
             )
           end
 
-          def formula_from_canonical(formula)
+          def formula_from_canonical(formula, schema: :schema3)
             return nil unless formula
 
-            Cml::Formula.new(
+            wire_class_for(schema, Chemicalml::Cml::Role::Formula).new(
               id: formula.id,
               concise: formula.concise,
               inline: formula.inline,
@@ -244,6 +245,10 @@ module Chemicalml
           end
 
           private
+
+          def wire_class_for(schema, role)
+            Chemicalml::Cml::WireClassRegistry.for(schema, role)
+          end
 
           def property_value_to_canonical(cml_prop)
             value_container_to_canonical(cml_prop.scalar) ||

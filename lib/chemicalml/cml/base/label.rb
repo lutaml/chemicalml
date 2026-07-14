@@ -13,7 +13,7 @@ module Chemicalml
             attribute :convention, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "label"
               map_attribute "id", to: :id
               map_attribute "value", to: :value

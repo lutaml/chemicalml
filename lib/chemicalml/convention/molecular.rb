@@ -24,6 +24,16 @@ module Chemicalml
       register Constraints::AtomArrayMustContainAtoms
       register Constraints::AtomIdsUniqueWithinMolecule
       register Constraints::BondMustReferenceAtomsInSameMolecule
+      register Constraints::AtomMustHaveId
+      register Constraints::AtomMustHaveElementType
+      register Constraints::BondMustHaveAtomRefs2
+      register Constraints::BondMustHaveOrder
+      register Constraints::MoleculeMustHaveId
+      register Constraints::AtomCoordinatesMustBePaired
+      register Constraints::PropertyMustHaveDictRef
+      register Constraints::ScalarMustHaveDataType
+      register Constraints::BondOrderShouldNotBeNumeric
+      register Constraints::AtomIdMustMatchPattern
     end
   end
 end

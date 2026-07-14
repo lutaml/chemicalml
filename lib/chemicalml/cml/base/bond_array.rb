@@ -10,7 +10,7 @@ module Chemicalml
             attribute :bonds, :bond, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "bondArray"
               map_element "bond", to: :bonds
             end

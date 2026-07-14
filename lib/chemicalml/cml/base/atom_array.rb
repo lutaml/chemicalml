@@ -10,7 +10,7 @@ module Chemicalml
             attribute :atoms, :atom, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "atomArray"
               map_element "atom", to: :atoms
             end

@@ -10,7 +10,7 @@ module Chemicalml
             attribute :reactants, :reactant, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "reactantList"
               map_element "reactant", to: :reactants
             end

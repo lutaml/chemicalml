@@ -14,7 +14,7 @@ module Chemicalml
             attribute :units, :unit, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "unitList"
               map_attribute "title", to: :title
               map_attribute "namespace", to: :namespace

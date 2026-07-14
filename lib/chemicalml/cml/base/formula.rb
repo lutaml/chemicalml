@@ -18,7 +18,7 @@ module Chemicalml
             attribute :atom_array, :atomArray
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "formula"
               map_attribute "id", to: :id
               map_attribute "title", to: :title

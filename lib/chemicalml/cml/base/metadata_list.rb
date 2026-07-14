@@ -13,7 +13,7 @@ module Chemicalml
             attribute :metadata, :metadata, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "metadataList"
               map_attribute "id", to: :id
               map_attribute "title", to: :title

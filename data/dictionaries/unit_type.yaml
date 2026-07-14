@@ -87,6 +87,18 @@ entries:
   - id: inductance
     term: Inductance
     definition: A measure of the property of an electric conductor to oppose changes in current.
+  - id: density
+    term: Density
+    definition: Mass per unit volume.
+  - id: viscosity
+    term: Viscosity
+    definition: A fluid resistance to gradual deformation by shear stress or tensile stress.
+  - id: surfaceTension
+    term: Surface Tension
+    definition: The force per unit length acting along the surface of a liquid.
+  - id: entropy
+    term: Entropy
+    definition: A thermodynamic quantity representing the unavailability of a system thermal energy.
   - id: frequency
     term: Frequency
     definition: A measure of the number of occurrences of a repeating event per unit time.

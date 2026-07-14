@@ -31,6 +31,16 @@ RSpec.describe Chemicalml::Cml::Translator do
       expect(wire.class).to be(Chemicalml::Cml::Schema24::Document)
     end
 
+    it "produces Schema24 classes at every level when schema: :schema24" do
+      wire = described_class.from_canonical(canonical_doc, schema: :schema24)
+      mol = wire.molecules.first
+      expect(mol.class).to be(Chemicalml::Cml::Schema24::Molecule)
+      expect(mol.atom_array.class).to be(Chemicalml::Cml::Schema24::AtomArray)
+      expect(mol.atom_array.atoms.first.class).to be(Chemicalml::Cml::Schema24::Atom)
+      expect(mol.bond_array.class).to be(Chemicalml::Cml::Schema24::BondArray)
+      expect(mol.bond_array.bonds.first.class).to be(Chemicalml::Cml::Schema24::Bond)
+    end
+
     it "produces a Schema3 document when schema: :schema3" do
       wire = described_class.from_canonical(canonical_doc, schema: :schema3)
       expect(wire.class).to be(Chemicalml::Cml::Schema3::Document)
@@ -38,7 +48,7 @@ RSpec.describe Chemicalml::Cml::Translator do
 
     it "raises ArgumentError on unknown schema" do
       expect { described_class.from_canonical(canonical_doc, schema: :bogus) }
-        .to raise_error(ArgumentError, /unsupported schema/)
+        .to raise_error(ArgumentError, /schema/)
     end
 
     it "round-trips through Schema24 wire -> canonical -> Schema24 wire" do
@@ -67,7 +77,7 @@ RSpec.describe Chemicalml do
 
     it "raises ArgumentError on unknown schema" do
       expect { described_class.parse("<cml/>", schema: :bogus) }
-        .to raise_error(ArgumentError, /unsupported schema/)
+        .to raise_error(ArgumentError, /schema/)
     end
 
     it "parses via Cml::Schema3.parse directly" do

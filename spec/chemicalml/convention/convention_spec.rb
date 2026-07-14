@@ -50,7 +50,7 @@ end
 
 RSpec.describe Chemicalml::Convention::Molecular do
   it "registers three constraints" do
-    expect(described_class.constraint_count).to eq(3)
+    expect(described_class.constraint_count).to eq(13)
   end
 
   it "exposes its QName and namespace URI" do

@@ -10,7 +10,7 @@ module Chemicalml
             attribute :products, :product, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "productList"
               map_element "product", to: :products
             end

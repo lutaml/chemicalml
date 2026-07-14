@@ -1,0 +1,84 @@
+# CML Chemical Naming Conventions Dictionary
+#
+# Source: http://www.xml-cml.org/dictionary/cml/name/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/dictionary/cml/name/
+prefix: cmlName
+title: Chemical Naming Conventions
+description: |
+  Conventions for identifying the naming scheme used in CML <name>
+  elements. The dictRef on a <name> points to one of these entries
+  to indicate the naming convention.
+
+entries:
+  - id: iupac
+    term: IUPAC Name
+    definition: Systematic name following IUPAC nomenclature rules.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: trivial
+    term: Trivial Name
+    definition: A common or trade name not following systematic nomenclature.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: cas
+    term: CAS Registry Number
+    definition: A unique identifier assigned by the Chemical Abstracts Service.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: inchi
+    term: InChI
+    definition: International Chemical Identifier — a textual identifier for chemical substances.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: inchikey
+    term: InChIKey
+    definition: A hashed version of the InChI for compact storage and searching.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: smiles
+    term: SMILES
+    definition: Simplified Molecular-Input Line-Entry System — a line notation for molecular structures.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: pubchem
+    term: PubChem CID
+    definition: PubChem Compound Identifier.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: chemspider
+    term: ChemSpider ID
+    definition: ChemSpider database identifier.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: drugbank
+    term: DrugBank ID
+    definition: DrugBank database identifier.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: chebi
+    term: ChEBI ID
+    definition: Chemical Entities of Biological Interest database identifier.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none

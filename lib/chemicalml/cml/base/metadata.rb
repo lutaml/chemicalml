@@ -14,7 +14,7 @@ module Chemicalml
             attribute :title, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "metadata"
               map_attribute "id", to: :id
               map_attribute "name", to: :name
