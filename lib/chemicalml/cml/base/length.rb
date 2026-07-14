@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+module Chemicalml
+  module Cml
+    module Base
+      module Length
+        def self.included(klass)
+          klass.class_eval do
+            include Chemicalml::Cml::Role::Length
+            attribute :id, :string
+            attribute :title, :string
+            attribute :dict_ref, :string
+            attribute :convention, :string
+            attribute :atomRefs2, :string
+            attribute :units, :string
+
+            xml do
+              namespace Chemicalml::Cml::Namespace
+              root "length"
+              map_attribute "id", to: :id
+              map_attribute "title", to: :title
+              map_attribute "dictRef", to: :dict_ref
+              map_attribute "convention", to: :convention
+              map_attribute "atomRefs2", to: :atomRefs2
+              map_attribute "units", to: :units
+            end
+          end
+        end
+      end
+    end
+  end
+end

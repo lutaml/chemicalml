@@ -10,7 +10,7 @@ module Chemicalml
             attribute :reactions, :reaction, collection: true
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "reactionList"
               map_element "reaction", to: :reactions
             end

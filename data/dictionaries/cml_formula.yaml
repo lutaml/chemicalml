@@ -1,0 +1,63 @@
+# CML Chemical Formula Conventions Dictionary
+#
+# Source: http://www.xml-cml.org/dictionary/cml/formula/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/dictionary/cml/formula/
+prefix: cmlFormula
+title: Chemical Formula Conventions
+description: |
+  Conventions for identifying the formula representation used in
+  CML <formula> elements. The dictRef or convention attribute
+  on a <formula> points to one of these entries.
+
+entries:
+  - id: empirical
+    term: Empirical Formula
+    definition: The simplest whole-number ratio of atoms in a compound.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: molecular
+    term: Molecular Formula
+    definition: The actual number of atoms of each element in a molecule.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: structural
+    term: Structural Formula
+    definition: A formula showing the arrangement of atoms in a molecule.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: condensed
+    term: Condensed Formula
+    definition: A formula written on a single line showing element groups.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: hill
+    term: Hill System Formula
+    definition: A formula following the Hill system ordering convention.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: smiles
+    term: SMILES Formula
+    definition: A formula expressed in SMILES line notation.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: latex
+    term: LaTeX Formula
+    definition: A formula expressed using LaTeX markup.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none

@@ -13,7 +13,7 @@ module Chemicalml
             attribute :content, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "bondStereo"
               map_attribute "atomRefs2", to: :atom_refs2
               map_attribute "atomRefs4", to: :atom_refs4

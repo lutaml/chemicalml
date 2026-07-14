@@ -16,7 +16,7 @@ module Chemicalml
             attribute :matrix, :matrix
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "property"
               map_attribute "id", to: :id
               map_attribute "title", to: :title

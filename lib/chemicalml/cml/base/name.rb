@@ -12,7 +12,7 @@ module Chemicalml
             attribute :dict_ref, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "name"
               map_content to: :content
               map_attribute "convention", to: :convention

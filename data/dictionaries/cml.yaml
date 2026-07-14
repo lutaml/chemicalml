@@ -1,0 +1,172 @@
+# CML Fundamental Chemistry Concepts Dictionary
+#
+# Source: http://www.xml-cml.org/dictionary/cml/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+---
+namespace: http://www.xml-cml.org/dictionary/cml/
+prefix: cml
+title: Fundamental Chemistry Concepts
+description: |
+  Common chemistry concepts referenced from CML attributes and
+  properties. These cover molar mass, boiling/melting points,
+  density, and other fundamental physical properties.
+
+entries:
+  - id: molmass
+    term: Molar Mass
+    definition: The mass of one mole of a substance.
+    data_type: xsd:double
+    unit_type: unitType:mass
+    units: unit:g
+
+  - id: bp
+    term: Boiling Point
+    definition: The temperature at which a substance boils at standard pressure.
+    data_type: xsd:double
+    unit_type: unitType:temperature
+    units: unit:K
+
+  - id: mp
+    term: Melting Point
+    definition: The temperature at which a substance melts at standard pressure.
+    data_type: xsd:double
+    unit_type: unitType:temperature
+    units: unit:K
+
+  - id: density
+    term: Density
+    definition: Mass per unit volume of a substance.
+    data_type: xsd:double
+    unit_type: unitType:density
+    units: unit:g_cm3
+
+  - id: refractiveIndex
+    term: Refractive Index
+    definition: The ratio of the speed of light in a vacuum to that in the substance.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: solubility
+    term: Solubility
+    definition: The maximum amount of solute that dissolves in a solvent at a given temperature.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: vaporPressure
+    term: Vapor Pressure
+    definition: The pressure exerted by a vapor in equilibrium with its condensed phases.
+    data_type: xsd:double
+    unit_type: unitType:pressure
+    units: unit:Pa
+
+  - id: flashPoint
+    term: Flash Point
+    definition: The lowest temperature at which a liquid gives off enough vapor to ignite.
+    data_type: xsd:double
+    unit_type: unitType:temperature
+    units: unit:K
+
+  - id: autoignitionTemp
+    term: Autoignition Temperature
+    definition: The lowest temperature at which a substance spontaneously ignites.
+    data_type: xsd:double
+    unit_type: unitType:temperature
+    units: unit:K
+
+  - id: pH
+    term: pH
+    definition: The negative logarithm of the hydrogen ion concentration.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: viscosity
+    term: Viscosity
+    definition: A measure of a fluid's resistance to flow.
+    data_type: xsd:double
+    unit_type: unitType:viscosity
+    units: unit:Pa_s
+
+  - id: surfaceTension
+    term: Surface Tension
+    definition: The force per unit length acting along the surface of a liquid.
+    data_type: xsd:double
+    unit_type: unitType:surfaceTension
+    units: unit:N_m
+
+  - id: dipoleMoment
+    term: Dipole Moment
+    definition: The electric dipole moment of a molecule.
+    data_type: xsd:double
+    unit_type: unitType:dipoleMoment
+    units: unit:D
+
+  - id: polarizability
+    term: Polarizability
+    definition: The tendency of a charge distribution to be distorted by an external electric field.
+    data_type: xsd:double
+    unit_type: unitType:polarizability
+    units: unit:A3
+
+  - id: heatOfFormation
+    term: Heat of Formation
+    definition: The enthalpy change when one mole of a compound is formed from its elements.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:kJ_mol
+
+  - id: entropy
+    term: Entropy
+    definition: A measure of the disorder or randomness in a system.
+    data_type: xsd:double
+    unit_type: unitType:entropy
+    units: unit:J_molK
+
+  - id: freeEnergy
+    term: Gibbs Free Energy
+    definition: The thermodynamic potential that measures the maximum reversible work.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:kJ_mol
+
+  - id: ionizationEnergy
+    term: Ionization Energy
+    definition: The energy required to remove an electron from a gaseous atom or ion.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:eV
+
+  - id: electronAffinity
+    term: Electron Affinity
+    definition: The energy change when an electron is added to a neutral atom.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:eV
+
+  - id: electronegativity
+    term: Electronegativity
+    definition: A measure of the tendency of an atom to attract bonding electrons.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: bondEnergy
+    term: Bond Energy
+    definition: The energy required to break one mole of a specific bond in a substance.
+    data_type: xsd:double
+    unit_type: unitType:energy
+    units: unit:kJ_mol
+
+  - id: bondLength
+    term: Bond Length
+    definition: The average distance between nuclei of two bonded atoms.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
+
+  - id: bondAngle
+    term: Bond Angle
+    definition: The angle formed between two adjacent bonds at a common atom.
+    data_type: xsd:double
+    unit_type: unitType:angle
+    units: unit:degree

@@ -3,11 +3,10 @@
 require "spec_helper"
 require "pathname"
 
-# Walks every `.cml` fixture under spec/fixtures/, parses it, and
-# re-serializes it. Uses canon's `be_xml_equivalent_to` matcher for
-# semantic XML comparison — catches attribute-level regressions while
-# tolerating legitimate formatting differences (attribute order,
-# whitespace, self-closing vs empty-tag forms).
+# Walks every `.cml` fixture under spec/fixtures/, parses it via the
+# polymorphic `Chemicalml.parse` entry point (which auto-detects
+# `<cml>` vs `<module>` root), re-serializes it, and verifies the
+# result via canon's `be_xml_equivalent_to` matcher.
 module FixtureRoundTrip
   module_function
 
@@ -25,14 +24,12 @@ RSpec.describe "fixture round-trip" do
     expect(categories.length).to be >= 2
   end
 
-  # Some fixtures intentionally exercise features the schema-3 wire
-  # classes don't fully model yet (e.g. <crystal> children, complex
-  # nested <list> structures). Skip those for the semantic comparison
-  # and document them here so they're tracked.
-  PENDING_ROUND_TRIP = %w[
+  # Fixtures that exercise CML features the wire classes don't fully
+  # model yet (e.g. <crystal> children, deeply nested <list> with
+  # arbitrary content). Skip the semantic comparison for those —
+  # the structural re-parse check still runs.
+  PENDING_SEMANTIC = %w[
     spec/fixtures/schema3/compchem/co2_dft_full.cml
-    spec/fixtures/schema3/molecular/chiral_center.cml
-    spec/fixtures/schema3/molecular/water_with_properties.cml
     spec/fixtures/schema24/crystal_nacl.cml
   ].freeze
 
@@ -41,18 +38,27 @@ RSpec.describe "fixture round-trip" do
 
     it "round-trips #{rel}" do
       xml = File.read(path)
-      doc = Chemicalml::Cml::Document.from_xml(xml)
+      doc = Chemicalml.parse(xml)
       re_xml = doc.to_xml
 
-      # Always verify structural preservation via re-parse.
-      re_doc = Chemicalml::Cml::Document.from_xml(re_xml)
-      expect(re_doc.molecules.length).to eq(doc.molecules.length)
-      expect(re_doc.reactions.length).to eq(doc.reactions.length)
+      # Structural preservation: re-parse the output and verify the
+      # node type and molecule/reaction counts match (for Documents)
+      # or module structure matches (for Modules).
+      re_doc = Chemicalml.parse(re_xml)
+      expect(re_doc.class).to eq(doc.class)
 
-      # For fixtures we model fully, also verify semantic XML
-      # equivalence via canon. Wrap both sides in a synthetic root
-      # element to work around canon's document-level comparison bug.
-      unless PENDING_ROUND_TRIP.include?(rel)
+      case doc
+      when Chemicalml::Cml::Role::Document
+        expect(re_doc.molecules.length).to eq(doc.molecules.length)
+        expect(re_doc.reactions.length).to eq(doc.reactions.length)
+      when Chemicalml::Cml::Role::Module
+        expect(re_doc.modules.length).to eq(doc.modules.length)
+      end
+
+      # Semantic XML equivalence via canon (for fully-modelled
+      # fixtures). Wrap both sides in a synthetic root element to
+      # work around canon's document-level comparison limitation.
+      unless PENDING_SEMANTIC.include?(rel)
         out_wrapped = "<r>#{re_xml}</r>"
         in_wrapped  = "<r>#{xml}</r>"
         expect(out_wrapped).to be_xml_equivalent_to(in_wrapped)

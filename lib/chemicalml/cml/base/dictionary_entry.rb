@@ -16,7 +16,7 @@ module Chemicalml
             attribute :description, :string
 
             xml do
-            namespace Chemicalml::Cml::Namespace
+              namespace Chemicalml::Cml::Namespace
               root "entry"
               map_attribute "id", to: :id
               map_attribute "term", to: :term

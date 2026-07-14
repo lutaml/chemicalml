@@ -1,0 +1,155 @@
+# CIF Core Definitions Dictionary
+#
+# Source: http://www.xml-cml.org/dictionary/cif/
+# License: CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0/)
+#
+# Derived from the Crystallographic Information File (CIF) core
+# dictionary. Covers crystallographic concepts referenced from CML
+# crystal elements and properties.
+
+---
+namespace: http://www.xml-cml.org/dictionary/cif/
+prefix: cif
+title: CIF Core Definitions
+description: |
+  Crystallographic concepts from the CIF core dictionary, mapped
+  to CML dictionary entries. Used with the CML <crystal> element
+  and crystallographic properties.
+
+entries:
+  - id: cell_length_a
+    term: Unit Cell Length a
+    definition: The length of the unit cell a axis.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
+
+  - id: cell_length_b
+    term: Unit Cell Length b
+    definition: The length of the unit cell b axis.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
+
+  - id: cell_length_c
+    term: Unit Cell Length c
+    definition: The length of the unit cell c axis.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
+
+  - id: cell_angle_alpha
+    term: Unit Cell Angle Alpha
+    definition: The inter-axial angle between the b and c cell axes.
+    data_type: xsd:double
+    unit_type: unitType:angle
+    units: unit:degree
+
+  - id: cell_angle_beta
+    term: Unit Cell Angle Beta
+    definition: The inter-axial angle between the a and c cell axes.
+    data_type: xsd:double
+    unit_type: unitType:angle
+    units: unit:degree
+
+  - id: cell_angle_gamma
+    term: Unit Cell Angle Gamma
+    definition: The inter-axial angle between the a and b cell axes.
+    data_type: xsd:double
+    unit_type: unitType:angle
+    units: unit:degree
+
+  - id: cell_volume
+    term: Unit Cell Volume
+    definition: The volume of the crystallographic unit cell.
+    data_type: xsd:double
+    unit_type: unitType:volume
+    units: unit:angstrom3
+
+  - id: cell_formula_units
+    term: Formula Units Per Cell (Z)
+    definition: The number of formula units in the unit cell.
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: crystal_system
+    term: Crystal System
+    definition: One of the seven crystal systems (triclinic, monoclinic, orthorhombic, tetragonal, trigonal, hexagonal, cubic).
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+    enum:
+      kind: closed
+      values:
+        - triclinic
+        - monoclinic
+        - orthorhombic
+        - tetragonal
+        - trigonal
+        - hexagonal
+        - cubic
+
+  - id: space_group_name
+    term: Space Group Name
+    definition: The Hermann-Mauguin symbol for the crystal space group.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: space_group_number
+    term: Space Group Number
+    definition: The International Tables space group number (1-230).
+    data_type: xsd:integer
+    unit_type: unitType:dimensionless
+
+  - id: symmetry_equiv_pos
+    term: Symmetry Equivalent Position
+    definition: A symmetry-equivalent atomic position in fractional coordinates.
+    data_type: xsd:string
+    unit_type: unitType:none
+    units: unit:none
+
+  - id: atom_site_fract_x
+    term: Atom Fractional X
+    definition: The x coordinate of an atom in fractional cell units.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: atom_site_fract_y
+    term: Atom Fractional Y
+    definition: The y coordinate of an atom in fractional cell units.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: atom_site_fract_z
+    term: Atom Fractional Z
+    definition: The z coordinate of an atom in fractional cell units.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: atom_site_occupancy
+    term: Atom Site Occupancy
+    definition: The fractional occupancy of an atomic site.
+    data_type: xsd:double
+    unit_type: unitType:dimensionless
+
+  - id: atom_site_B_iso
+    term: Atom Isotropic B Factor
+    definition: The isotropic atomic displacement parameter (B factor).
+    data_type: xsd:double
+    unit_type: unitType:area
+    units: unit:angstrom2
+
+  - id: diffrn_radiation_wavelength
+    term: Radiation Wavelength
+    definition: The wavelength of the radiation used in diffraction.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
+
+  - id: refln_d_resolution
+    term: Resolution (d-spacing)
+    definition: The highest-resolution d-spacing in the diffraction data.
+    data_type: xsd:double
+    unit_type: unitType:length
+    units: unit:angstrom
