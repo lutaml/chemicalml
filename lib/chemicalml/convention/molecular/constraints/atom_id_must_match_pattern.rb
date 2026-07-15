@@ -5,18 +5,18 @@ module Chemicalml
     module Molecular
       module Constraints
         class AtomIdMustMatchPattern < Chemicalml::Convention::Constraint::NodeConstraint
-          ID_PATTERN = /\A[A-Za-z][A-Za-z0-9._\-]*\z/.freeze
+          applies_to Chemicalml::Cml::Role::Atom
+          ID_PATTERN = /\A[A-Za-z][A-Za-z0-9._-]*\z/
 
           def check_node(node, path)
-            return [] unless node.is_a?(Chemicalml::Cml::Role::Atom)
 
             id = node.id.to_s
             return [] if id.empty?
             return [] if id.match?(ID_PATTERN)
 
-            [violation(path: path.empty? ? "atom" : path.join("/"),
+            [violation(path: path.empty? ? 'atom' : path.join('/'),
                        message: "atom id #{id.inspect} must start with a letter and " \
-                                "contain only letters, digits, dot, hyphen, or underscore",
+                                'contain only letters, digits, dot, hyphen, or underscore',
                        severity: :warning)]
           end
         end

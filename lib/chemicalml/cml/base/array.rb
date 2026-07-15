@@ -16,6 +16,17 @@ module Chemicalml
             attribute :delimiter, :string
             attribute :content, :string
 
+            attribute :convention, :string
+            attribute :error_value_array, :string
+            attribute :error_basis, :string
+            attribute :min_value_array, :string
+            attribute :max_value_array, :string
+            attribute :start, :string
+            attribute :end, :string
+            attribute :ref, :string
+            attribute :constant_to_s_i, :string
+            attribute :multiplier_to_s_i, :string
+            attribute :unit_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "array"
@@ -27,6 +38,17 @@ module Chemicalml
               map_attribute "size", to: :size
               map_attribute "delimiter", to: :delimiter
               map_content to: :content
+              map_attribute "convention", to: :convention
+              map_attribute "errorValueArray", to: :error_value_array
+              map_attribute "errorBasis", to: :error_basis
+              map_attribute "minValueArray", to: :min_value_array
+              map_attribute "maxValueArray", to: :max_value_array
+              map_attribute "start", to: :start
+              map_attribute "end", to: :end
+              map_attribute "ref", to: :ref
+              map_attribute "constantToSI", to: :constant_to_s_i
+              map_attribute "multiplierToSI", to: :multiplier_to_s_i
+              map_attribute "unitType", to: :unit_type
             end
           end
         end

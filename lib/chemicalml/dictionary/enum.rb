@@ -34,7 +34,7 @@ module Chemicalml
         values.include?(value)
       end
 
-      def to_h
+      def value_attributes
         { kind: kind, values: values }
       end
 

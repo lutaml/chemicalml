@@ -22,6 +22,10 @@ module Chemicalml
       end
 
       register Constraints::UnitMustHaveSymbolAndUnitType
+      register Constraints::UnitMustHaveId
+      register Constraints::UnitMustContainDefinition
+      register Constraints::UnitListMustHaveNamespace
+      register Constraints::UnitListMustContainAtLeastOneUnit
     end
   end
 end

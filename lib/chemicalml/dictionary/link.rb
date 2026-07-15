@@ -15,17 +15,17 @@ module Chemicalml
         freeze
       end
 
-      def to_h
+      def value_attributes
         { rel: rel, href: href, title: title }.compact
       end
 
       def eql?(other)
-        other.is_a?(Link) && to_h == other.to_h
+        other.is_a?(Link) && value_attributes == other.value_attributes
       end
       alias == eql?
 
       def hash
-        to_h.hash
+        value_attributes.hash
       end
     end
   end

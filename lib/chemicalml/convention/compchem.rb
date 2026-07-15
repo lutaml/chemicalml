@@ -23,6 +23,22 @@ module Chemicalml
 
       register Constraints::CompchemModuleMustContainJobList
       register Constraints::JobMustContainInitialization
+      register Constraints::JobListModuleMustHaveId
+      register Constraints::JobModuleMustHaveId
+      register Constraints::JobModuleAtMostOneFinalization
+      register Constraints::JobModuleAtMostOneEnvironment
+      register Constraints::CalculationRequiresFinalization
+      register Constraints::InitializationAtMostOneMolecule
+      register Constraints::InitializationAtMostOneParameterList
+      register Constraints::InitializationMustNotContainProperty
+      register Constraints::FinalizationAtMostOneMolecule
+      register Constraints::FinalizationAtMostOnePropertyList
+      register Constraints::FinalizationMustNotContainParameter
+      register Constraints::EnvironmentAtMostOnePropertyList
+      register Constraints::EnvironmentMustNotContainParameter
+      register Constraints::ScalarUnits
+      register Constraints::ArrayRules
+      register Constraints::MatrixRules
     end
   end
 end

@@ -16,7 +16,7 @@ module Chemicalml
               duplicates = ids.group_by { |x| x }.select { |_, v| v.length > 1 }.keys
               duplicates.each do |dup|
                 violations << violation(
-                  path: path.empty? ? "molecule[#{node.id}]" : path.join("/"),
+                  path: path.empty? ? "molecule[#{node.id}]" : path.join('/'),
                   message: "duplicate atom id #{dup.inspect} within molecule #{node.id.inspect}"
                 )
               end
@@ -33,7 +33,7 @@ module Chemicalml
           def atom_ids_within(molecule)
             return [] unless molecule.atom_array
 
-            (molecule.atom_array.atoms || []).map { |a| a.id }.compact
+            (molecule.atom_array.atoms || []).map(&:id).compact
           end
         end
       end

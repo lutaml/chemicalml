@@ -15,6 +15,8 @@ module Chemicalml
                         attribute :atom_array, :atomArray
             attribute :molecules, :molecule, collection: true
 
+            attribute :dimensionality, :string
+            attribute :periodicity, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "atomArray", to: :atom_array
@@ -24,6 +26,8 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "dimensionality", to: :dimensionality
+              map_attribute "periodicity", to: :periodicity
             end
           end
         end

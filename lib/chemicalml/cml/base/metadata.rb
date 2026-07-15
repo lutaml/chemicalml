@@ -13,6 +13,8 @@ module Chemicalml
             attribute :convention, :string
             attribute :title, :string
 
+            attribute :dict_ref, :string
+            attribute :metadata_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "metadata"
@@ -21,6 +23,8 @@ module Chemicalml
               map_attribute "content", to: :content
               map_attribute "convention", to: :convention
               map_attribute "title", to: :title
+              map_attribute "dictRef", to: :dict_ref
+              map_attribute "metadataType", to: :metadata_type
             end
           end
         end

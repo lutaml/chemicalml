@@ -62,8 +62,8 @@ RSpec.describe Chemicalml::Dictionary::Link do
     expect(l.title).to eq("x")
   end
 
-  it "omits nil title from its hash form" do
-    h = described_class.new(rel: "seeAlso", href: "http://x.org").to_h
+  it "omits nil title from its value_attributes" do
+    h = described_class.new(rel: "seeAlso", href: "http://x.org").value_attributes
     expect(h).not_to have_key(:title)
   end
 end

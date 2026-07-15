@@ -193,7 +193,7 @@ RSpec.describe "molecular convention extended constraints" do
     end
   end
 
-  it "registers 13 molecular constraints" do
-    expect(Chemicalml::Convention::Molecular.constraint_count).to eq(13)
+  it "registers 23 molecular constraints" do
+    expect(Chemicalml::Convention::Molecular.constraint_count).to eq(23)
   end
 end

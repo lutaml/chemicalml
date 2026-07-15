@@ -40,10 +40,16 @@ module Chemicalml
     # each class on the parent (schema) module, and register it. Pass
     # `except:` to skip specific elements (used by Schema 2.4 which
     # lacks `<module>`).
-    def register_elements!(except: [])
+    def register_elements!(except: [], only: nil)
       parent = version_parent_module
       skip = except.to_set
-      Chemicalml::Cml::Elements::ALL.each do |class_name, element_id|
+      source =
+        if only
+          Chemicalml::Cml::Elements::SCHEMA24_ONLY
+        else
+          Chemicalml::Cml::Elements::ALL
+        end
+      source.each do |class_name, element_id|
         next if skip.include?(class_name)
         next unless parent.const_defined?(class_name)
 

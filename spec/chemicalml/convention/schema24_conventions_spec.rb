@@ -49,7 +49,8 @@ RSpec.describe "conventions on Schema24 documents" do
     Chemicalml::Cml::Schema24::Dictionary.new(
       namespace: "http://example.org/",
       entries: [
-        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "foo", term: nil)
+        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "foo", term: nil,
+                                                        definition: "x", unit_type: "none")
       ]
     )
   end
@@ -58,8 +59,10 @@ RSpec.describe "conventions on Schema24 documents" do
     Chemicalml::Cml::Schema24::Dictionary.new(
       namespace: "http://example.org/",
       entries: [
-        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "dup", term: "First"),
-        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "dup", term: "Second")
+        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "dup", term: "First",
+                                                        definition: "x", unit_type: "none"),
+        Chemicalml::Cml::Schema24::DictionaryEntry.new(id: "dup", term: "Second",
+                                                        definition: "x", unit_type: "none")
       ]
     )
   end
@@ -74,7 +77,7 @@ RSpec.describe "conventions on Schema24 documents" do
   let(:unit_type_list) do
     Chemicalml::Cml::Schema24::UnitTypeList.new(
       namespace: "http://example.org/",
-      unit_types: [Chemicalml::Cml::Schema24::UnitType.new(id: "x")]
+      unit_types: [Chemicalml::Cml::Schema24::UnitType.new(id: "x", definition: "y")]
     )
   end
 
@@ -91,14 +94,16 @@ RSpec.describe "conventions on Schema24 documents" do
 
   it "Dictionary flags an entry missing its term in Schema24" do
     violations = Chemicalml::Convention::Dictionary.validate(dictionary_doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/term/)
+    term_violations = violations.select { |v| v.message.include?("term") }
+    expect(term_violations.length).to eq(1)
+    expect(term_violations.first.message).to match(/term/)
   end
 
   it "Dictionary flags duplicate entry ids in Schema24" do
     violations = Chemicalml::Convention::Dictionary.validate(duplicate_entry_dictionary)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/duplicate entry id/)
+    dup_violations = violations.select { |v| v.message.include?("duplicate entry id") }
+    expect(dup_violations.length).to eq(1)
+    expect(dup_violations.first.message).to match(/duplicate entry id/)
   end
 
   it "UnitDictionary flags a unit missing required attributes in Schema24" do
@@ -108,7 +113,8 @@ RSpec.describe "conventions on Schema24 documents" do
 
   it "UnitTypeDictionary flags a unitType missing its name in Schema24" do
     violations = Chemicalml::Convention::UnitTypeDictionary.validate(unit_type_list)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/name/)
+    name_violations = violations.select { |v| v.message.include?("name") }
+    expect(name_violations.length).to eq(1)
+    expect(name_violations.first.message).to match(/name/)
   end
 end

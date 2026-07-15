@@ -14,6 +14,11 @@ module Chemicalml
             attribute :atomRefs2, :string
             attribute :units, :string
 
+            attribute :error_value, :string
+            attribute :error_basis, :string
+            attribute :min, :string
+            attribute :max, :string
+            attribute :ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "length"
@@ -23,6 +28,11 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "atomRefs2", to: :atomRefs2
               map_attribute "units", to: :units
+              map_attribute "errorValue", to: :error_value
+              map_attribute "errorBasis", to: :error_basis
+              map_attribute "min", to: :min
+              map_attribute "max", to: :max
+              map_attribute "ref", to: :ref
             end
           end
         end

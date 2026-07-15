@@ -13,6 +13,7 @@ module Chemicalml
             attribute :convention, :string
             attribute :units, :string
 
+            attribute :periodic, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "latticeVector"
@@ -21,6 +22,7 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "units", to: :units
+              map_attribute "periodic", to: :periodic
             end
           end
         end

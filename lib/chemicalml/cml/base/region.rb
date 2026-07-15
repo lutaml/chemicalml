@@ -12,6 +12,10 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
 
+            attribute :sphere3, :string
+            attribute :box3, :string
+            attribute :atom_set_ref, :string
+            attribute :region_refs, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "region"
@@ -19,6 +23,10 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "sphere3", to: :sphere3
+              map_attribute "box3", to: :box3
+              map_attribute "atomSetRef", to: :atom_set_ref
+              map_attribute "regionRefs", to: :region_refs
             end
           end
         end

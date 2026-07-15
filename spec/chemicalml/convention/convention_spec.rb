@@ -49,8 +49,8 @@ RSpec.describe Chemicalml::Convention::Registry do
 end
 
 RSpec.describe Chemicalml::Convention::Molecular do
-  it "registers three constraints" do
-    expect(described_class.constraint_count).to eq(13)
+  it "registers 23 constraints" do
+    expect(described_class.constraint_count).to eq(23)
   end
 
   it "exposes its QName and namespace URI" do
@@ -147,15 +147,16 @@ RSpec.describe Chemicalml::Convention::Compchem do
     doc = Chemicalml::Cml::Module.new(
       convention: "convention:compchem",
       modules: [
-        Chemicalml::Cml::Module.new(dict_ref: "compchem:jobList",
+        Chemicalml::Cml::Module.new(id: "jl1", dict_ref: "compchem:jobList",
                                     modules: [
-                                      Chemicalml::Cml::Module.new(dict_ref: "compchem:job")
+                                      Chemicalml::Cml::Module.new(id: "j1", dict_ref: "compchem:job")
                                     ])
       ]
     )
     violations = described_class.validate(doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/initialization/)
+    init_violations = violations.select { |v| v.message.include?("initialization") }
+    expect(init_violations.length).to eq(1)
+    expect(init_violations.first.message).to match(/initialization/)
   end
 end
 
@@ -164,25 +165,30 @@ RSpec.describe Chemicalml::Convention::Dictionary do
     doc = Chemicalml::Cml::Dictionary.new(
       namespace: "http://example.org/",
       entries: [
-        Chemicalml::Cml::DictionaryEntry.new(id: "foo", term: nil)
+        Chemicalml::Cml::DictionaryEntry.new(id: "foo", term: nil,
+                                             definition: "x", unit_type: "none")
       ]
     )
     violations = described_class.validate(doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/term/)
+    term_violations = violations.select { |v| v.message.include?("term") }
+    expect(term_violations.length).to eq(1)
+    expect(term_violations.first.message).to match(/term/)
   end
 
   it "flags duplicate entry ids" do
     doc = Chemicalml::Cml::Dictionary.new(
       namespace: "http://example.org/",
       entries: [
-        Chemicalml::Cml::DictionaryEntry.new(id: "dup", term: "First"),
-        Chemicalml::Cml::DictionaryEntry.new(id: "dup", term: "Second")
+        Chemicalml::Cml::DictionaryEntry.new(id: "dup", term: "First",
+                                             definition: "x", unit_type: "none"),
+        Chemicalml::Cml::DictionaryEntry.new(id: "dup", term: "Second",
+                                             definition: "x", unit_type: "none")
       ]
     )
     violations = described_class.validate(doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/duplicate entry id/)
+    dup_violations = violations.select { |v| v.message.include?("duplicate entry id") }
+    expect(dup_violations.length).to eq(1)
+    expect(dup_violations.first.message).to match(/duplicate entry id/)
   end
 end
 
@@ -211,7 +217,8 @@ RSpec.describe Chemicalml::Convention::UnitDictionary do
         Chemicalml::Cml::Unit.new(
           id: "s", title: "second", symbol: "s",
           parent_si: "siUnits:s", multiplier_to_si: "1",
-          constant_to_si: "0", unit_type: "unitType:time"
+          constant_to_si: "0", unit_type: "unitType:time",
+          definition: "SI base unit of time"
         )
       ]
     )
@@ -224,12 +231,13 @@ RSpec.describe Chemicalml::Convention::UnitTypeDictionary do
     doc = Chemicalml::Cml::UnitTypeList.new(
       namespace: "http://example.org/",
       unit_types: [
-        Chemicalml::Cml::UnitType.new(id: "x")
+        Chemicalml::Cml::UnitType.new(id: "x", definition: "y")
       ]
     )
     violations = described_class.validate(doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/name/)
+    name_violations = violations.select { |v| v.message.include?("name") }
+    expect(name_violations.length).to eq(1)
+    expect(name_violations.first.message).to match(/name/)
   end
 end
 

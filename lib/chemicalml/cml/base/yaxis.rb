@@ -14,6 +14,9 @@ module Chemicalml
             attribute :units, :string
             attribute :multiplier, :string
 
+            attribute :ref, :string
+            attribute :multiplier_to_data, :string
+            attribute :constant_to_data, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "yaxis"
@@ -23,6 +26,9 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "units", to: :units
               map_attribute "multiplier", to: :multiplier
+              map_attribute "ref", to: :ref
+              map_attribute "multiplierToData", to: :multiplier_to_data
+              map_attribute "constantToData", to: :constant_to_data
             end
           end
         end

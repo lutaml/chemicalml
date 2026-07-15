@@ -25,9 +25,14 @@ RSpec.describe Chemicalml::Cml::WireClassRegistry do
         .to raise_error(ArgumentError, /unknown schema/)
     end
 
-    it "raises ArgumentError when schema lacks the element (Schema24 has no Module)" do
-      expect { described_class.for(:schema24, Chemicalml::Cml::Role::Module) }
-        .to raise_error(ArgumentError, /does not define Module/)
+    it "raises ArgumentError when schema lacks the element (Schema24 has no AnyCml)" do
+      expect { described_class.for(:schema24, Chemicalml::Cml::Role::AnyCml) }
+        .to raise_error(ArgumentError, /does not define AnyCml/)
+    end
+
+    it "resolves Schema24 Module (module is in both XSDs)" do
+      expect(described_class.for(:schema24, Chemicalml::Cml::Role::Module))
+        .to be(Chemicalml::Cml::Schema24::Module)
     end
 
     it "accepts string role names too" do

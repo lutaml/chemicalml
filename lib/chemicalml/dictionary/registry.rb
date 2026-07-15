@@ -13,7 +13,7 @@ module Chemicalml
       @mutex = Mutex.new
 
       def self.lookup(qname)
-        prefix, id = qname.to_s.split(":", 2)
+        prefix, id = qname.to_s.split(':', 2)
         return nil unless id
 
         dict = load_by_prefix(prefix)
@@ -39,7 +39,7 @@ module Chemicalml
 
       def self.load_by_prefix(prefix)
         manifest.each do |name, info|
-          return load_builtin(name) if info["prefix"] == prefix
+          return load_builtin(name) if info['prefix'] == prefix
         end
         nil
       end
@@ -49,27 +49,27 @@ module Chemicalml
       end
 
       def self.builtin_names
-        Dir.glob(File.join(BUILTIN_DIR, "*.yaml"))
-           .reject { |p| File.basename(p).start_with?("_") }
-           .map { |p| File.basename(p, ".yaml").to_sym }
+        Dir.glob(File.join(BUILTIN_DIR, '*.yaml'))
+           .reject { |p| File.basename(p).start_with?('_') }
+           .map { |p| File.basename(p, '.yaml').to_sym }
            .sort
       end
 
       def self.manifest
         @manifest ||= begin
-          path = File.join(BUILTIN_DIR, "_index.yaml")
+          path = File.join(BUILTIN_DIR, '_index.yaml')
           if File.exist?(path)
             YAML.load_file(path) || {}
           else
-            builtin_names.each_with_object({}) do |name, h|
-              h[name.to_s] = { "prefix" => name.to_s }
+            builtin_names.to_h do |name|
+              [name.to_s, { 'prefix' => name.to_s }]
             end
           end
         end
       end
       private_class_method :manifest
 
-      require "yaml"
+      require 'yaml'
     end
   end
 end

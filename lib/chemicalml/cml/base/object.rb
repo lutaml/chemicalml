@@ -13,6 +13,8 @@ module Chemicalml
             attribute :convention, :string
             attribute :type, :string
 
+            attribute :name, :string
+            attribute :count, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "object"
@@ -21,6 +23,8 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "type", to: :type
+              map_attribute "name", to: :name
+              map_attribute "count", to: :count
             end
           end
         end

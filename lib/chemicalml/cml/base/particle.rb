@@ -13,6 +13,9 @@ module Chemicalml
             attribute :convention, :string
             attribute :type, :string
 
+            attribute :x3, :string
+            attribute :y3, :string
+            attribute :z3, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "particle"
@@ -21,6 +24,9 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "type", to: :type
+              map_attribute "x3", to: :x3
+              map_attribute "y3", to: :y3
+              map_attribute "z3", to: :z3
             end
           end
         end

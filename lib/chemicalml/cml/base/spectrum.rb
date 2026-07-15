@@ -19,6 +19,12 @@ module Chemicalml
             attribute :peak_list, :peakList
             attribute :condition_list, :conditionList
 
+            attribute :ref, :string
+            attribute :molecule_ref, :string
+            attribute :spectrum_type, :string
+            attribute :measurement, :string
+            attribute :ft, :string
+            attribute :state, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "xaxis", to: :xaxis
@@ -32,6 +38,12 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "format", to: :format
               map_attribute "condition", to: :condition
+              map_attribute "ref", to: :ref
+              map_attribute "moleculeRef", to: :molecule_ref
+              map_attribute "spectrumType", to: :spectrum_type
+              map_attribute "measurement", to: :measurement
+              map_attribute "ft", to: :ft
+              map_attribute "state", to: :state
             end
           end
         end

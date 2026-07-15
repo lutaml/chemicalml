@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "yaml"
+require 'yaml'
 
 module Chemicalml
   module Dictionary
@@ -17,26 +17,26 @@ module Chemicalml
 
       def self.from_hash(hash)
         Model.new(
-          namespace: hash.fetch("namespace"),
-          prefix: hash.fetch("prefix"),
-          title: hash.fetch("title"),
-          description: hash["description"],
-          entries: (hash["entries"] || []).map { |e| build_entry(e) }
+          namespace: hash.fetch('namespace'),
+          prefix: hash.fetch('prefix'),
+          title: hash.fetch('title'),
+          description: hash['description'],
+          entries: (hash['entries'] || []).map { |e| build_entry(e) }
         )
       end
 
       def self.build_entry(h)
         Entry.new(
-          id: h.fetch("id"),
-          term: h.fetch("term"),
-          definition: h.fetch("definition"),
-          description: h["description"],
-          data_type: h["data_type"],
-          unit_type: h["unit_type"],
-          units: h["units"],
-          enum: build_enum(h["enum"]),
-          links: (h["links"] || []).map { |l| build_link(l) },
-          source_code: h["source_code"]
+          id: h.fetch('id'),
+          term: h.fetch('term'),
+          definition: h.fetch('definition'),
+          description: h['description'],
+          data_type: h['data_type'],
+          unit_type: h['unit_type'],
+          units: h['units'],
+          enum: build_enum(h['enum']),
+          links: (h['links'] || []).map { |l| build_link(l) },
+          source_code: h['source_code']
         )
       end
       private_class_method :build_entry
@@ -45,14 +45,14 @@ module Chemicalml
         return nil unless h
 
         Enum.new(
-          kind: h["kind"] || :open,
-          values: h["values"] || []
+          kind: h['kind'] || :open,
+          values: h['values'] || []
         )
       end
       private_class_method :build_enum
 
       def self.build_link(h)
-        Link.new(rel: h.fetch("rel"), href: h.fetch("href"), title: h["title"])
+        Link.new(rel: h.fetch('rel'), href: h.fetch('href'), title: h['title'])
       end
       private_class_method :build_link
     end

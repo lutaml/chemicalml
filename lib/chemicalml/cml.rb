@@ -9,17 +9,15 @@ module Chemicalml
   module Cml
     # Structural modules (each in its own file, loaded independently).
     autoload :Base,              "chemicalml/cml/base"
-    autoload :ChildMappings,    "chemicalml/cml/child_mappings"
     autoload :Elements,          "chemicalml/cml/elements"
     autoload :Namespace,         "chemicalml/cml/namespace"
     autoload :Role,              "chemicalml/cml/role"
     autoload :Schema3,           "chemicalml/cml/schema3"
     autoload :Schema24,          "chemicalml/cml/schema24"
-    autoload :Translator,        "chemicalml/cml/translator"
     autoload :Visitable,         "chemicalml/cml/visitable"
     autoload :WireClassRegistry, "chemicalml/cml/wire_class_registry"
 
-    # Backward-compatible aliases (Cml::Foo = Schema3::Foo). All 36
+    # Backward-compatible aliases (Cml::Foo = Schema3::Foo). All 121
     # aliases load from a single file via autoload — the file loads
     # lazily when the first alias is referenced, then defines all of
     # them via const_set (aliasing existing Schema3 classes, not

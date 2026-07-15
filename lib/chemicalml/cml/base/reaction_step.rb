@@ -16,6 +16,9 @@ module Chemicalml
             attribute :reactant_list, :reactantList
             attribute :product_list, :productList
 
+            attribute :ref, :string
+            attribute :yield, :string
+            attribute :ratio, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "reaction", to: :reaction
@@ -26,6 +29,9 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "ref", to: :ref
+              map_attribute "yield", to: :yield
+              map_attribute "ratio", to: :ratio
             end
           end
         end

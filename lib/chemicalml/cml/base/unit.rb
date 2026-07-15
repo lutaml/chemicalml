@@ -17,6 +17,12 @@ module Chemicalml
             attribute :definition, :string
             attribute :description, :string
 
+            attribute :units, :string
+            attribute :name, :string
+            attribute :is_s_i, :string
+            attribute :multiplier_to_data, :string
+            attribute :power, :string
+            attribute :abbreviation, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "unit"
@@ -29,6 +35,12 @@ module Chemicalml
               map_attribute "unitType", to: :unit_type
               map_element "definition", to: :definition
               map_element "description", to: :description
+              map_attribute "units", to: :units
+              map_attribute "name", to: :name
+              map_attribute "isSI", to: :is_s_i
+              map_attribute "multiplierToData", to: :multiplier_to_data
+              map_attribute "power", to: :power
+              map_attribute "abbreviation", to: :abbreviation
             end
           end
         end

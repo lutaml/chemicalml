@@ -34,6 +34,16 @@ module Chemicalml
       register Constraints::ScalarMustHaveDataType
       register Constraints::BondOrderShouldNotBeNumeric
       register Constraints::AtomIdMustMatchPattern
+      register Constraints::MoleculeCountMustNotAppearOnTopLevel
+      register Constraints::MoleculeAtomArrayMutuallyExclusiveWithChildren
+      register Constraints::MoleculeBondArrayMutuallyExclusiveWithChildren
+      register Constraints::BondStereoWedgeHashMustHaveAtomRefs2
+      register Constraints::BondStereoCisTransMustHaveAtomRefs4
+      register Constraints::BondStereoOtherMustHaveDictRef
+      register Constraints::BondIdsUniqueWithinMolecule
+      register Constraints::BondOrderOtherMustHaveDictRef
+      register Constraints::AtomArrayMustBeChildOfMoleculeOrFormula
+      register Constraints::BondArrayMustBeChildOfMolecule
     end
   end
 end

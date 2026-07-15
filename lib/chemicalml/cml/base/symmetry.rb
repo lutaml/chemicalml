@@ -14,6 +14,8 @@ module Chemicalml
             attribute :pointGroup, :string
             attribute :spaceGroup, :string
 
+            attribute :irreducible_representation, :string
+            attribute :number, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "symmetry"
@@ -23,6 +25,8 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "pointGroup", to: :pointGroup
               map_attribute "spaceGroup", to: :spaceGroup
+              map_attribute "irreducibleRepresentation", to: :irreducible_representation
+              map_attribute "number", to: :number
             end
           end
         end

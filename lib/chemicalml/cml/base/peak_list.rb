@@ -15,6 +15,7 @@ module Chemicalml
                         attribute :peaks, :peak, collection: true
             attribute :peak_groups, :peakGroup, collection: true
 
+            attribute :ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "peak", to: :peaks
@@ -24,6 +25,7 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "ref", to: :ref
             end
           end
         end

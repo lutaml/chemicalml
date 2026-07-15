@@ -133,13 +133,48 @@ module Chemicalml
         ZMatrix:             :zMatrix,
       }.freeze
 
-      # Elements that exist in Schema 3 but NOT in Schema 2.4.
-      SCHEMA3_ONLY = %i[Module].freeze
+      # Elements declared in the Schema 3 XSD but absent from the
+      # Schema 2.4 XSD. Verified by diffing the actual XSDs in
+      # `reference-docs/schemas/`: Schema 3 declares `<anyCml>` while
+      # Schema 2.4 does not. Conversely, Schema 2.4 declares 17 legacy
+      # elements (`alternative`, `annotation`, `appinfo`, `arg`,
+      # `complexObject`, `enumeration`, `expression`, `float`,
+      # `floatArray`, `integer`, `integerArray`, `operator`,
+      # `relatedEntry`, `string`, `stringArray`, `tcell`, `trow`) that
+      # are either redundant with Schema 3's unified types or outside
+      # the gem's scope.
+      SCHEMA3_ONLY = %i[AnyCml].freeze
+
+      # Subset of the Schema-2.4-only legacy elements that the gem
+      # explicitly models. Maps Ruby class name → XML element id so
+      # `Schema24::Configuration` can register them without polluting
+      # `Elements::ALL` (which mirrors Schema 3's element set).
+      SCHEMA24_ONLY = {
+        Alternative:   :alternative,
+        Annotation:    :annotation,
+        Appinfo:       :appinfo,
+        Arg:           :arg,
+        ComplexObject: :complexObject,
+        Enumeration:   :enumeration,
+        Expression:    :expression,
+        Float:         :float,
+        FloatArray:    :floatArray,
+        Integer:       :integer,
+        IntegerArray:  :integerArray,
+        Operator:      :operator,
+        RelatedEntry:  :relatedEntry,
+        String:        :string,
+        StringArray:   :stringArray,
+        Tcell:         :tcell,
+        Trow:          :trow
+      }.freeze
 
       # Reverse index: XML element name (String) → Ruby class name
       # (Symbol). O(1) lookup for VersionedParser root detection.
-      XML_TO_CLASS = ALL.each_with_object({}) do |(cls, xml_id), h|
-        h[xml_id.to_s] = cls
+      # Includes both Schema 3 elements and the modeled Schema 2.4
+      # legacy elements.
+      XML_TO_CLASS = [ALL, SCHEMA24_ONLY].each_with_object({}) do |src, h|
+        src.each { |cls, xml_id| h[xml_id.to_s] = cls }
       end.freeze
     end
   end

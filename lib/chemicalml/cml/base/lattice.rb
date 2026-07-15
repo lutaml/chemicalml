@@ -16,6 +16,7 @@ module Chemicalml
 
                         attribute :lattice_vectors, :latticeVector, collection: true
 
+            attribute :space_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "latticeVector", to: :lattice_vectors
@@ -26,6 +27,7 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "latticeType", to: :latticeType
               map_attribute "units", to: :units
+              map_attribute "spaceType", to: :space_type
             end
           end
         end

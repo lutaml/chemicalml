@@ -13,6 +13,9 @@ module Chemicalml
             attribute :convention, :string
             attribute :atomRefs2, :string
 
+            attribute :ref, :string
+            attribute :molecule_refs2, :string
+            attribute :order, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "join"
@@ -21,6 +24,9 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "atomRefs2", to: :atomRefs2
+              map_attribute "ref", to: :ref
+              map_attribute "moleculeRefs2", to: :molecule_refs2
+              map_attribute "order", to: :order
             end
           end
         end

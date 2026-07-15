@@ -10,17 +10,17 @@ module Chemicalml
           def check_node(node, path)
             return [] unless compchem_root?(node)
 
-            job_lists = node.modules.select { |m| m.dict_ref == "compchem:jobList" }
+            job_lists = node.modules.select { |m| m.dict_ref == 'compchem:jobList' }
             return [] unless job_lists.empty?
 
-            [violation(path: path.join("/"),
-                       message: "compchem module must contain at least one jobList module")]
+            [violation(path: path.join('/'),
+                       message: 'compchem module must contain at least one jobList module')]
           end
 
           private
 
           def compchem_root?(node)
-            module?(node) && node.convention == "convention:compchem"
+            module?(node) && node.convention == 'convention:compchem'
           end
 
           def module?(node)

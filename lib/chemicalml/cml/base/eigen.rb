@@ -15,6 +15,7 @@ module Chemicalml
             attribute :type, :string
             attribute :content, :string
 
+            attribute :eigen_orientation, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "eigen"
@@ -25,6 +26,7 @@ module Chemicalml
               map_attribute "units", to: :units
               map_attribute "type", to: :type
               map_content to: :content
+              map_attribute "eigenOrientation", to: :eigen_orientation
             end
           end
         end

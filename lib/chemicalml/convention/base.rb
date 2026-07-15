@@ -27,13 +27,20 @@ module Chemicalml
 
       def register(constraint_class)
         constraints << constraint_class unless constraints.include?(constraint_class)
+        @coordinator = nil # invalidate cached coordinator
         self
       end
 
+      # Single-pass validation via Convention::Coordinator. The
+      # coordinator builds a role-dispatch table from the declared
+      # `applies_to` on each constraint, walks the tree once, and
+      # dispatches each node only to applicable constraints.
       def validate(document)
-        constraints.flat_map do |klass|
-          klass.new.check(document)
-        end
+        coordinator.validate(document)
+      end
+
+      def validate_report(document)
+        ValidationReport.new(validate(document))
       end
 
       def constraint_count
@@ -42,6 +49,13 @@ module Chemicalml
 
       def reset_constraints!
         @constraints = []
+        @coordinator = nil
+      end
+
+      private
+
+      def coordinator
+        @coordinator ||= Coordinator.new(constraints)
       end
     end
   end

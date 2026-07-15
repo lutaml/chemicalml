@@ -13,6 +13,9 @@ module Chemicalml
             attribute :convention, :string
             attribute :content, :string
 
+            attribute :units, :string
+            attribute :point3, :string
+            attribute :vector3, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "line3"
@@ -21,6 +24,9 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_content to: :content
+              map_attribute "units", to: :units
+              map_attribute "point3", to: :point3
+              map_attribute "vector3", to: :vector3
             end
           end
         end

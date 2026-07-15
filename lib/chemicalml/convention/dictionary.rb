@@ -23,6 +23,12 @@ module Chemicalml
 
       register Constraints::EntryMustHaveIdAndTerm
       register Constraints::EntryIdsUniqueWithinDictionary
+      register Constraints::DictionaryMustHaveNamespace
+      register Constraints::DictionaryNamespaceShouldEndWithSlashOrHash
+      register Constraints::EntryMustContainDefinition
+      register Constraints::EntryIdMustMatchPattern
+      register Constraints::EntryMustHaveUnitType
+      register Constraints::EntryUnitsCoConstraints
     end
   end
 end

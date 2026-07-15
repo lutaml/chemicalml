@@ -4,9 +4,8 @@ module Chemicalml
   module Cml
     module Role
       # Type marker for any wire class implementing the CML
-      # <module> element. Included by Schema3::Module.
-      # (Schema24::Module does not exist - schema 2.4 lacks the
-      # generic <module> element.)
+      # <module> element. Included by both Schema3::Module and
+      # Schema24::Module.
       module Module
       end
     end
