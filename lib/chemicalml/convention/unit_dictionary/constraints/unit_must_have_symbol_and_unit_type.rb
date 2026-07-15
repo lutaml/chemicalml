@@ -8,22 +8,22 @@ module Chemicalml
         # at least one of `multiplierToSI`/`constantToSI`, and
         # `unitType` per the unit-dictionary convention.
         class UnitMustHaveSymbolAndUnitType < Chemicalml::Convention::Constraint::NodeConstraint
+          applies_to Chemicalml::Cml::Role::Unit
           REQUIRED = %i[title symbol parent_si unit_type].freeze
 
           def check_node(node, path)
-            return [] unless unit?(node)
 
             violations = []
             REQUIRED.each do |attr|
               val = node.public_send(attr)
               next unless val.to_s.empty?
 
-              violations << violation(path: path.join("/"),
+              violations << violation(path: path.join('/'),
                                       message: "unit must have #{attr} (id=#{node.id.inspect})")
             end
 
             unless has_si_conversion?(node)
-              violations << violation(path: path.join("/"),
+              violations << violation(path: path.join('/'),
                                       message: "unit must have multiplierToSI or constantToSI (id=#{node.id.inspect})")
             end
 

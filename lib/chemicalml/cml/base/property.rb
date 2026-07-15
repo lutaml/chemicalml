@@ -15,6 +15,9 @@ module Chemicalml
             attribute :array, :array
             attribute :matrix, :matrix
 
+            attribute :ref, :string
+            attribute :role, :string
+            attribute :state, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "property"
@@ -25,6 +28,9 @@ module Chemicalml
               map_element "scalar", to: :scalar
               map_element "array", to: :array
               map_element "matrix", to: :matrix
+              map_attribute "ref", to: :ref
+              map_attribute "role", to: :role
+              map_attribute "state", to: :state
             end
           end
         end

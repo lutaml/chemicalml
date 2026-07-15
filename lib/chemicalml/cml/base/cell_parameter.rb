@@ -15,6 +15,8 @@ module Chemicalml
             attribute :parameterType, :string
             attribute :units, :string
 
+            attribute :cell_parameter_type, :string
+            attribute :cell_parameter_error, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "cellParameter"
@@ -25,6 +27,8 @@ module Chemicalml
               map_attribute "cellType", to: :cellType
               map_attribute "parameterType", to: :parameterType
               map_attribute "units", to: :units
+              map_attribute "cellParameterType", to: :cell_parameter_type
+              map_attribute "cellParameterError", to: :cell_parameter_error
             end
           end
         end

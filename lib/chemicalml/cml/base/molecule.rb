@@ -28,6 +28,11 @@ module Chemicalml
             attribute :spectra, :spectrum
             attribute :property_lists, :propertyList, collection: true
 
+            attribute :ref, :string
+            attribute :idgen, :string
+            attribute :process, :string
+            attribute :symmetry_oriented, :string
+            attribute :role, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "molecule"
@@ -47,6 +52,11 @@ module Chemicalml
               map_element "atomArray", to: :atom_array
               map_element "bondArray", to: :bond_array
               map_element "molecule", to: :molecules
+              map_attribute "ref", to: :ref
+              map_attribute "idgen", to: :idgen
+              map_attribute "process", to: :process
+              map_attribute "symmetryOriented", to: :symmetry_oriented
+              map_attribute "role", to: :role
             end
           end
         end

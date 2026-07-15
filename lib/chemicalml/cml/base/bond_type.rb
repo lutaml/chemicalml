@@ -14,6 +14,7 @@ module Chemicalml
             attribute :order, :string
             attribute :ref, :string
 
+            attribute :name, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "bondType"
@@ -23,6 +24,7 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "order", to: :order
               map_attribute "ref", to: :ref
+              map_attribute "name", to: :name
             end
           end
         end

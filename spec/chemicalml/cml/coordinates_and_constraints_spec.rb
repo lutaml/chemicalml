@@ -24,10 +24,9 @@ RSpec.describe "atom coordinate round-trip" do
     expect(atom.z3).to eq("3.0")
   end
 
-  it "preserves coordinates through canonical translation" do
+  it "preserves coordinates through round-trip" do
     doc = Chemicalml.parse(xml_with_3d_coords)
-    canonical = Chemicalml::Cml::Translator.to_canonical(doc)
-    atom = canonical.molecules.first.atoms.first
+    atom = doc.molecules.first.atom_array.atoms.first
     expect(atom.x3).to eq("1.0")
     expect(atom.y3).to eq("2.0")
     expect(atom.z3).to eq("3.0")
@@ -35,9 +34,9 @@ RSpec.describe "atom coordinate round-trip" do
 
   it "writes coordinates back to wire" do
     doc = Chemicalml.parse(xml_with_3d_coords)
-    canonical = Chemicalml::Cml::Translator.to_canonical(doc)
-    wire = Chemicalml::Cml::Translator.from_canonical(canonical, schema: :schema3)
-    atom = wire.molecules.first.atom_array.atoms.first
+    serialized = doc.to_xml
+    reparsed = Chemicalml.parse(serialized)
+    atom = reparsed.molecules.first.atom_array.atoms.first
     expect(atom.x3).to eq("1.0")
     expect(atom.y3).to eq("2.0")
     expect(atom.z3).to eq("3.0")

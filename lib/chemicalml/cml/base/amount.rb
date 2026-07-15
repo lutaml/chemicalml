@@ -12,6 +12,7 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
 
+            attribute :units, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "amount"
@@ -19,6 +20,7 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "units", to: :units
             end
           end
         end

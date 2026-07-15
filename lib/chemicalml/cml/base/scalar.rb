@@ -14,6 +14,15 @@ module Chemicalml
             attribute :units, :string
             attribute :content, :string
 
+            attribute :convention, :string
+            attribute :error_value, :string
+            attribute :error_basis, :string
+            attribute :min, :string
+            attribute :max, :string
+            attribute :ref, :string
+            attribute :constant_to_s_i, :string
+            attribute :multiplier_to_s_i, :string
+            attribute :unit_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "scalar"
@@ -23,6 +32,15 @@ module Chemicalml
               map_attribute "dataType", to: :data_type
               map_attribute "units", to: :units
               map_content to: :content
+              map_attribute "convention", to: :convention
+              map_attribute "errorValue", to: :error_value
+              map_attribute "errorBasis", to: :error_basis
+              map_attribute "min", to: :min
+              map_attribute "max", to: :max
+              map_attribute "ref", to: :ref
+              map_attribute "constantToSI", to: :constant_to_s_i
+              map_attribute "multiplierToSI", to: :multiplier_to_s_i
+              map_attribute "unitType", to: :unit_type
             end
           end
         end

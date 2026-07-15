@@ -14,6 +14,11 @@ module Chemicalml
             attribute :dataType, :string
             attribute :units, :string
 
+            attribute :dimension_basis, :string
+            attribute :name, :string
+            attribute :power, :string
+            attribute :preserve, :string
+            attribute :unit_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "dimension"
@@ -23,6 +28,11 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "dataType", to: :dataType
               map_attribute "units", to: :units
+              map_attribute "dimensionBasis", to: :dimension_basis
+              map_attribute "name", to: :name
+              map_attribute "power", to: :power
+              map_attribute "preserve", to: :preserve
+              map_attribute "unitType", to: :unit_type
             end
           end
         end

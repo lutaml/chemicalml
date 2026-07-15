@@ -26,6 +26,15 @@ module Chemicalml
             attribute :zFract, :string
             attribute :atom_parity, :atomParity
 
+            attribute :convention, :string
+            attribute :dict_ref, :string
+            attribute :ref, :string
+            attribute :isotope_ref, :string
+            attribute :isotope_list_ref, :string
+            attribute :occupancy, :string
+            attribute :role, :string
+            attribute :space_group_multiplicity, :string
+            attribute :point_group_multiplicity, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "atom"
@@ -47,6 +56,15 @@ module Chemicalml
               map_attribute "yFract", to: :yFract
               map_attribute "zFract", to: :zFract
               map_element "atomParity", to: :atom_parity
+              map_attribute "convention", to: :convention
+              map_attribute "dictRef", to: :dict_ref
+              map_attribute "ref", to: :ref
+              map_attribute "isotopeRef", to: :isotope_ref
+              map_attribute "isotopeListRef", to: :isotope_list_ref
+              map_attribute "occupancy", to: :occupancy
+              map_attribute "role", to: :role
+              map_attribute "spaceGroupMultiplicity", to: :space_group_multiplicity
+              map_attribute "pointGroupMultiplicity", to: :point_group_multiplicity
             end
           end
         end

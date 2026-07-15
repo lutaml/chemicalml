@@ -12,6 +12,9 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :parameters, :parameter, collection: true
 
+            attribute :convention, :string
+            attribute :ref, :string
+            attribute :role, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "parameterList"
@@ -19,6 +22,9 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_element "parameter", to: :parameters
+              map_attribute "convention", to: :convention
+              map_attribute "ref", to: :ref
+              map_attribute "role", to: :role
             end
           end
         end

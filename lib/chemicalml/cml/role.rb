@@ -134,6 +134,23 @@ module Chemicalml
       autoload :Xaxis, "chemicalml/cml/role/xaxis"
       autoload :Yaxis, "chemicalml/cml/role/yaxis"
       autoload :ZMatrix, "chemicalml/cml/role/z_matrix"
+      autoload :Alternative, "chemicalml/cml/role/alternative"
+      autoload :Arg, "chemicalml/cml/role/arg"
+      autoload :ComplexObject, "chemicalml/cml/role/complex_object"
+      autoload :Expression, "chemicalml/cml/role/expression"
+      autoload :Float, "chemicalml/cml/role/float"
+      autoload :FloatArray, "chemicalml/cml/role/float_array"
+      autoload :Integer, "chemicalml/cml/role/integer"
+      autoload :IntegerArray, "chemicalml/cml/role/integer_array"
+      autoload :Operator, "chemicalml/cml/role/operator"
+      autoload :RelatedEntry, "chemicalml/cml/role/related_entry"
+      autoload :String, "chemicalml/cml/role/string"
+      autoload :StringArray, "chemicalml/cml/role/string_array"
+      autoload :Tcell, "chemicalml/cml/role/tcell"
+      autoload :Trow, "chemicalml/cml/role/trow"
+      autoload :Annotation, "chemicalml/cml/role/annotation"
+      autoload :Appinfo, "chemicalml/cml/role/appinfo"
+      autoload :Enumeration, "chemicalml/cml/role/enumeration"
     end
   end
 end

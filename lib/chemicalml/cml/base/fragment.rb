@@ -16,6 +16,9 @@ module Chemicalml
             attribute :atom_array, :atomArray
             attribute :bond_array, :bondArray
 
+            attribute :ref, :string
+            attribute :role, :string
+            attribute :count_expression, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "molecule", to: :molecule
@@ -26,6 +29,9 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "ref", to: :ref
+              map_attribute "role", to: :role
+              map_attribute "countExpression", to: :count_expression
             end
           end
         end

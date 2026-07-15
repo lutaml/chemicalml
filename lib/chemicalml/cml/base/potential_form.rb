@@ -13,6 +13,7 @@ module Chemicalml
             attribute :convention, :string
             attribute :type, :string
 
+            attribute :name, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "potentialForm"
@@ -21,6 +22,7 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "type", to: :type
+              map_attribute "name", to: :name
             end
           end
         end

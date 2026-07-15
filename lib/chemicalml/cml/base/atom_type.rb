@@ -14,6 +14,8 @@ module Chemicalml
             attribute :elementType, :string
             attribute :ref, :string
 
+            attribute :name, :string
+            attribute :atom_ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "atomType"
@@ -23,6 +25,8 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "elementType", to: :elementType
               map_attribute "ref", to: :ref
+              map_attribute "name", to: :name
+              map_attribute "atomRef", to: :atom_ref
             end
           end
         end

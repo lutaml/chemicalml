@@ -13,6 +13,12 @@ module Chemicalml
             attribute :description, :string
             attribute :units, :unit, collection: true
 
+            attribute :id, :string
+            attribute :dict_ref, :string
+            attribute :si_namespace, :string
+            attribute :dictionary_prefix, :string
+            attribute :href, :string
+            attribute :unit_list_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "unitList"
@@ -21,6 +27,12 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_element "description", to: :description
               map_element "unit", to: :units
+              map_attribute "id", to: :id
+              map_attribute "dictRef", to: :dict_ref
+              map_attribute "siNamespace", to: :si_namespace
+              map_attribute "dictionaryPrefix", to: :dictionary_prefix
+              map_attribute "href", to: :href
+              map_attribute "unitListType", to: :unit_list_type
             end
           end
         end

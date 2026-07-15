@@ -23,6 +23,23 @@ module Chemicalml
         convention.validate(document)
       end
 
+      def self.validate_report(document, qname:)
+        convention = lookup(qname)
+        raise ArgumentError, "unknown convention: #{qname.inspect}" unless convention
+
+        convention.validate_report(document)
+      end
+
+      # Detect the convention from the document's root `convention`
+      # attribute and validate. Raises ArgumentError if the document
+      # declares no convention or an unknown one.
+      def self.detect_and_validate(document)
+        qname = Convention::Detection.convention_of(document)
+        raise ArgumentError, "document declares no convention attribute" unless qname
+
+        validate_report(document, qname: qname)
+      end
+
       def self.builtin_qnames
         load_cache.keys.sort
       end

@@ -35,29 +35,29 @@ module Chemicalml
         entries.map(&:id)
       end
 
-      def to_h
+      def value_attributes
         {
           namespace: namespace,
           prefix: prefix,
           title: title,
           description: description,
-          entries: entries.map(&:to_h)
+          entries: entries.map(&:value_attributes)
         }
       end
 
       def eql?(other)
-        other.is_a?(Model) && namespace == other.namespace && to_h == other.to_h
+        other.is_a?(Model) && namespace == other.namespace && value_attributes == other.value_attributes
       end
       alias == eql?
 
       def hash
-        [namespace, to_h].hash
+        [namespace, value_attributes].hash
       end
 
       private
 
       def split_qname(qname)
-        qname.to_s.split(":", 2)
+        qname.to_s.split(':', 2)
       end
     end
   end

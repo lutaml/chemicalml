@@ -13,6 +13,11 @@ module Chemicalml
             attribute :convention, :string
             attribute :content, :string
 
+            attribute :data_type, :string
+            attribute :units, :string
+            attribute :constant_to_s_i, :string
+            attribute :multiplier_to_s_i, :string
+            attribute :unit_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "tableHeaderCell"
@@ -21,6 +26,11 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_content to: :content
+              map_attribute "dataType", to: :data_type
+              map_attribute "units", to: :units
+              map_attribute "constantToSI", to: :constant_to_s_i
+              map_attribute "multiplierToSI", to: :multiplier_to_s_i
+              map_attribute "unitType", to: :unit_type
             end
           end
         end

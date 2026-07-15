@@ -21,10 +21,16 @@ RSpec.describe "Full CML schema coverage" do
     end
   end
 
-  it "Schema24 lacks Module (schema 2.4 restriction)" do
+  it "Schema24 lacks AnyCml (Schema 3 only)" do
+    Chemicalml::Cml::Schema24::Configuration.ensure_registered!
+    expect(Chemicalml::Cml::Schema24.const_defined?(:AnyCml, false))
+      .to be(false)
+  end
+
+  it "Schema24 defines Module (module is in both XSDs)" do
     Chemicalml::Cml::Schema24::Configuration.ensure_registered!
     expect(Chemicalml::Cml::Schema24.const_defined?(:Module, false))
-      .to be(false)
+      .to be(true)
   end
 
   it "all dictionaries load with entries" do

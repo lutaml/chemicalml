@@ -14,6 +14,7 @@ module Chemicalml
             attribute :weight, :string
             attribute :content, :string
 
+            attribute :label, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "kpoint"
@@ -23,6 +24,7 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "weight", to: :weight
               map_content to: :content
+              map_attribute "label", to: :label
             end
           end
         end

@@ -14,6 +14,8 @@ module Chemicalml
 
                         attribute :fragments, :fragment, collection: true
 
+            attribute :ref, :string
+            attribute :role, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "fragment", to: :fragments
@@ -22,6 +24,8 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
+              map_attribute "ref", to: :ref
+              map_attribute "role", to: :role
             end
           end
         end

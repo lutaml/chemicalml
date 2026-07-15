@@ -7,17 +7,17 @@ module Chemicalml
         # Every unitType MUST have an `id` and a `name` attribute per
         # the unitType-dictionary convention.
         class UnitTypeMustHaveIdAndName < Chemicalml::Convention::Constraint::NodeConstraint
+          applies_to Chemicalml::Cml::Role::UnitType
           def check_node(node, path)
-            return [] unless unit_type?(node)
 
             violations = []
             if node.id.to_s.empty?
-              violations << violation(path: path.join("/"),
-                                      message: "unitType must have an id")
+              violations << violation(path: path.join('/'),
+                                      message: 'unitType must have an id')
             end
             if node.name.to_s.empty?
-              violations << violation(path: path.join("/"),
-                                      message: "unitType must have a name")
+              violations << violation(path: path.join('/'),
+                                      message: 'unitType must have a name')
             end
             violations
           end

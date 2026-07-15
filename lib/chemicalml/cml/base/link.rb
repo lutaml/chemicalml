@@ -17,6 +17,16 @@ module Chemicalml
             attribute :type, :string
             attribute :role, :string
 
+            attribute :from, :string
+            attribute :to, :string
+            attribute :ref, :string
+            attribute :from_type, :string
+            attribute :to_type, :string
+            attribute :from_set, :string
+            attribute :to_set, :string
+            attribute :from_context, :string
+            attribute :to_context, :string
+            attribute :link_type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "link"
@@ -29,6 +39,16 @@ module Chemicalml
               map_attribute "title", to: :title
               map_attribute "type", to: :type
               map_attribute "role", to: :role
+              map_attribute "from", to: :from
+              map_attribute "to", to: :to
+              map_attribute "ref", to: :ref
+              map_attribute "fromType", to: :from_type
+              map_attribute "toType", to: :to_type
+              map_attribute "fromSet", to: :from_set
+              map_attribute "toSet", to: :to_set
+              map_attribute "fromContext", to: :from_context
+              map_attribute "toContext", to: :to_context
+              map_attribute "linkType", to: :link_type
             end
           end
         end

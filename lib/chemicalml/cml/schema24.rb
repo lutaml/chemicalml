@@ -7,10 +7,21 @@ module Chemicalml
     # `Base::*` mixin and `Visitable`, and `extend`s
     # `Schema24::Context` for `lutaml_default_register`.
     #
-    # NOTE: Schema 2.4 lacks the generic `<module>` element
-    # (introduced in Schema 3). `Schema24::Module` therefore does not
-    # exist — compchem-convention documents MUST be parsed as
-    # Schema 3. See `Chemicalml::Cml::Elements::SCHEMA3_ONLY`.
+    # Schema 2.4 wire classes. Same structure as Schema3 — each is a
+    # `Lutaml::Model::Serializable` subclass that includes the
+    # `Base::*` mixin and `Visitable`, and `extend`s
+    # `Schema24::Context` for `lutaml_default_register`.
+    #
+    # Schema 2.4 lacks `<anyCml>` (Schema 3 only — see
+    # `Chemicalml::Cml::Elements::SCHEMA3_ONLY`). Every other element
+    # modeled here is declared in the Schema 2.4 XSD, including
+    # `<module>`. Schema 2.4 also declares 17 legacy elements not in
+    # Schema 3 (`alternative`, `annotation`, `appinfo`, `arg`,
+    # `complexObject`, `enumeration`, `expression`, `float`,
+    # `floatArray`, `integer`, `integerArray`, `operator`,
+    # `relatedEntry`, `string`, `stringArray`, `tcell`, `trow`); all
+    # are modeled under Schema24 only and registered via
+    # `Elements::SCHEMA24_ONLY`.
     module Schema24
       extend Chemicalml::VersionedParser
 
@@ -19,7 +30,6 @@ module Chemicalml
       autoload :ActionList, "chemicalml/cml/schema24/action_list"
       autoload :Amount, "chemicalml/cml/schema24/amount"
       autoload :Angle, "chemicalml/cml/schema24/angle"
-      autoload :AnyCml, "chemicalml/cml/schema24/any_cml"
       autoload :ArrayList, "chemicalml/cml/schema24/array_list"
       autoload :AtomSet, "chemicalml/cml/schema24/atom_set"
       autoload :AtomType, "chemicalml/cml/schema24/atom_type"
@@ -121,6 +131,7 @@ module Chemicalml
       autoload :Matrix,          "chemicalml/cml/schema24/matrix"
       autoload :Metadata,        "chemicalml/cml/schema24/metadata"
       autoload :MetadataList,    "chemicalml/cml/schema24/metadata_list"
+      autoload :Module,          "chemicalml/cml/schema24/cml_module"
       autoload :Molecule,        "chemicalml/cml/schema24/molecule"
       autoload :Name,            "chemicalml/cml/schema24/name"
       autoload :Parameter,       "chemicalml/cml/schema24/parameter"
@@ -139,6 +150,23 @@ module Chemicalml
       autoload :UnitList,        "chemicalml/cml/schema24/unit_list"
       autoload :UnitType,        "chemicalml/cml/schema24/unit_type"
       autoload :UnitTypeList,    "chemicalml/cml/schema24/unit_type_list"
+      autoload :Alternative, "chemicalml/cml/schema24/alternative"
+      autoload :Arg, "chemicalml/cml/schema24/arg"
+      autoload :ComplexObject, "chemicalml/cml/schema24/complex_object"
+      autoload :Expression, "chemicalml/cml/schema24/expression"
+      autoload :Float, "chemicalml/cml/schema24/float"
+      autoload :FloatArray, "chemicalml/cml/schema24/float_array"
+      autoload :Integer, "chemicalml/cml/schema24/integer"
+      autoload :IntegerArray, "chemicalml/cml/schema24/integer_array"
+      autoload :Operator, "chemicalml/cml/schema24/operator"
+      autoload :RelatedEntry, "chemicalml/cml/schema24/related_entry"
+      autoload :String, "chemicalml/cml/schema24/string"
+      autoload :StringArray, "chemicalml/cml/schema24/string_array"
+      autoload :Tcell, "chemicalml/cml/schema24/tcell"
+      autoload :Trow, "chemicalml/cml/schema24/trow"
+      autoload :Annotation, "chemicalml/cml/schema24/annotation"
+      autoload :Appinfo, "chemicalml/cml/schema24/appinfo"
+      autoload :Enumeration, "chemicalml/cml/schema24/enumeration"
 
       def self.schema
         SCHEMA

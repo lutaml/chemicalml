@@ -16,6 +16,7 @@ module Chemicalml
             attribute :matrices, :matrix, collection: true
             attribute :lists, :list, collection: true
 
+            attribute :type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "list"
@@ -27,6 +28,7 @@ module Chemicalml
               map_element "array", to: :arrays
               map_element "matrix", to: :matrices
               map_element "list", to: :lists
+              map_attribute "type", to: :type
             end
           end
         end

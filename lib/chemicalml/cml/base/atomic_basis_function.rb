@@ -18,6 +18,8 @@ module Chemicalml
             attribute :ms, :string
             attribute :type, :string
 
+            attribute :symbol, :string
+            attribute :lm, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "atomicBasisFunction"
@@ -31,6 +33,8 @@ module Chemicalml
               map_attribute "m", to: :m
               map_attribute "ms", to: :ms
               map_attribute "type", to: :type
+              map_attribute "symbol", to: :symbol
+              map_attribute "lm", to: :lm
             end
           end
         end

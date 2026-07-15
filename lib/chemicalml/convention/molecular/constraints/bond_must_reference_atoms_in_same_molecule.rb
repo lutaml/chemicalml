@@ -18,7 +18,7 @@ module Chemicalml
                 next if missing.empty?
 
                 violations << violation(
-                  path: path.empty? ? "molecule[#{node.id}]" : path.join("/"),
+                  path: path.empty? ? "molecule[#{node.id}]" : path.join('/'),
                   message: "bond #{bond.id.inspect} references atoms not in the same molecule: #{missing.inspect}"
                 )
               end
@@ -35,7 +35,7 @@ module Chemicalml
           def atom_ids_within(molecule)
             return [] unless molecule.atom_array
 
-            (molecule.atom_array.atoms || []).map { |a| a.id }
+            (molecule.atom_array.atoms || []).map(&:id)
           end
 
           def bonds_within(molecule)
@@ -45,7 +45,7 @@ module Chemicalml
           end
 
           def atom_refs_of(bond)
-            bond.atom_refs2.to_s.split(" ")
+            bond.atom_refs2.to_s.split
           end
         end
       end

@@ -3,26 +3,37 @@
 module Chemicalml
   module Convention
     # Abstract base class for a single constraint. Subclasses implement
-    # `check_node` (one node at a time) or `check_document` (whole
-    # document at once). The base class provides traversal and
-    # collection plumbing.
+    # `check_node` (one node at a time) or `check` (whole document).
     #
-    # To add a new constraint:
-    #
-    #   1. Subclass `Constraint::NodeConstraint` or
-    #      `Constraint::DocumentConstraint`
-    #   2. Implement `check_node` / `check_document`
-    #   3. Register it on the convention: `register(MyConstraint)`
-    #
-    # No framework code changes.
+    # A constraint subclass MAY declare `applies_to` — one or more
+    # `Cml::Role::*` modules. When it does, the Coordinator only
+    # invokes `check_node` for nodes matching that role. Without
+    # `applies_to`, the constraint receives every node (legacy
+    # behaviour). Declaring `applies_to` is the fast path: the
+    # dispatch is O(node.ancestors) per node, not O(constraint_count).
     class Constraint
-      def self.name_for_display
-        to_s.split("::").last
+      class << self
+        # Returns the Role module(s) this constraint applies to, or
+        # nil if it must run for every node.
+        def applies_to_roles
+          @applies_to_roles
+        end
+
+        # Declare one or more Role modules this constraint handles.
+        #   applies_to Chemicalml::Cml::Role::Atom
+        #   applies_to Chemicalml::Cml::Role::Bond, Chemicalml::Cml::Role::AtomParity
+        def applies_to(*roles)
+          @applies_to_roles = roles.flatten.freeze
+        end
+      end
+
+      def initialize
+        freeze
       end
 
       def check(_document)
         raise NotImplementedError,
-              "#{self.class.name_for_display} must implement #check(document)"
+              "#{self.class} must implement #check(document)"
       end
 
       protected
@@ -54,8 +65,9 @@ module Chemicalml
         id_value ? "#{node.element_name}[#{id_value}]" : node.element_name
       end
 
-      # Constraint that walks the document tree once per node and calls
-      # `check_node(node, path)`. Subclasses get traversal for free.
+      # NodeConstraint: walks the document tree once per node and
+      # calls `check_node(node, path)`. Subclasses get traversal for
+      # free plus declarative role dispatch via `applies_to`.
       class NodeConstraint < Constraint
         def check(document)
           violations = []
@@ -70,8 +82,9 @@ module Chemicalml
         end
       end
 
-      # Constraint that operates on the whole document at once — used
-      # for cross-cutting rules like "atom ids unique within molecule".
+      # DocumentConstraint: operates on the whole document at once —
+      # used for cross-cutting rules like "atom ids unique within
+      # molecule". Walks the tree itself; not subject to dispatch.
       class DocumentConstraint < Constraint
       end
     end

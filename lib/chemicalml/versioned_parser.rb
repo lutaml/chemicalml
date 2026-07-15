@@ -9,6 +9,24 @@ module Chemicalml
   # (Document), `<module>` (compchem Module), `<dictionary>`,
   # `<unitList>`, `<unitTypeList>`, and the legacy standalone roots
   # `<molecule>`, `<reaction>`, `<reactionList>`.
+  #
+  # ---
+  #
+  # XML processing boundary (read me):
+  #
+  # The gem uses `lutaml-model` for ALL XML parsing and serialization
+  # — 242 wire classes extend `Lutaml::Model::Serializable`, and no
+  # `lib/` file defines `to_xml`/`from_xml`/`to_h`/`from_h` on a
+  # model class. Zero Nokogiri/REXML references in `lib/`.
+  #
+  # This file has TWO pre-processing helpers — `root_element_of` and
+  # `inject_namespace` — that operate on the XML *string* before
+  # `Lutaml::Model::Serializable.from_xml` is called. They are NOT
+  # serialization: they don't construct XML nodes, don't traverse
+  # trees, don't map attributes to model fields. They are input
+  # normalization so callers can pass namespace-less XML or rely on
+  # the parser to dispatch by root element name. The actual parse
+  # happens on the `const_get(class_name).from_xml(...)` call below.
   module VersionedParser
     # Maps root element name → constant name on the schema module.
     # Adding a new root type = adding one entry here. OCP — no

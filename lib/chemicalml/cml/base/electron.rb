@@ -16,6 +16,9 @@ module Chemicalml
             attribute :count, :string
             attribute :spinMultiplicity, :string
 
+            attribute :atom_refs, :string
+            attribute :bond_refs, :string
+            attribute :ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "electron"
@@ -27,6 +30,9 @@ module Chemicalml
               map_attribute "bondRef", to: :bondRef
               map_attribute "count", to: :count
               map_attribute "spinMultiplicity", to: :spinMultiplicity
+              map_attribute "atomRefs", to: :atom_refs
+              map_attribute "bondRefs", to: :bond_refs
+              map_attribute "ref", to: :ref
             end
           end
         end

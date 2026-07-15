@@ -7,7 +7,7 @@ require "lutaml/model"
 #
 # Top-level entry points:
 #   Chemicalml::Cml::Document.from_xml(xml)  # parse CML
-#   document.to_xml                       # serialize back to XML
+#   document.to_xml                          # serialize back to XML
 #
 # Each CML element is a Lutaml::Model::Serializable subclass with
 # declared attributes and an XML mapping block. Serialization is
@@ -18,7 +18,6 @@ module Chemicalml
   autoload :Convention, "chemicalml/convention"
   autoload :Dictionary, "chemicalml/dictionary"
   autoload :Error, "chemicalml/errors"
-  autoload :Model, "chemicalml/model"
   autoload :ParseError, "chemicalml/errors"
   autoload :Schema, "chemicalml/schema"
   autoload :VERSION, "chemicalml/version"

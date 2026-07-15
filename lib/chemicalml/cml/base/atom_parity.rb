@@ -10,11 +10,19 @@ module Chemicalml
             attribute :atom_refs4, :string
             attribute :content, :string
 
+            attribute :title, :string
+            attribute :id, :string
+            attribute :convention, :string
+            attribute :dict_ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "atomParity"
               map_attribute "atomRefs4", to: :atom_refs4
               map_content to: :content
+              map_attribute "title", to: :title
+              map_attribute "id", to: :id
+              map_attribute "convention", to: :convention
+              map_attribute "dictRef", to: :dict_ref
             end
           end
         end

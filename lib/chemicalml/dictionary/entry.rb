@@ -6,7 +6,7 @@ module Chemicalml
     # The YAML shape mirrors the structure documented in
     # `TODO.cml-full/05-dictionary-layer.md`.
     class Entry
-      ID_PATTERN = /\A[A-Za-z][A-Za-z0-9._-]*\z/.freeze
+      ID_PATTERN = /\A[A-Za-z][A-Za-z0-9._-]*\z/
 
       attr_reader :id, :term, :definition, :description,
                   :data_type, :unit_type, :units,
@@ -30,7 +30,7 @@ module Chemicalml
         freeze
       end
 
-      def to_h
+      def value_attributes
         h = {
           id: id,
           term: term,
@@ -40,19 +40,19 @@ module Chemicalml
         h[:data_type]   = data_type   if data_type
         h[:unit_type]   = unit_type   if unit_type
         h[:units]       = units       if units
-        h[:enum]        = enum.to_h   if enum
-        h[:links]       = links.map(&:to_h) unless links.empty?
+        h[:enum]        = enum.value_attributes if enum
+        h[:links]       = links.map(&:value_attributes) unless links.empty?
         h[:source_code] = source_code if source_code
         h
       end
 
       def eql?(other)
-        other.is_a?(Entry) && id == other.id && to_h == other.to_h
+        other.is_a?(Entry) && id == other.id && value_attributes == other.value_attributes
       end
       alias == eql?
 
       def hash
-        [id, to_h].hash
+        [id, value_attributes].hash
       end
     end
   end

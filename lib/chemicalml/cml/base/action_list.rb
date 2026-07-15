@@ -15,6 +15,15 @@ module Chemicalml
 
                         attribute :actions, :action, collection: true
 
+            attribute :start, :string
+            attribute :start_condition, :string
+            attribute :duration, :string
+            attribute :end, :string
+            attribute :end_condition, :string
+            attribute :units, :string
+            attribute :count, :string
+            attribute :type, :string
+            attribute :action_order, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               map_element "action", to: :actions
@@ -24,6 +33,15 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "order", to: :order
+              map_attribute "start", to: :start
+              map_attribute "startCondition", to: :start_condition
+              map_attribute "duration", to: :duration
+              map_attribute "end", to: :end
+              map_attribute "endCondition", to: :end_condition
+              map_attribute "units", to: :units
+              map_attribute "count", to: :count
+              map_attribute "type", to: :type
+              map_attribute "actionOrder", to: :action_order
             end
           end
         end

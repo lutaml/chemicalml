@@ -14,6 +14,9 @@ module Chemicalml
             attribute :description, :string
             attribute :entries, :entry, collection: true
 
+            attribute :id, :string
+            attribute :dict_ref, :string
+            attribute :href, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "dictionary"
@@ -23,6 +26,9 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_element "description", to: :description
               map_element "entry", to: :entries
+              map_attribute "id", to: :id
+              map_attribute "dictRef", to: :dict_ref
+              map_attribute "href", to: :href
             end
           end
         end

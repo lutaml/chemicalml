@@ -15,6 +15,7 @@ module Chemicalml
             attribute :elementType, :string
             attribute :spinMultiplicity, :string
 
+            attribute :ref, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "isotope"
@@ -25,6 +26,7 @@ module Chemicalml
               map_attribute "number", to: :number
               map_attribute "elementType", to: :elementType
               map_attribute "spinMultiplicity", to: :spinMultiplicity
+              map_attribute "ref", to: :ref
             end
           end
         end

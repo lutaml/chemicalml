@@ -15,6 +15,11 @@ module Chemicalml
             attribute :array, :array
             attribute :matrix, :matrix
 
+            attribute :ref, :string
+            attribute :value, :string
+            attribute :constraint, :string
+            attribute :name, :string
+            attribute :role, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "parameter"
@@ -25,6 +30,11 @@ module Chemicalml
               map_element "scalar", to: :scalar
               map_element "array", to: :array
               map_element "matrix", to: :matrix
+              map_attribute "ref", to: :ref
+              map_attribute "value", to: :value
+              map_attribute "constraint", to: :constraint
+              map_attribute "name", to: :name
+              map_attribute "role", to: :role
             end
           end
         end
