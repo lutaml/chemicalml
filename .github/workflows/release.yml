@@ -29,6 +29,6 @@ jobs:
     uses: relaton/support/.github/workflows/release.yml@main
     with:
       next_version: ${{ github.event.inputs.next_version }}
-      acknowledge_breaking_in_patch: ${{ github.event.inputs.acknowledge_breaking_in_patch == 'true' }}
+      acknowledge_breaking_in_patch: ${{ inputs.acknowledge_breaking_in_patch }}
     secrets:
       rubygems-api-key: ${{ secrets.LUTAML_CI_RUBYGEMS_API_KEY }}
