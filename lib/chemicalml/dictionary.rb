@@ -17,8 +17,12 @@ module Chemicalml
 
     BUILTIN_DIR = File.expand_path("../../data/dictionaries", __dir__).freeze
 
-    # Convenience: load a built-in dictionary by short name
-    # (e.g. `:compchem`). Returns a `Chemicalml::Dictionary::Model`.
+    # Convenience: load a built-in dictionary by short name.
+    #
+    # @param name [Symbol, String] the dictionary short name (YAML
+    #   filename stem, e.g. `:compchem`, `:cml`).
+    # @return [Chemicalml::Dictionary::Model] the loaded dictionary.
+    # @raise [KeyError] if `name` is not a built-in dictionary.
     def self.load(name)
       Registry.load_builtin(name)
     end

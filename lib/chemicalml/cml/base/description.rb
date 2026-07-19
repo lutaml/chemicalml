@@ -24,6 +24,14 @@ module Chemicalml
               map_content to: :content
               map_attribute "objectClass", to: :object_class
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "objectClass", to: :object_class
+            end
+
           end
         end
       end

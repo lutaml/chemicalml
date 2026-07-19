@@ -32,6 +32,18 @@ module Chemicalml
               map_attribute "delimiter", to: :delimiter
               map_content to: :content
             end
+            key_value do
+              map "builtin", to: :builtin
+              map "convention", to: :convention
+              map "dictRef", to: :dict_ref
+              map "id", to: :id
+              map "title", to: :title
+              map "min", to: :min
+              map "max", to: :max
+              map "size", to: :size
+              map "delimiter", to: :delimiter
+            end
+
           end
         end
       end

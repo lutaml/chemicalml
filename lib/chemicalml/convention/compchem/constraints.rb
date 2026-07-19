@@ -42,6 +42,10 @@ module Chemicalml
                  'chemicalml/convention/compchem/constraints/array_rules'
         autoload :MatrixRules,
                  'chemicalml/convention/compchem/constraints/matrix_rules'
+        autoload :InitializationMustHaveContent,
+                 'chemicalml/convention/compchem/constraints/initialization_must_have_content'
+        autoload :FinalizationMustHaveContent,
+                 'chemicalml/convention/compchem/constraints/finalization_must_have_content'
       end
     end
   end

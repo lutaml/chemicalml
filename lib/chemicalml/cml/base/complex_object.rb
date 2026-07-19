@@ -22,6 +22,13 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_content to: :content
             end
+            key_value do
+              map "title", to: :title
+              map "id", to: :id
+              map "convention", to: :convention
+              map "dictRef", to: :dict_ref
+            end
+
           end
         end
       end

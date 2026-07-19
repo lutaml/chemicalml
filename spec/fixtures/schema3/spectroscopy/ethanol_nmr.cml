@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <spectrum id="s1" format="nmr" convention="convention:spectroscopy"
+            title="ethanol 1H NMR (400 MHz, CDCl3)">
+    <metadataList>
+      <metadata name="spectrometerModel" content="Bruker Avance 400"/>
+      <metadata name="solvent" content="CDCl3"/>
+      <metadata name="frequency" content="400.13 MHz"/>
+    </metadataList>
+    <xaxis units="units:ppm" multipler="1">
+      <array size="2" dataType="xsd:float" units="units:ppm">1.0 6.0</array>
+    </xaxis>
+    <yaxis units="units:arbitrary">
+      <array size="2" dataType="xsd:float">0.0 100.0</array>
+    </yaxis>
+    <peakList>
+      <peak id="p1" xValue="1.19" xUnits="units:ppm"
+            yValue="80" yMultiplicity="t" peakShape="sharp">
+        <atomRefs>a1 a2 a3</atomRefs>
+      </peak>
+      <peak id="p2" xValue="2.60" xUnits="units:ppm"
+            yValue="40" yMultiplicity="q" peakShape="sharp">
+        <atomRefs>a4</atomRefs>
+      </peak>
+      <peak id="p3" xValue="3.70" xUnits="units:ppm"
+            yValue="20" yMultiplicity="s" peakShape="broad">
+        <atomRefs>a5</atomRefs>
+      </peak>
+    </peakList>
+  </spectrum>
+</cml>

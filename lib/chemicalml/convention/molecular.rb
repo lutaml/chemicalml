@@ -44,6 +44,19 @@ module Chemicalml
       register Constraints::BondOrderOtherMustHaveDictRef
       register Constraints::AtomArrayMustBeChildOfMoleculeOrFormula
       register Constraints::BondArrayMustBeChildOfMolecule
+      register Constraints::BondOrderShouldBeInEnum
+      register Constraints::BondStereoShouldBeInEnum
+      register Constraints::MoleculeChiralityShouldBeInEnum
+      register Constraints::BondAtomRefs2ShouldBeDistinct
+      register Constraints::ReferencesShouldResolve
+      register Constraints::BondStereoAtomRefs4ShouldBeDistinct
+      register Constraints::AtomParityAtomRefs4ShouldBeDistinct
+      register Constraints::AtomElementTypeShouldBeInPeriodicTable
+      register Constraints::DictRefShouldResolve
+      register Constraints::MoleculeIdShouldMatchPattern
+      register Constraints::BondIdShouldMatchPattern
+      register Constraints::AtomParityShouldIncludeParentAtom
+      register Constraints::PropertyScalarDataTypeMatchesDictionary
     end
   end
 end

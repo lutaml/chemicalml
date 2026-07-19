@@ -42,6 +42,23 @@ module Chemicalml
               map_attribute "count", to: :count
               map_attribute "ref", to: :ref
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "order", to: :order
+              map "units", to: :units
+              map "start", to: :start
+              map "startCondition", to: :start_condition
+              map "duration", to: :duration
+              map "end", to: :end
+              map "endCondition", to: :end_condition
+              map "type", to: :type
+              map "actionOrder", to: :action_order
+              map "count", to: :count
+              map "ref", to: :ref
+            end
           end
         end
       end

@@ -26,6 +26,9 @@ bundle exec rspec -e "round-trips"                       # by name match
 bundle exec rake              # alias for rspec
 bundle exec rubocop           # lint
 bundle exec rubocop -A        # autocorrect
+bundle exec chemicalml validate <file.cml>  # CLI validation
+bundle exec chemicalml conventions          # list registered conventions
+bundle exec chemicalml dictionaries         # list built-in dictionaries
 ```
 
 `spec/examples.txt` and `Gemfile.lock` are gitignored — `spec/examples.txt`
@@ -126,17 +129,35 @@ Schema 3's unified `scalar`/`array`/`table` machinery.
 The framework handles (de)serialization; **never** add `def to_xml` /
 `def from_xml` / `def to_h` to these classes.
 
+### JSON / YAML wire names
+
+Every `Base::*` module declares a `key_value do ... end` block
+alongside its `xml do ... end` block, mirroring the XML wire names
+explicitly. JSON and YAML output carry CML wire names
+(`elementType`, `atomArray`) rather than Ruby snake_case names.
+The blocks are written out by hand per Base module — no runtime
+introspection.
+
 ### Schema versions
 
 `Chemicalml::Schema::Registry` is the registry for schema versions
 (`schema24`, `schema3`). The schema XSDs are **archival source** —
 they must never be deleted, edited, or regenerated from code.
 
+**Type-name collision**: Schema24's legacy `<string>`, `<integer>`,
+`<float>` elements share their XML names with lutaml-model primitives
+(`:string`, `:integer`, `:float`). They are NOT registered as types
+in the Schema24 context (would shadow the primitive, breaking every
+`:string` attribute cast). They remain defined as wire classes and
+parseable as document roots. See
+`Cml::Elements::SCHEMA24_TYPE_COLLISIONS`.
+
 ### Conventions
 
 `Chemicalml::Convention` is a registry of named constraint sets
 (`molecular`, `compchem`, `dictionary`, `unit-dictionary`,
-`unitType-dictionary`). Each convention owns:
+`unitType-dictionary`, `spectroscopy`, `cascade`, `simpleUnit`).
+Each convention owns:
 
 - a namespace URI (e.g. `http://www.xml-cml.org/convention/molecular`)
 - a set of constraint classes registered against it
@@ -147,6 +168,33 @@ renderer code (Open/Closed Principle).
 
 The constraint walker uses `Cml::Visitable#wire_children` to traverse
 the tree — no `respond_to?` duck typing.
+
+The shared `Cml::Base::CommonChildren` mixin provides `metadataList`,
+`label`, `name`, and `description` children that the XSD grants to
+most container elements. Including it in a `Base::*` module is the
+DRY way to declare the universal child set.
+
+`Cml::Enums` is the canonical Ruby source of truth for every XSD
+enum simpleType. Three constraints validate against it
+(`BondOrderShouldBeInEnum`, `BondStereoShouldBeInEnum`,
+`MoleculeChiralityShouldBeInEnum`) at warning severity — extension
+values are permitted but flagged.
+
+`Cml::ReferenceResolver` walks a document and resolves
+id-references (`atomRefs2`, `atomRefs4`, `bondRefs`, `ref`) to
+target wire instances. `unresolved_refs` lists missing targets;
+useful for callers that need to follow CML references.
+
+### Parallel-array serialisation
+
+`<atomArray>` and `<bondArray>` support two equivalent XML forms: the
+child form (`<atomArray><atom.../><atom.../></atomArray>`) and the
+parallel-array form (`<atomArray atomID="a1 a2" elementType="C O"/>`).
+The wire attribute names in the parallel-array form match the
+singular `<atom>` / `<bond>` attribute names (e.g. `elementType`,
+`atomRef1`) — the XSD attribute *group* is named `elementTypeArray`
+etc., but the wire attribute is `elementType`. Ruby attribute names
+carry an `_array` suffix for clarity at the call site.
 
 ### Dictionaries
 

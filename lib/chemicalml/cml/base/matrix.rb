@@ -42,6 +42,23 @@ module Chemicalml
               map_attribute "minValueArray", to: :min_value_array
               map_attribute "maxValueArray", to: :max_value_array
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "dataType", to: :data_type
+              map "units", to: :units
+              map "rows", to: :rows
+              map "columns", to: :columns
+              map "delimiter", to: :delimiter
+              map "convention", to: :convention
+              map "matrixType", to: :matrix_type
+              map "errorValueArray", to: :error_value_array
+              map "errorBasis", to: :error_basis
+              map "minValueArray", to: :min_value_array
+              map "maxValueArray", to: :max_value_array
+            end
+
           end
         end
       end

@@ -36,6 +36,21 @@ module Chemicalml
               map_attribute "max", to: :max
               map_attribute "ref", to: :ref
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "atomRefs4", to: :atomRefs4
+              map "units", to: :units
+              map "angleUnits", to: :angle_units
+              map "errorValue", to: :error_value
+              map "errorBasis", to: :error_basis
+              map "min", to: :min
+              map "max", to: :max
+              map "ref", to: :ref
+            end
+
           end
         end
       end

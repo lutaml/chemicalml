@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema" convention="convention:molecular">
+  <molecule id="nacl_unit">
+    <crystal z="4">
+      <scalar title="a" dataType="xsd:float" units="units:angstrom">5.64</scalar>
+      <scalar title="b" dataType="xsd:float" units="units:angstrom">5.64</scalar>
+      <scalar title="c" dataType="xsd:float" units="units:angstrom">5.64</scalar>
+      <scalar title="alpha" dataType="xsd:float" units="units:degrees">90.0</scalar>
+      <scalar title="beta"  dataType="xsd:float" units="units:degrees">90.0</scalar>
+      <scalar title="gamma" dataType="xsd:float" units="units:degrees">90.0</scalar>
+      <symmetry spaceGroup="Fm-3m">
+        <matrix dataType="xsd:float" rows="3" columns="3">1 0 0 0 1 0 0 0 1</matrix>
+      </symmetry>
+    </crystal>
+    <atomArray>
+      <atom id="na1" elementType="Na" xFract="0.0" yFract="0.0" zFract="0.0"/>
+      <atom id="cl1" elementType="Cl" xFract="0.5" yFract="0.5" zFract="0.5"/>
+    </atomArray>
+  </molecule>
+</cml>

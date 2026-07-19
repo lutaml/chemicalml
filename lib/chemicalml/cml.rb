@@ -8,14 +8,48 @@ module Chemicalml
   # and are included by both schema-versioned class hierarchies.
   module Cml
     # Structural modules (each in its own file, loaded independently).
-    autoload :Base,              "chemicalml/cml/base"
-    autoload :Elements,          "chemicalml/cml/elements"
+    autoload :Base,                "chemicalml/cml/base"
+    autoload :CanonicalComparison, "chemicalml/cml/canonical_comparison"
+    autoload :Elements,            "chemicalml/cml/elements"
+    autoload :Enums,             "chemicalml/cml/enums"
     autoload :Namespace,         "chemicalml/cml/namespace"
+    autoload :Patterns,          "chemicalml/cml/patterns"
+    autoload :ReferenceResolver, "chemicalml/cml/reference_resolver"
     autoload :Role,              "chemicalml/cml/role"
     autoload :Schema3,           "chemicalml/cml/schema3"
     autoload :Schema24,          "chemicalml/cml/schema24"
     autoload :Visitable,         "chemicalml/cml/visitable"
     autoload :WireClassRegistry, "chemicalml/cml/wire_class_registry"
+
+    class << self
+      # Look up a wire class by XML element name.
+      #
+      # @param xml_name [String, Symbol] the XML element name, e.g. "atomArray".
+      # @param schema [Symbol] `:schema3` (default) or `:schema24`.
+      # @return [Class, nil] the matching wire class, or nil if not found.
+      def for_xml_name(xml_name, schema: :schema3)
+        class_name = Elements::XML_TO_CLASS[xml_name.to_s]
+        return nil unless class_name
+
+        parent = schema == :schema24 ? Schema24 : Schema3
+        parent.const_get(class_name)
+      rescue NameError
+        nil
+      end
+
+      # Enumerate every wire class for a schema version.
+      #
+      # @param schema [Symbol] `:schema3` or `:schema24`.
+      # @return [Array<Class>] the wire classes.
+      def wire_classes(schema: :schema3)
+        parent = schema == :schema24 ? Schema24 : Schema3
+        Elements::ALL.keys.map do |class_name|
+          parent.const_get(class_name)
+        rescue NameError
+          nil
+        end.compact
+      end
+    end
 
     # Backward-compatible aliases (Cml::Foo = Schema3::Foo). All 121
     # aliases load from a single file via autoload — the file loads

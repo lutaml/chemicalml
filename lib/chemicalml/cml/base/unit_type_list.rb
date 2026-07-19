@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::UnitTypeList
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :title, :string
             attribute :namespace, :string
             attribute :convention, :string
@@ -32,6 +33,23 @@ module Chemicalml
               map_attribute "dictionaryPrefix", to: :dictionary_prefix
               map_attribute "href", to: :href
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "description", to: :description
+              map "unitType", to: :unit_types
+              map "title", to: :title
+              map "namespace", to: :namespace
+              map "convention", to: :convention
+              map "id", to: :id
+              map "dictRef", to: :dict_ref
+              map "siNamespace", to: :si_namespace
+              map "dictionaryPrefix", to: :dictionary_prefix
+              map "href", to: :href
+            end
+
           end
         end
       end

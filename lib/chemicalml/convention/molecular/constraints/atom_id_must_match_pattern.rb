@@ -17,7 +17,8 @@ module Chemicalml
             [violation(path: path.empty? ? 'atom' : path.join('/'),
                        message: "atom id #{id.inspect} must start with a letter and " \
                                 'contain only letters, digits, dot, hyphen, or underscore',
-                       severity: :warning)]
+                       severity: :warning,
+                       value: id)]
           end
         end
       end

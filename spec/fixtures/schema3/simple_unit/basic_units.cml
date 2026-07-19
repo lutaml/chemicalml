@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<unitList xmlns="http://www.xml-cml.org/schema"
+          convention="convention:simpleUnit"
+          title="simpleUnit example">
+  <unit id="u1" symbol="J" power="1"/>
+  <unit id="u2" symbol="m" power="1"/>
+  <unit id="u3" symbol="s" power="-1"/>
+  <unit id="u4" symbol="kg" power="1"/>
+</unitList>

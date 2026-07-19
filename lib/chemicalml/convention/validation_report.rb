@@ -39,9 +39,7 @@ module Chemicalml
       def +(other)
         return other if other.nil?
 
-        unless other.is_a?(ValidationReport)
-          raise ArgumentError, "cannot combine ValidationReport with #{other.class}"
-        end
+        raise ArgumentError, "cannot combine ValidationReport with #{other.class}" unless other.is_a?(ValidationReport)
 
         ValidationReport.new(violations + other.violations)
       end
@@ -57,6 +55,35 @@ module Chemicalml
 
       def to_s
         "#{size} violation(s): #{errors.length} error(s), #{warnings.length} warning(s)"
+      end
+
+      # Human-readable multi-line summary. Suitable for CLI output
+      # and logging. Each violation is rendered with severity, path,
+      # and message (and value when present).
+      #
+      # @return [String]
+      def summary
+        return 'OK — no violations' if ok? && !has_warnings?
+
+        lines = []
+        lines << "Errors: #{errors.size}, Warnings: #{warnings.size}"
+        unless errors.empty?
+          lines << ''
+          lines << 'Errors:'
+          errors.each { |v| lines << "  ERROR #{v.path}: #{v.message}#{value_suffix(v)}" }
+        end
+        unless warnings.empty?
+          lines << ''
+          lines << 'Warnings:'
+          warnings.each { |v| lines << "  WARN  #{v.path}: #{v.message}#{value_suffix(v)}" }
+        end
+        lines.join("\n")
+      end
+
+      private
+
+      def value_suffix(violation)
+        violation.value.nil? ? '' : " (value=#{violation.value.inspect})"
       end
     end
   end

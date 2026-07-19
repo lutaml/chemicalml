@@ -39,6 +39,8 @@ module Chemicalml
       register Constraints::ScalarUnits
       register Constraints::ArrayRules
       register Constraints::MatrixRules
+      register Constraints::InitializationMustHaveContent
+      register Constraints::FinalizationMustHaveContent
     end
   end
 end

@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Map
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -18,6 +19,7 @@ module Chemicalml
             attribute :from_context, :string
             attribute :to_context, :string
             attribute :role, :string
+            attribute :links, :link, collection: true
             xml do
               namespace Chemicalml::Cml::Namespace
               root "map"
@@ -31,7 +33,26 @@ module Chemicalml
               map_attribute "fromContext", to: :from_context
               map_attribute "toContext", to: :to_context
               map_attribute "role", to: :role
+              map_element "link", to: :links
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "link", to: :links
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "ref", to: :ref
+              map "fromType", to: :from_type
+              map "toType", to: :to_type
+              map "fromContext", to: :from_context
+              map "toContext", to: :to_context
+              map "role", to: :role
+            end
+
           end
         end
       end

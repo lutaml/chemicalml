@@ -28,6 +28,17 @@ module Chemicalml
               map_attribute "y3", to: :y3
               map_attribute "z3", to: :z3
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "type", to: :type
+              map "x3", to: :x3
+              map "y3", to: :y3
+              map "z3", to: :z3
+            end
+
           end
         end
       end

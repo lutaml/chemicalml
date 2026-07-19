@@ -17,6 +17,8 @@ module Chemicalml
 
             attribute :cell_parameter_type, :string
             attribute :cell_parameter_error, :string
+            attribute :type, :string
+            attribute :error, :string
             xml do
               namespace Chemicalml::Cml::Namespace
               root "cellParameter"
@@ -29,7 +31,23 @@ module Chemicalml
               map_attribute "units", to: :units
               map_attribute "cellParameterType", to: :cell_parameter_type
               map_attribute "cellParameterError", to: :cell_parameter_error
+              map_attribute "type", to: :type
+              map_attribute "error", to: :error
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "cellType", to: :cellType
+              map "parameterType", to: :parameterType
+              map "units", to: :units
+              map "cellParameterType", to: :cell_parameter_type
+              map "cellParameterError", to: :cell_parameter_error
+              map "type", to: :type
+              map "error", to: :error
+            end
+
           end
         end
       end

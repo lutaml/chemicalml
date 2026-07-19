@@ -28,6 +28,16 @@ module Chemicalml
               map_attribute "point3", to: :point3
               map_attribute "vector3", to: :vector3
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "units", to: :units
+              map "point3", to: :point3
+              map "vector3", to: :vector3
+            end
+
           end
         end
       end

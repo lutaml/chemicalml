@@ -21,6 +21,13 @@ module Chemicalml
             attribute :eval, :string
             attribute :content, :string
 
+            attribute :atom, :atom
+            attribute :atom_type, :atomType
+            attribute :expression, :expression
+            attribute :arrays, :array, collection: true
+            attribute :matrices, :matrix, collection: true
+            attribute :scalars, :scalar, collection: true
+
             xml do
               namespace Chemicalml::Cml::Namespace
               root "arg"
@@ -37,7 +44,34 @@ module Chemicalml
               map_attribute "delete", to: :delete
               map_attribute "eval", to: :eval
               map_content to: :content
+              map_element "atom", to: :atom
+              map_element "atomType", to: :atom_type
+              map_element "expression", to: :expression
+              map_element "array", to: :arrays
+              map_element "matrix", to: :matrices
+              map_element "scalar", to: :scalars
             end
+            key_value do
+              map "atom", to: :atom
+              map "atomType", to: :atom_type
+              map "expression", to: :expression
+              map "array", to: :arrays
+              map "matrix", to: :matrices
+              map "scalar", to: :scalars
+              map "title", to: :title
+              map "id", to: :id
+              map "convention", to: :convention
+              map "dictRef", to: :dict_ref
+              map "ref", to: :ref
+              map "name", to: :name
+              map "dataType", to: :data_type
+              map "substitute", to: :substitute
+              map "parameterName", to: :parameter_name
+              map "parentAttribute", to: :parent_attribute
+              map "delete", to: :delete
+              map "eval", to: :eval
+            end
+
           end
         end
       end

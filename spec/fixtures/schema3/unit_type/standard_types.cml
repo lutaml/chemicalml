@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<unitTypeList xmlns="http://www.xml-cml.org/schema"
+              convention="convention:unitType-dictionary"
+              title="Standard unit types">
+  <unitType id="length" name="length">
+    <dimension id="d1" name="L" power="1"/>
+  </unitType>
+  <unitType id="mass" name="mass">
+    <dimension id="d2" name="M" power="1"/>
+  </unitType>
+  <unitType id="time" name="time">
+    <dimension id="d3" name="T" power="1"/>
+  </unitType>
+  <unitType id="current" name="current">
+    <dimension id="d4" name="I" power="1"/>
+  </unitType>
+</unitTypeList>

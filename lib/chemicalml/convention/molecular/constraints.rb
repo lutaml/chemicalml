@@ -50,6 +50,32 @@ module Chemicalml
                  "chemicalml/convention/molecular/constraints/atom_array_must_be_child_of_molecule_or_formula"
         autoload :BondArrayMustBeChildOfMolecule,
                  "chemicalml/convention/molecular/constraints/bond_array_must_be_child_of_molecule"
+        autoload :BondOrderShouldBeInEnum,
+                 "chemicalml/convention/molecular/constraints/bond_order_should_be_in_enum"
+        autoload :BondStereoShouldBeInEnum,
+                 "chemicalml/convention/molecular/constraints/bond_stereo_should_be_in_enum"
+        autoload :MoleculeChiralityShouldBeInEnum,
+                 "chemicalml/convention/molecular/constraints/molecule_chirality_should_be_in_enum"
+        autoload :BondAtomRefs2ShouldBeDistinct,
+                 "chemicalml/convention/molecular/constraints/bond_atom_refs2_should_be_distinct"
+        autoload :ReferencesShouldResolve,
+                 "chemicalml/convention/molecular/constraints/references_should_resolve"
+        autoload :BondStereoAtomRefs4ShouldBeDistinct,
+                 "chemicalml/convention/molecular/constraints/bond_stereo_atom_refs4_should_be_distinct"
+        autoload :AtomParityAtomRefs4ShouldBeDistinct,
+                 "chemicalml/convention/molecular/constraints/atom_parity_atom_refs4_should_be_distinct"
+        autoload :AtomElementTypeShouldBeInPeriodicTable,
+                 "chemicalml/convention/molecular/constraints/atom_element_type_should_be_in_periodic_table"
+        autoload :DictRefShouldResolve,
+                 "chemicalml/convention/molecular/constraints/dict_ref_should_resolve"
+        autoload :MoleculeIdShouldMatchPattern,
+                 "chemicalml/convention/molecular/constraints/molecule_id_should_match_pattern"
+        autoload :BondIdShouldMatchPattern,
+                 "chemicalml/convention/molecular/constraints/bond_id_should_match_pattern"
+        autoload :AtomParityShouldIncludeParentAtom,
+                 "chemicalml/convention/molecular/constraints/atom_parity_should_include_parent_atom"
+        autoload :PropertyScalarDataTypeMatchesDictionary,
+                 "chemicalml/convention/molecular/constraints/property_scalar_data_type_matches_dictionary"
       end
     end
   end

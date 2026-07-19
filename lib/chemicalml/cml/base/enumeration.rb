@@ -24,6 +24,15 @@ module Chemicalml
               map_attribute "value", to: :value
               map_attribute "default", to: :default
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "value", to: :value
+              map "default", to: :default
+            end
+
           end
         end
       end

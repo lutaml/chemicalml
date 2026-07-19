@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::ReactionStepList
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -29,8 +30,26 @@ module Chemicalml
               map_attribute "ref", to: :ref
               map_attribute "reactionStepListType", to: :reaction_step_list_type
               map_attribute "reactionFormat", to: :reaction_format
+              map_attribute "format", to: :reaction_format
               map_attribute "type", to: :type
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "reactionStep", to: :reaction_steps
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "ref", to: :ref
+              map "reactionStepListType", to: :reaction_step_list_type
+              map "reactionFormat", to: :reaction_format
+              map "format", to: :reaction_format
+              map "type", to: :type
+            end
+
           end
         end
       end

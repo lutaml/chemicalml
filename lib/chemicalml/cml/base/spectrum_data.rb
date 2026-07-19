@@ -27,6 +27,16 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "ref", to: :ref
             end
+            key_value do
+              map "xaxis", to: :xaxis
+              map "yaxis", to: :yaxis
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "ref", to: :ref
+            end
+
           end
         end
       end

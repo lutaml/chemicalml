@@ -34,6 +34,20 @@ module Chemicalml
               map_attribute "preserve", to: :preserve
               map_attribute "unitType", to: :unit_type
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "dataType", to: :dataType
+              map "units", to: :units
+              map "dimensionBasis", to: :dimension_basis
+              map "name", to: :name
+              map "power", to: :power
+              map "preserve", to: :preserve
+              map "unitType", to: :unit_type
+            end
+
           end
         end
       end

@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Join
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -28,6 +29,21 @@ module Chemicalml
               map_attribute "moleculeRefs2", to: :molecule_refs2
               map_attribute "order", to: :order
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "atomRefs2", to: :atomRefs2
+              map "ref", to: :ref
+              map "moleculeRefs2", to: :molecule_refs2
+              map "order", to: :order
+            end
+
           end
         end
       end

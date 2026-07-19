@@ -10,6 +10,7 @@ module Chemicalml
             attribute :id, :string
             attribute :convention, :string
             attribute :alternative_type, :string
+            attribute :type, :string
             attribute :content, :string
 
             xml do
@@ -18,8 +19,16 @@ module Chemicalml
               map_attribute "id", to: :id
               map_attribute "convention", to: :convention
               map_attribute "alternativeType", to: :alternative_type
+              map_attribute "type", to: :type
               map_content to: :content
             end
+            key_value do
+              map "id", to: :id
+              map "convention", to: :convention
+              map "alternativeType", to: :alternative_type
+              map "type", to: :type
+            end
+
           end
         end
       end

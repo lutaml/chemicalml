@@ -30,6 +30,18 @@ module Chemicalml
               map_element "list", to: :lists
               map_attribute "type", to: :type
             end
+            key_value do
+              map "scalar", to: :scalars
+              map "array", to: :arrays
+              map "matrix", to: :matrices
+              map "list", to: :lists
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "type", to: :type
+            end
+
           end
         end
       end

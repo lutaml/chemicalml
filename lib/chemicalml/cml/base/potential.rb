@@ -12,6 +12,7 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
             attribute :formRef, :string
+            attribute :form, :string
 
             xml do
               namespace Chemicalml::Cml::Namespace
@@ -21,7 +22,17 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "formRef", to: :formRef
+              map_attribute "form", to: :form
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "formRef", to: :formRef
+              map "form", to: :form
+            end
+
           end
         end
       end

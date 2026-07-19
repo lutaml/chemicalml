@@ -27,13 +27,16 @@ RSpec.describe Chemicalml::Convention::Violation do
 end
 
 RSpec.describe Chemicalml::Convention::Registry do
-  it "lists all five built-in conventions" do
+  it "lists all built-in conventions" do
     expect(described_class.builtin_qnames).to contain_exactly(
       "convention:molecular",
       "convention:compchem",
       "convention:dictionary",
       "convention:unit-dictionary",
-      "convention:unitType-dictionary"
+      "convention:unitType-dictionary",
+      "convention:spectroscopy",
+      "convention:cascade",
+      "convention:simpleUnit"
     )
   end
 
@@ -49,8 +52,8 @@ RSpec.describe Chemicalml::Convention::Registry do
 end
 
 RSpec.describe Chemicalml::Convention::Molecular do
-  it "registers 23 constraints" do
-    expect(described_class.constraint_count).to eq(23)
+  it "registers 36 constraints" do
+    expect(described_class.constraint_count).to eq(36)
   end
 
   it "exposes its QName and namespace URI" do
@@ -107,8 +110,12 @@ RSpec.describe Chemicalml::Convention::Molecular do
       ]
     )
     violations = described_class.validate(doc)
-    expect(violations.length).to eq(1)
-    expect(violations.first.message).to match(/not in the same molecule/)
+    same_mol_violations = violations.select { |v| v.message.match?(/not in the same molecule/) }
+    expect(same_mol_violations.length).to eq(1)
+    expect(same_mol_violations.first.message).to match(/not in the same molecule/)
+    # The new ReferencesShouldResolve constraint also flags this as a separate warning
+    unresolved_violations = violations.select { |v| v.message.match?(/missing atoms/) }
+    expect(unresolved_violations.length).to eq(1)
   end
 
   it "passes a clean document" do
@@ -216,7 +223,7 @@ RSpec.describe Chemicalml::Convention::UnitDictionary do
       units: [
         Chemicalml::Cml::Unit.new(
           id: "s", title: "second", symbol: "s",
-          parent_si: "siUnits:s", multiplier_to_si: "1",
+          parent_si: "si:s", multiplier_to_si: "1",
           constant_to_si: "0", unit_type: "unitType:time",
           definition: "SI base unit of time"
         )

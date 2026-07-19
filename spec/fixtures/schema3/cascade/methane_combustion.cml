@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <reactionScheme id="rs1" convention="convention:cascade"
+                  title="methane combustion cascade">
+    <reactionStepList>
+      <reactionStep>
+        <reaction id="r1" type="elementary">
+          <reactantList>
+            <reactant>
+              <molecule id="ch4" formula="CH4"/>
+            </reactant>
+          </reactantList>
+          <productList>
+            <product>
+              <molecule id="ch3" formula="CH3"/>
+            </product>
+          </productList>
+          <reactiveCentre atomRefs="ch4:c1 ch4:h1"/>
+        </reaction>
+      </reactionStep>
+      <reactionStep>
+        <reaction id="r2" type="elementary">
+          <reactantList>
+            <reactant>
+              <molecule ref="ch3"/>
+            </reactant>
+          </reactantList>
+          <productList>
+            <product>
+              <molecule id="co2" formula="CO2"/>
+            </product>
+          </productList>
+        </reaction>
+      </reactionStep>
+    </reactionStepList>
+  </reactionScheme>
+</cml>
