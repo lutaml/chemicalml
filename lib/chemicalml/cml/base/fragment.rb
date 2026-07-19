@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Fragment
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -33,6 +34,23 @@ module Chemicalml
               map_attribute "role", to: :role
               map_attribute "countExpression", to: :count_expression
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "molecule", to: :molecule
+              map "atomArray", to: :atom_array
+              map "bondArray", to: :bond_array
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "ref", to: :ref
+              map "role", to: :role
+              map "countExpression", to: :count_expression
+            end
+
           end
         end
       end

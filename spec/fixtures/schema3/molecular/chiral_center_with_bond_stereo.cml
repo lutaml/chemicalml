@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema" convention="convention:molecular">
+  <molecule id="chiral_c">
+    <atomArray>
+      <atom id="ca" elementType="C" x3="0.0" y3="0.0" z3="0.0">
+        <atomParity atomRefs4="cb cc cd ce">1</atomParity>
+      </atom>
+      <atom id="cb" elementType="H" x3="1.0" y3="0.0" z3="0.0"/>
+      <atom id="cc" elementType="H" x3="0.0" y3="1.0" z3="0.0"/>
+      <atom id="cd" elementType="H" x3="0.0" y3="0.0" z3="1.0"/>
+      <atom id="ce" elementType="Cl" x3="-1.0" y3="0.0" z3="0.0"/>
+    </atomArray>
+    <bondArray>
+      <bond id="b1" atomRefs2="ca cb" order="S">
+        <bondStereo atomRefs2="ca cb">H</bondStereo>
+      </bond>
+      <bond id="b2" atomRefs2="ca cc" order="S"/>
+      <bond id="b3" atomRefs2="ca cd" order="S"/>
+      <bond id="b4" atomRefs2="ca ce" order="S"/>
+    </bondArray>
+  </molecule>
+</cml>

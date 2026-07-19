@@ -28,6 +28,17 @@ module Chemicalml
               map_attribute "atomSetRef", to: :atom_set_ref
               map_attribute "regionRefs", to: :region_refs
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "sphere3", to: :sphere3
+              map "box3", to: :box3
+              map "atomSetRef", to: :atom_set_ref
+              map "regionRefs", to: :region_refs
+            end
+
           end
         end
       end

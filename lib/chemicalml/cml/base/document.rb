@@ -26,6 +26,16 @@ module Chemicalml
               map_element "reactionList", to: :reaction_lists
               map_element "reaction", to: :reactions
             end
+            key_value do
+              map "molecule", to: :molecules
+              map "reactionList", to: :reaction_lists
+              map "reaction", to: :reactions
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+            end
+
           end
         end
       end

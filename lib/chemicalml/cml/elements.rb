@@ -169,6 +169,15 @@ module Chemicalml
         Trow:          :trow
       }.freeze
 
+      # Schema24-only elements whose XML element id collides with a
+      # lutaml-model primitive type name (`:string`, `:integer`,
+      # `:float`). Registering them as types would shadow the
+      # primitive, breaking every `attribute :foo, :string` cast.
+      # They remain defined as wire classes and parseable as roots,
+      # but `register_elements!` skips registering them in the
+      # schema24 type context.
+      SCHEMA24_TYPE_COLLISIONS = %i[Float Integer String].freeze
+
       # Reverse index: XML element name (String) → Ruby class name
       # (Symbol). O(1) lookup for VersionedParser root detection.
       # Includes both Schema 3 elements and the modeled Schema 2.4

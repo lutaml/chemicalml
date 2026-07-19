@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Crystal
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -29,6 +30,21 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "z", to: :z
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "scalar", to: :scalars
+              map "lattice", to: :lattice
+              map "symmetry", to: :symmetry
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "z", to: :z
+            end
+
           end
         end
       end

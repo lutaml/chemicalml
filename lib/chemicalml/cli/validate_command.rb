@@ -1,0 +1,54 @@
+# frozen_string_literal: true
+
+module Chemicalml
+  module Cli
+    # `chemicalml validate <file>` — auto-detect convention and
+    # print violations. With `--json` / `-j`, emits machine-readable
+    # JSON.
+    class ValidateCommand < Command
+      # @param options [Hash] must include `:file`; optional `:json`.
+      def run(options)
+        path = options[:file]
+        unless path
+          warn 'validate requires a <file> argument'
+          return 2
+        end
+
+        doc = Chemicalml.parse(File.read(path), schema: :schema3)
+        report = Chemicalml.validate(doc)
+
+        if options[:json]
+          puts json_report(report, path)
+        elsif report.ok? && !report.has_warnings?
+          puts "OK: #{path}"
+        else
+          warn report.summary
+        end
+        report.ok? ? 0 : 1
+      rescue ArgumentError, Lutaml::Model::InvalidFormatError => e
+        warn "FAIL: #{e.message}"
+        2
+      end
+
+      private
+
+      def json_report(report, path)
+        require 'json'
+        payload = {
+          file: path,
+          ok: report.ok?,
+          has_warnings: report.has_warnings?,
+          violations: report.violations.map do |v|
+            {
+              severity: v.severity,
+              path: v.path,
+              message: v.message,
+              value: v.value
+            }.compact
+          end
+        }
+        JSON.pretty_generate(payload)
+      end
+    end
+  end
+end

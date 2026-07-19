@@ -67,7 +67,7 @@ RSpec.describe "unit-dictionary convention TODO-39 constraints" do
     end
   end
 
-  it "registers 5 unit-dictionary constraints" do
-    expect(Chemicalml::Convention::UnitDictionary.constraint_count).to eq(5)
+  it "registers 10 unit-dictionary constraints" do
+    expect(Chemicalml::Convention::UnitDictionary.constraint_count).to eq(10)
   end
 end

@@ -10,7 +10,7 @@ module Chemicalml
           def check_node(node, path)
             return [] unless compchem_root?(node)
 
-            job_lists = node.modules.select { |m| m.dict_ref == 'compchem:jobList' }
+            job_lists = (node.modules || []).select { |m| m.dict_ref == 'compchem:jobList' }
             return [] unless job_lists.empty?
 
             [violation(path: path.join('/'),

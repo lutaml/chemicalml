@@ -42,6 +42,23 @@ module Chemicalml
               map_attribute "multiplierToSI", to: :multiplier_to_s_i
               map_attribute "unitType", to: :unit_type
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "dataType", to: :data_type
+              map "units", to: :units
+              map "convention", to: :convention
+              map "errorValue", to: :error_value
+              map "errorBasis", to: :error_basis
+              map "min", to: :min
+              map "max", to: :max
+              map "ref", to: :ref
+              map "constantToSI", to: :constant_to_s_i
+              map "multiplierToSI", to: :multiplier_to_s_i
+              map "unitType", to: :unit_type
+            end
+
           end
         end
       end

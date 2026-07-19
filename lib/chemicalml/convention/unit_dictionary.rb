@@ -26,6 +26,11 @@ module Chemicalml
       register Constraints::UnitMustContainDefinition
       register Constraints::UnitListMustHaveNamespace
       register Constraints::UnitListMustContainAtLeastOneUnit
+      register Constraints::UnitMustHaveTitle
+      register Constraints::UnitMustHaveParentSi
+      register Constraints::UnitMustHaveMultiplierOrConstantToSi
+      register Constraints::UnitUnitTypeShouldResolve
+      register Constraints::UnitParentSiShouldResolve
     end
   end
 end

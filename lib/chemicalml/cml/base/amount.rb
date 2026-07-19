@@ -22,6 +22,14 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "units", to: :units
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "units", to: :units
+            end
+
           end
         end
       end

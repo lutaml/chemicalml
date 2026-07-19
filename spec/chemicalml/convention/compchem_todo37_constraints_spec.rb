@@ -225,7 +225,7 @@ RSpec.describe "compchem convention TODO-37 constraints" do
     end
   end
 
-  it "registers 18 compchem constraints" do
-    expect(Chemicalml::Convention::Compchem.constraint_count).to eq(18)
+  it "registers 20 compchem constraints" do
+    expect(Chemicalml::Convention::Compchem.constraint_count).to eq(20)
   end
 end

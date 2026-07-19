@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <molecule id="ethanol">
+    <atomArray atomID="a1 a2 a3 a4 a5 a6 a7 a8 a9"
+               elementType="C C O H H H H H H"
+               x3="1.18 0.00 1.30 1.95 2.00 -0.50 -0.50 1.95 -0.95"
+               y3="0.42 0.00 1.05 0.97 1.95 0.95 0.95 2.00 -0.95"
+               z3="0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00"
+               hydrogenCount="3 1 0 0 0 0 0 0 0"
+               formalCharge="0 0 0 0 0 0 0 0 0"/>
+    <bondArray atomRef1="a1 a2 a1 a1 a1 a2 a2 a3"
+               atomRef2="a2 a3 a4 a5 a6 a7 a8 a9"
+               bondID="b1 b2 b3 b4 b5 b6 b7 b8"
+               order="1 1 1 1 1 1 1 1"/>
+  </molecule>
+</cml>

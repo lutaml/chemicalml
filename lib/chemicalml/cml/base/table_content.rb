@@ -27,6 +27,16 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "delimiter", to: :delimiter
             end
+            key_value do
+              map "tableRow", to: :table_rows
+              map "tableRowList", to: :table_row_lists
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "delimiter", to: :delimiter
+            end
+
           end
         end
       end

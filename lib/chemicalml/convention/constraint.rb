@@ -25,6 +25,30 @@ module Chemicalml
         def applies_to(*roles)
           @applies_to_roles = roles.flatten.freeze
         end
+
+        # Human-readable description of the rule this constraint
+        # enforces. Subclasses MAY override. Falls back to the class
+        # name. Used by `chemicalml constraints` and the auto-generated
+        # constraint docs.
+        #
+        # @return [String]
+        def description
+          @description || name.split('::').last
+        end
+
+        # Set the description (DSL for subclasses).
+        #   description "A <bond> must have an order attribute"
+        def description=(value)
+          @description = value
+        end
+
+        # Severity this constraint emits. Subclasses MAY override.
+        # Default `:error` — warning subclasses override to `:warning`.
+        #
+        # @return [Symbol] `:error` or `:warning`.
+        def default_severity
+          :error
+        end
       end
 
       def initialize
@@ -38,21 +62,32 @@ module Chemicalml
 
       protected
 
-      def violation(path:, message:, severity: :error)
+      def violation(path:, message:, severity: :error, value: nil)
         Violation.new(path: path, message: message,
-                      severity: severity, constraint: self.class)
+                      severity: severity, constraint: self.class,
+                      value: value)
       end
 
       # Walk every wire node reachable from `node`. Yields (node, path)
       # pairs. Path is a slash-joined breadcrumb. Nodes that don't
       # include `Chemicalml::Cml::Visitable` are skipped.
-      def walk_nodes(node, path = [], &block)
+      #
+      # Iterative (worklist) implementation — does not recurse, so
+      # deeply-nested documents cannot overflow the stack. Traversal
+      # order is DFS pre-order, matching the prior recursive walker.
+      def walk_nodes(node, path = [])
         return unless node
         return unless visitable?(node)
 
-        yield(node, path)
-        node.wire_children.each do |child|
-          walk_nodes(child, path + [describe(child)], &block)
+        worklist = [[node, path]]
+        until worklist.empty?
+          current, current_path = worklist.shift
+          yield(current, current_path)
+          current.wire_children.reverse_each do |child|
+            next unless visitable?(child)
+
+            worklist.unshift([child, current_path + [describe(child)]])
+          end
         end
       end
 

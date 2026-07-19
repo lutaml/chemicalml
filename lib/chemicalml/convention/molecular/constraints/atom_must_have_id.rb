@@ -6,6 +6,8 @@ module Chemicalml
       module Constraints
         class AtomMustHaveId < Chemicalml::Convention::Constraint::NodeConstraint
           applies_to Chemicalml::Cml::Role::Atom
+          self.description = 'An <atom> inside an atomArray in a molecule MUST have an id attribute.'
+
           def check_node(node, path)
 
             return [] unless node.id.to_s.empty?

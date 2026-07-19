@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <reactionList>
+    <reaction id="r1" type="chainReaction" title="Free-radical halogenation">
+      <reactantList>
+        <reactant>
+          <molecule id="ch4" concise="C 1 H 4">
+            <atomArray>
+              <atom id="a1" elementType="C" x3="0.0" y3="0.0" z3="0.0"/>
+              <atom id="a2" elementType="H" x3="0.629" y3="0.629" z3="0.629"/>
+              <atom id="a3" elementType="H" x3="-0.629" y3="-0.629" z3="0.629"/>
+              <atom id="a4" elementType="H" x3="-0.629" y3="0.629" z3="-0.629"/>
+              <atom id="a5" elementType="H" x3="0.629" y3="-0.629" z3="-0.629"/>
+            </atomArray>
+          </molecule>
+        </reactant>
+        <reactant>
+          <molecule id="cl2" concise="Cl 2">
+            <atomArray>
+              <atom id="cl1" elementType="Cl" x3="0.0" y3="0.0" z3="0.0"/>
+              <atom id="cl2a" elementType="Cl" x3="1.987" y3="0.0" z3="0.0"/>
+            </atomArray>
+          </molecule>
+        </reactant>
+      </reactantList>
+      <productList>
+        <product>
+          <molecule id="ch3cl" concise="C 1 H 3 Cl 1"/>
+        </product>
+        <product>
+          <molecule id="hcl" concise="H 1 Cl 1"/>
+        </product>
+      </productList>
+      <substanceList>
+        <substance role="catalyst" title="UV light"/>
+      </substanceList>
+    </reaction>
+  </reactionList>
+</cml>

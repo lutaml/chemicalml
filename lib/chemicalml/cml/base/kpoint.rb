@@ -26,6 +26,15 @@ module Chemicalml
               map_content to: :content
               map_attribute "label", to: :label
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "weight", to: :weight
+              map "label", to: :label
+            end
+
           end
         end
       end

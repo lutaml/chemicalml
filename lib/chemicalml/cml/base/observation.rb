@@ -24,6 +24,15 @@ module Chemicalml
               map_attribute "type", to: :type
               map_attribute "count", to: :count
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "type", to: :type
+              map "count", to: :count
+            end
+
           end
         end
       end

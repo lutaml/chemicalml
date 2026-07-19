@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<cml xmlns="http://www.xml-cml.org/schema">
+  <reactionScheme id="diels_alder" convention="convention:cascade"
+                  title="Diels-Alder reaction">
+    <reactionStepList>
+      <reactionStep>
+        <reaction id="r1" type="pericyclic">
+          <reactantList>
+            <reactant>
+              <molecule id="butadiene" concise="C 4 H 6">
+                <atomArray>
+                  <atom id="c1" elementType="C" x3="0.0" y3="1.0" z3="0.0"/>
+                  <atom id="c2" elementType="C" x3="1.0" y3="0.0" z3="0.0"/>
+                  <atom id="c3" elementType="C" x3="2.0" y3="1.0" z3="0.0"/>
+                  <atom id="c4" elementType="C" x3="3.0" y3="0.0" z3="0.0"/>
+                </atomArray>
+              </molecule>
+            </reactant>
+          </reactantList>
+          <productList>
+            <product>
+              <molecule id="cyclohexene" concise="C 6 H 10">
+                <atomArray>
+                  <atom id="p1" elementType="C" x3="0.0" y3="0.0" z3="0.0"/>
+                  <atom id="p2" elementType="C" x3="1.0" y3="0.0" z3="0.0"/>
+                  <atom id="p3" elementType="C" x3="2.0" y3="0.0" z3="0.0"/>
+                  <atom id="p4" elementType="C" x3="3.0" y3="0.0" z3="0.0"/>
+                  <atom id="p5" elementType="C" x3="0.5" y3="1.0" z3="0.0"/>
+                  <atom id="p6" elementType="C" x3="2.5" y3="1.0" z3="0.0"/>
+                </atomArray>
+              </molecule>
+            </product>
+          </productList>
+        </reaction>
+      </reactionStep>
+    </reactionStepList>
+  </reactionScheme>
+</cml>

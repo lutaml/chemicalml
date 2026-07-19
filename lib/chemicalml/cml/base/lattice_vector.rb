@@ -24,6 +24,15 @@ module Chemicalml
               map_attribute "units", to: :units
               map_attribute "periodic", to: :periodic
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "units", to: :units
+              map "periodic", to: :periodic
+            end
+
           end
         end
       end

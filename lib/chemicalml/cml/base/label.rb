@@ -22,6 +22,14 @@ module Chemicalml
               map_attribute "convention", to: :convention
               map_attribute "objectClass", to: :object_class
             end
+            key_value do
+              map "id", to: :id
+              map "value", to: :value
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "objectClass", to: :object_class
+            end
+
           end
         end
       end

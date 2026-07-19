@@ -7,6 +7,11 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Peak
+            include Chemicalml::Cml::Base::CommonChildren
+            attribute :atoms, :atom, collection: true
+            attribute :bonds, :bond, collection: true
+            attribute :molecules, :molecule, collection: true
+            attribute :peak_structures, :peakStructure, collection: true
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -36,6 +41,10 @@ module Chemicalml
             xml do
               namespace Chemicalml::Cml::Namespace
               root "peak"
+              map_element "atom", to: :atoms
+              map_element "bond", to: :bonds
+              map_element "molecule", to: :molecules
+              map_element "peakStructure", to: :peak_structures
               map_attribute "id", to: :id
               map_attribute "title", to: :title
               map_attribute "dictRef", to: :dict_ref
@@ -62,6 +71,42 @@ module Chemicalml
               map_attribute "bondRefs", to: :bond_refs
               map_attribute "moleculeRefs", to: :molecule_refs
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "atom", to: :atoms
+              map "bond", to: :bonds
+              map "molecule", to: :molecules
+              map "peakStructure", to: :peak_structures
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "xValue", to: :xValue
+              map "xUnits", to: :xUnits
+              map "xMultiplier", to: :xMultiplier
+              map "yValue", to: :yValue
+              map "yUnits", to: :yUnits
+              map "yMultiplicity", to: :yMultiplicity
+              map "ref", to: :ref
+              map "peakHeight", to: :peak_height
+              map "peakMultiplicity", to: :peak_multiplicity
+              map "peakShape", to: :peak_shape
+              map "integral", to: :integral
+              map "peakUnits", to: :peak_units
+              map "xMin", to: :x_min
+              map "xMax", to: :x_max
+              map "xWidth", to: :x_width
+              map "yMin", to: :y_min
+              map "yMax", to: :y_max
+              map "yWidth", to: :y_width
+              map "atomRefs", to: :atom_refs
+              map "bondRefs", to: :bond_refs
+              map "moleculeRefs", to: :molecule_refs
+            end
+
           end
         end
       end

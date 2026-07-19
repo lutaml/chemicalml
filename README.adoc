@@ -4,13 +4,19 @@ ChemML provides a https://www.xml-cml.org/[Chemical Markup Language (CML)]
 object model for Ruby, built on
 {lutaml-model}[https://github.com/lutaml/lutaml-model].
 
-== Purpose
+== Features
 
-CML is the established XML standard for chemistry. Existing Ruby
-libraries either don't exist or use hand-rolled XML manipulation that
-drifts from the CML schema. ChemML gives CML a proper model layer
-with declarative attribute/mapping definitions and framework-backed
-serialization.
+* Full Schema 3 and Schema 2.4 coverage — every CML element, attribute,
+  and XSD enum/pattern modelled as Ruby classes.
+* Format-agnostic serialization — XML, JSON, YAML, and TOML round-trip
+  via lutaml-model adapters.
+* Eight built-in conventions with 88+ registered constraints:
+  `molecular`, `compchem`, `dictionary`, `unit-dictionary`,
+  `unitType-dictionary`, `spectroscopy`, `cascade`, `simpleUnit`.
+* Built-in dictionaries (cml, compchem, cif, unit_si, unit_non_si,
+  unit_type, cml_name, cml_formula) loaded from YAML.
+* CLI for command-line validation and inspection.
+* Ruby-native query API (`doc.find_atom(id)`, `doc.each_molecule`).
 
 == Install
 
@@ -30,45 +36,167 @@ $ gem install chemicalml
 
 == Usage
 
-Parse a CML document:
+=== Parse a CML document
 
 [source,ruby]
 ----
 require "chemicalml"
 
-doc = Chemicalml::Cml::Document.from_xml(File.read("ethanol.cml"))
-doc.molecules.first.atoms.first.element_type # => "C"
+doc = Chemicalml.parse_file("ethanol.cml")
+doc.molecules.first.atom_array.atoms.first.element_type # => "C"
 ----
 
-Build a document programmatically:
+=== Validate against a convention
+
+[source,ruby]
+----
+report = Chemicalml.validate(doc)
+puts report.summary
+puts report.errors.map(&:message)
+----
+
+=== Build a document programmatically
 
 [source,ruby]
 ----
 atom = Chemicalml::Cml::Atom.new(id: "a1", element_type: "C")
-mol  = Chemicalml::Cml::Molecule.new(id: "m1", atoms: [atom])
+mol  = Chemicalml::Cml::Molecule.new(
+  id: "m1",
+  atom_array: Chemicalml::Cml::AtomArray.new(atoms: [atom])
+)
 doc  = Chemicalml::Cml::Document.new(molecules: [mol])
 
 doc.to_xml # => well-formed CML XML
 ----
 
+=== Query the tree
+
+[source,ruby]
+----
+doc.each_atom { |a| puts "#{a.id}: #{a.element_type}" }
+doc.find_atom("a1")     # => Atom instance
+doc.atom_count          # => recursive count
+doc.find_molecule("m1") # => Molecule instance
+----
+
+=== Cross-format serialisation
+
+[source,ruby]
+----
+doc.to_xml   # CML XML
+doc.to_json  # JSON with CML wire names (elementType, atomArray, ...)
+doc.to_yaml  # YAML
+----
+
+=== Resolve references
+
+[source,ruby]
+----
+resolver = Chemicalml::Cml::ReferenceResolver.new(doc)
+resolver.unresolved_refs  # => [{ node: <Bond>, attr: :atom_refs2, missing: ["a99"] }]
+----
+
+== CLI
+
+[source,sh]
+----
+$ chemicalml validate file.cml    # auto-detect convention, print violations
+$ chemicalml inspect file.cml     # tree-style summary
+$ chemicalml conventions          # list 8 registered conventions
+$ chemicalml dictionaries         # list built-in YAML dictionaries
+$ chemicalml elements             # list all CML wire classes
+----
+
+== Conventions
+
+Eight conventions register 88+ constraints:
+
+[cols="1,1,1"]
+|===
+| Convention | Constraints | Description
+
+| molecular | 35 | Atom/bond/molecule well-formedness, id patterns,
+  element type validation, dictRef resolution, AtomParity parent
+  check, references-resolve check.
+| compchem | 20 | JobList/Job/Initialization/Calculation/Finalization
+  module structure, scalar/array/matrix value rules.
+| dictionary | 8 | Dictionary namespace, prefix, entry id/term/definition,
+  unitType/units co-constraints.
+| unit-dictionary | 8 | UnitList namespace, unit id/title/symbol/parentSI/
+  multiplierToSI, definition child.
+| unitType-dictionary | 5 | UnitTypeList namespace, unitType id/name/definition.
+| spectroscopy | 5 | Spectrum convention/format/content, peakList, peak values.
+| cascade | 4 | ReactionScheme content, reactionStepList, reactiveCentre atomRefs.
+| simpleUnit | 3 | simpleUnit root, unit power, unit symbol.
+|===
+
+Add a custom convention at runtime:
+
+[source,ruby]
+----
+module MyConvention
+  extend Chemicalml::Convention::Base
+
+  def self.qname; "convention:my"; end
+  def self.namespace_uri; "http://example.com/my"; end
+
+  register MyConstraintClass
+end
+
+Chemicalml::Convention::Registry.register_custom(MyConvention)
+----
+
+== Dictionaries
+
+Eight built-in YAML dictionaries ship under `data/dictionaries/`:
+
+[cols="1,1"]
+|===
+| Dictionary | Prefix
+
+| cml | cml
+| cml_name | cmlName
+| cml_formula | cmlFormula
+| cif | cif
+| compchem | compchem
+| unit_si | si
+| unit_non_si | nonsi
+| unit_type | unitType
+|===
+
+Load via:
+
+[source,ruby]
+----
+dict = Chemicalml::Dictionary.load(:cml)
+entry = Chemicalml::Dictionary::Registry.lookup("cml:bp")
+entry.term        # => "Boiling Point"
+entry.definition  # => "The temperature at which a substance boils..."
+----
+
 == Design
 
 Each CML element is a `Lutaml::Model::Serializable` subclass with
-declared attributes and an XML mapping block. Serialization goes
-through lutaml-model — no hand-rolled XML.
+declared attributes and parallel `xml do ... end` and
+`key_value do ... end` mapping blocks. Serialisation is fully
+framework-backed — no hand-rolled XML.
 
-The library is designed as a sibling model layer to other chemistry
-tooling. AsciiChem (https://www.asciichem.org) uses ChemML for CML
-round-trip support via a translator adapter.
+* `Cml::Base::*` modules declare shared attributes (mixed into both
+  Schema3 and Schema24 wire classes).
+* `Cml::Role::*` modules are type-markers used by the convention
+  constraint walker for `is_a?` dispatch.
+* `Cml::Elements::ALL` is the single source of truth for the CML
+  element table.
+* `Cml::Enums` and `Cml::Patterns` mirror XSD simpleTypes.
+* `Cml::CommonChildren` provides the universal `metadataList`,
+  `label`, `name`, `description` child set as a DRY mixin.
 
-Both Schema 2.4 and Schema 3 are supported via
-`Chemicalml::Cml::Schema3` and `Chemicalml::Cml::Schema24` namespaces
-(see `lib/chemicalml/schema.rb`).
+== Reference docs
 
-The CML conventions (molecular, compchem, dictionary, unit-dictionary,
-unitType-dictionary) are implemented as registered constraint sets in
-`Chemicalml::Convention`. Built-in dictionaries ship as YAML under
-`data/dictionaries/`.
+`reference-docs/` holds archival source material from xml-cml.org:
+the XSDs (`schemas/schema3/schema.xsd`, `schemas/schema24/schema.xsd`),
+the convention specifications, and the CMLLite paper. These are
+**source material, not derived output** — never delete or edit them.
 
 == Acknowledgements
 

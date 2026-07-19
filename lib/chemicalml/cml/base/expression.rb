@@ -14,6 +14,9 @@ module Chemicalml
             attribute :data_type, :string
             attribute :content, :string
 
+            attribute :operators, :operator, collection: true
+            attribute :parameters, :parameter, collection: true
+
             xml do
               namespace Chemicalml::Cml::Namespace
               root "expression"
@@ -23,7 +26,19 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "dataType", to: :data_type
               map_content to: :content
+              map_element "operator", to: :operators
+              map_element "parameter", to: :parameters
             end
+            key_value do
+              map "operator", to: :operators
+              map "parameter", to: :parameters
+              map "title", to: :title
+              map "id", to: :id
+              map "convention", to: :convention
+              map "dictRef", to: :dict_ref
+              map "dataType", to: :data_type
+            end
+
           end
         end
       end

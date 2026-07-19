@@ -27,10 +27,10 @@ module Chemicalml
 
       def element_name
         xml_mapping = self.class.mappings[:xml]
-        root = xml_mapping && xml_mapping.root
-        root && root.name || self.class.name.split("::").last
+        root = xml_mapping&.root
+        root&.name || self.class.name.split('::').last
       rescue StandardError
-        self.class.name.split("::").last
+        self.class.name.split('::').last
       end
 
       def collect_wire_nodes(value)
@@ -59,6 +59,80 @@ module Chemicalml
         self.class.model.attributes.key?(name)
       rescue StandardError
         false
+      end
+
+      # Walk the entire subtree from this node, yielding each wire
+      # instance. DFS pre-order. Useful for find-style queries and
+      # aggregate counts.
+      #
+      # @yield [Lutaml::Model::Serializable] each wire node.
+      # @return [Enumerator] without a block.
+      def each_wire_node(&)
+        return to_enum(:each_wire_node) unless block_given?
+
+        walk(self, &)
+      end
+
+      # Iterate every Atom in the subtree.
+      def each_atom(&)
+        return to_enum(:each_atom) unless block_given?
+
+        each_wire_node { |n| yield(n) if n.is_a?(Chemicalml::Cml::Role::Atom) }
+      end
+
+      # Iterate every Bond in the subtree.
+      def each_bond(&)
+        return to_enum(:each_bond) unless block_given?
+
+        each_wire_node { |n| yield(n) if n.is_a?(Chemicalml::Cml::Role::Bond) }
+      end
+
+      # Iterate every Molecule in the subtree (top-level + nested).
+      def each_molecule(&)
+        return to_enum(:each_molecule) unless block_given?
+
+        each_wire_node { |n| yield(n) if n.is_a?(Chemicalml::Cml::Role::Molecule) }
+      end
+
+      # Find the first atom in the subtree with the given id, or nil.
+      def find_atom(id)
+        each_atom.find { |a| a.node_id == id }
+      end
+
+      # Find the first bond in the subtree with the given id, or nil.
+      def find_bond(id)
+        each_bond.find { |b| b.node_id == id }
+      end
+
+      # Find the first molecule in the subtree with the given id.
+      def find_molecule(id)
+        each_molecule.find { |m| m.node_id == id }
+      end
+
+      # Count of every Atom in the subtree.
+      def atom_count
+        each_atom.count
+      end
+
+      # Count of every Bond in the subtree.
+      def bond_count
+        each_bond.count
+      end
+
+      # Count of every Molecule in the subtree (recursive).
+      def molecule_count
+        each_molecule.count
+      end
+
+      private
+
+      def walk(node, &block)
+        return unless node.is_a?(Lutaml::Model::Serializable)
+
+        block.call(node)
+        return unless node.is_a?(Chemicalml::Cml::Visitable)
+
+        node.wire_children.each { |c| walk(c, &block) }
       end
     end
   end

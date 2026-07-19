@@ -17,6 +17,7 @@ module Chemicalml
       autoload :Bond,             "chemicalml/cml/base/bond"
       autoload :BondArray,        "chemicalml/cml/base/bond_array"
       autoload :BondStereo,       "chemicalml/cml/base/bond_stereo"
+      autoload :CommonChildren,   "chemicalml/cml/base/common_children"
       autoload :Dictionary,       "chemicalml/cml/base/dictionary"
       autoload :DictionaryEntry,  "chemicalml/cml/base/dictionary_entry"
       autoload :Document,         "chemicalml/cml/base/document"

@@ -43,6 +43,23 @@ module Chemicalml
               map_attribute "type", to: :type
               map_attribute "actionOrder", to: :action_order
             end
+            key_value do
+              map "action", to: :actions
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "order", to: :order
+              map "start", to: :start
+              map "startCondition", to: :start_condition
+              map "duration", to: :duration
+              map "end", to: :end
+              map "endCondition", to: :end_condition
+              map "units", to: :units
+              map "count", to: :count
+              map "type", to: :type
+              map "actionOrder", to: :action_order
+            end
           end
         end
       end

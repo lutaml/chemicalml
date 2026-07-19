@@ -86,7 +86,7 @@ RSpec.describe "molecular convention extended constraints" do
 
     it "passes when property has dictRef" do
       prop = Chemicalml::Cml::Schema3::Property.new(
-        dict_ref: "cml:energy", title: "energy",
+        dict_ref: "cml:bp", title: "Boiling point",
         scalar: Chemicalml::Cml::Schema3::Scalar.new(content: "1.0")
       )
       mol = Chemicalml::Cml::Schema3::Molecule.new(
@@ -193,7 +193,7 @@ RSpec.describe "molecular convention extended constraints" do
     end
   end
 
-  it "registers 23 molecular constraints" do
-    expect(Chemicalml::Convention::Molecular.constraint_count).to eq(23)
+  it "registers 36 molecular constraints" do
+    expect(Chemicalml::Convention::Molecular.constraint_count).to eq(36)
   end
 end

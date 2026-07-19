@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Unit
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :symbol, :string
@@ -42,6 +43,28 @@ module Chemicalml
               map_attribute "power", to: :power
               map_attribute "abbreviation", to: :abbreviation
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "definition", to: :definition
+              map "description", to: :description
+              map "id", to: :id
+              map "title", to: :title
+              map "symbol", to: :symbol
+              map "parentSI", to: :parent_si
+              map "multiplierToSI", to: :multiplier_to_si
+              map "constantToSI", to: :constant_to_si
+              map "unitType", to: :unit_type
+              map "units", to: :units
+              map "name", to: :name
+              map "isSI", to: :is_s_i
+              map "multiplierToData", to: :multiplier_to_data
+              map "power", to: :power
+              map "abbreviation", to: :abbreviation
+            end
+
           end
         end
       end

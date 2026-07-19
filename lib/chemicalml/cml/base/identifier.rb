@@ -26,6 +26,16 @@ module Chemicalml
               map_attribute "id", to: :id
               map_attribute "tautomeric", to: :tautomeric
             end
+            key_value do
+              map "value", to: :value
+              map "convention", to: :convention
+              map "dictRef", to: :dict_ref
+              map "version", to: :version
+              map "title", to: :title
+              map "id", to: :id
+              map "tautomeric", to: :tautomeric
+            end
+
           end
         end
       end

@@ -50,6 +50,27 @@ module Chemicalml
               map_attribute "toContext", to: :to_context
               map_attribute "linkType", to: :link_type
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "href", to: :href
+              map "rel", to: :rel
+              map "type", to: :type
+              map "role", to: :role
+              map "from", to: :from
+              map "to", to: :to
+              map "ref", to: :ref
+              map "fromType", to: :from_type
+              map "toType", to: :to_type
+              map "fromSet", to: :from_set
+              map "toSet", to: :to_set
+              map "fromContext", to: :from_context
+              map "toContext", to: :to_context
+              map "linkType", to: :link_type
+            end
+
           end
         end
       end

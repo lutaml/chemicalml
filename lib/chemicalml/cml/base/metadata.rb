@@ -26,6 +26,16 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "metadataType", to: :metadata_type
             end
+            key_value do
+              map "id", to: :id
+              map "name", to: :name
+              map "content", to: :content
+              map "convention", to: :convention
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "metadataType", to: :metadata_type
+            end
+
           end
         end
       end

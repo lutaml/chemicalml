@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::AtomType
+            include Chemicalml::Cml::Base::CommonChildren
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -28,6 +29,21 @@ module Chemicalml
               map_attribute "name", to: :name
               map_attribute "atomRef", to: :atom_ref
             end
+            key_value do
+              map "metadataList", to: :metadata_lists
+              map "label", to: :labels
+              map "name", to: :names
+              map "description", to: :descriptions
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "elementType", to: :elementType
+              map "ref", to: :ref
+              map "name", to: :name
+              map "atomRef", to: :atom_ref
+            end
+
           end
         end
       end

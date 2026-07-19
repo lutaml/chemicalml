@@ -29,6 +29,17 @@ module Chemicalml
               map_attribute "dimensionality", to: :dimensionality
               map_attribute "periodicity", to: :periodicity
             end
+            key_value do
+              map "atomArray", to: :atom_array
+              map "molecule", to: :molecules
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "dimensionality", to: :dimensionality
+              map "periodicity", to: :periodicity
+            end
+
           end
         end
       end

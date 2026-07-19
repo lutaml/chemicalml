@@ -12,6 +12,7 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
             attribute :kpointRef, :string
+            attribute :kpoint, :string
             attribute :weight, :string
 
             attribute :label, :string
@@ -23,9 +24,21 @@ module Chemicalml
               map_attribute "dictRef", to: :dict_ref
               map_attribute "convention", to: :convention
               map_attribute "kpointRef", to: :kpointRef
+              map_attribute "kpoint", to: :kpoint
               map_attribute "weight", to: :weight
               map_attribute "label", to: :label
             end
+            key_value do
+              map "id", to: :id
+              map "title", to: :title
+              map "dictRef", to: :dict_ref
+              map "convention", to: :convention
+              map "kpointRef", to: :kpointRef
+              map "kpoint", to: :kpoint
+              map "weight", to: :weight
+              map "label", to: :label
+            end
+
           end
         end
       end
