@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Arg
+
             attribute :title, :string
             attribute :id, :string
             attribute :convention, :string
@@ -30,48 +31,47 @@ module Chemicalml
 
             xml do
               namespace Chemicalml::Cml::Namespace
-              root "arg"
-              map_attribute "title", to: :title
-              map_attribute "id", to: :id
-              map_attribute "convention", to: :convention
-              map_attribute "dictRef", to: :dict_ref
-              map_attribute "ref", to: :ref
-              map_attribute "name", to: :name
-              map_attribute "dataType", to: :data_type
-              map_attribute "substitute", to: :substitute
-              map_attribute "parameterName", to: :parameter_name
-              map_attribute "parentAttribute", to: :parent_attribute
-              map_attribute "delete", to: :delete
-              map_attribute "eval", to: :eval
+              root 'arg'
+              map_attribute 'title', to: :title
+              map_attribute 'id', to: :id
+              map_attribute 'convention', to: :convention
+              map_attribute 'dictRef', to: :dict_ref
+              map_attribute 'ref', to: :ref
+              map_attribute 'name', to: :name
+              map_attribute 'dataType', to: :data_type
+              map_attribute 'substitute', to: :substitute
+              map_attribute 'parameterName', to: :parameter_name
+              map_attribute 'parentAttribute', to: :parent_attribute
+              map_attribute 'delete', to: :delete
+              map_attribute 'eval', to: :eval
               map_content to: :content
-              map_element "atom", to: :atom
-              map_element "atomType", to: :atom_type
-              map_element "expression", to: :expression
-              map_element "array", to: :arrays
-              map_element "matrix", to: :matrices
-              map_element "scalar", to: :scalars
+              map_element 'atom', to: :atom
+              map_element 'atomType', to: :atom_type
+              map_element 'expression', to: :expression
+              map_element 'array', to: :arrays
+              map_element 'matrix', to: :matrices
+              map_element 'scalar', to: :scalars
             end
             key_value do
-              map "atom", to: :atom
-              map "atomType", to: :atom_type
-              map "expression", to: :expression
-              map "array", to: :arrays
-              map "matrix", to: :matrices
-              map "scalar", to: :scalars
-              map "title", to: :title
-              map "id", to: :id
-              map "convention", to: :convention
-              map "dictRef", to: :dict_ref
-              map "ref", to: :ref
-              map "name", to: :name
-              map "dataType", to: :data_type
-              map "substitute", to: :substitute
-              map "parameterName", to: :parameter_name
-              map "parentAttribute", to: :parent_attribute
-              map "delete", to: :delete
-              map "eval", to: :eval
+              map 'atom', to: :atom
+              map 'atomType', to: :atom_type
+              map 'expression', to: :expression
+              map 'array', to: :arrays
+              map 'matrix', to: :matrices
+              map 'scalar', to: :scalars
+              map 'title', to: :title
+              map 'id', to: :id
+              map 'convention', to: :convention
+              map 'dictRef', to: :dict_ref
+              map 'ref', to: :ref
+              map 'name', to: :name
+              map 'dataType', to: :data_type
+              map 'substitute', to: :substitute
+              map 'parameterName', to: :parameter_name
+              map 'parentAttribute', to: :parent_attribute
+              map 'delete', to: :delete
+              map 'eval', to: :eval
             end
-
           end
         end
       end

@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::ComplexObject
+
             attribute :title, :string
             attribute :id, :string
             attribute :convention, :string
@@ -15,20 +16,19 @@ module Chemicalml
 
             xml do
               namespace Chemicalml::Cml::Namespace
-              root "complexObject"
-              map_attribute "title", to: :title
-              map_attribute "id", to: :id
-              map_attribute "convention", to: :convention
-              map_attribute "dictRef", to: :dict_ref
+              root 'complexObject'
+              map_attribute 'title', to: :title
+              map_attribute 'id', to: :id
+              map_attribute 'convention', to: :convention
+              map_attribute 'dictRef', to: :dict_ref
               map_content to: :content
             end
             key_value do
-              map "title", to: :title
-              map "id", to: :id
-              map "convention", to: :convention
-              map "dictRef", to: :dict_ref
+              map 'title', to: :title
+              map 'id', to: :id
+              map 'convention', to: :convention
+              map 'dictRef', to: :dict_ref
             end
-
           end
         end
       end

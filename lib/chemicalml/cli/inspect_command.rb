@@ -28,9 +28,7 @@ module Chemicalml
 
         indent = '  ' * depth
         line = "#{indent}#{node.class.name.split('::').last}"
-        if node.is_a?(Chemicalml::Cml::Visitable) && node.node_id
-          line += " [#{node.node_id}]"
-        end
+        line += " [#{node.node_id}]" if node.is_a?(Chemicalml::Cml::Visitable) && node.node_id
         puts line
         return unless node.is_a?(Chemicalml::Cml::Visitable)
 

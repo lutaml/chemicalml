@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::List
+
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -19,29 +20,28 @@ module Chemicalml
             attribute :type, :string
             xml do
               namespace Chemicalml::Cml::Namespace
-              root "list"
-              map_attribute "id", to: :id
-              map_attribute "title", to: :title
-              map_attribute "dictRef", to: :dict_ref
-              map_attribute "convention", to: :convention
-              map_element "scalar", to: :scalars
-              map_element "array", to: :arrays
-              map_element "matrix", to: :matrices
-              map_element "list", to: :lists
-              map_attribute "type", to: :type
+              root 'list'
+              map_attribute 'id', to: :id
+              map_attribute 'title', to: :title
+              map_attribute 'dictRef', to: :dict_ref
+              map_attribute 'convention', to: :convention
+              map_element 'scalar', to: :scalars
+              map_element 'array', to: :arrays
+              map_element 'matrix', to: :matrices
+              map_element 'list', to: :lists
+              map_attribute 'type', to: :type
             end
             key_value do
-              map "scalar", to: :scalars
-              map "array", to: :arrays
-              map "matrix", to: :matrices
-              map "list", to: :lists
-              map "id", to: :id
-              map "title", to: :title
-              map "dictRef", to: :dict_ref
-              map "convention", to: :convention
-              map "type", to: :type
+              map 'scalar', to: :scalars
+              map 'array', to: :arrays
+              map 'matrix', to: :matrices
+              map 'list', to: :lists
+              map 'id', to: :id
+              map 'title', to: :title
+              map 'dictRef', to: :dict_ref
+              map 'convention', to: :convention
+              map 'type', to: :type
             end
-
           end
         end
       end

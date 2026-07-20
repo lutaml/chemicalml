@@ -68,28 +68,27 @@ module Chemicalml
               map_attribute 'zFract', to: :z_fract_array
             end
             key_value do
-              map "atom", to: :atoms
-              map "title", to: :title
-              map "id", to: :id
-              map "convention", to: :convention
-              map "dictRef", to: :dict_ref
-              map "ref", to: :ref
-              map "atomID", to: :atom_id_array
-              map "count", to: :count_array
-              map "elementType", to: :element_type_array
-              map "formalCharge", to: :formal_charge_array
-              map "hydrogenCount", to: :hydrogen_count_array
-              map "occupancy", to: :occupancy_array
-              map "x2", to: :x2_array
-              map "y2", to: :y2_array
-              map "x3", to: :x3_array
-              map "y3", to: :y3_array
-              map "z3", to: :z3_array
-              map "xFract", to: :x_fract_array
-              map "yFract", to: :y_fract_array
-              map "zFract", to: :z_fract_array
+              map 'atom', to: :atoms
+              map 'title', to: :title
+              map 'id', to: :id
+              map 'convention', to: :convention
+              map 'dictRef', to: :dict_ref
+              map 'ref', to: :ref
+              map 'atomID', to: :atom_id_array
+              map 'count', to: :count_array
+              map 'elementType', to: :element_type_array
+              map 'formalCharge', to: :formal_charge_array
+              map 'hydrogenCount', to: :hydrogen_count_array
+              map 'occupancy', to: :occupancy_array
+              map 'x2', to: :x2_array
+              map 'y2', to: :y2_array
+              map 'x3', to: :x3_array
+              map 'y3', to: :y3_array
+              map 'z3', to: :z3_array
+              map 'xFract', to: :x_fract_array
+              map 'yFract', to: :y_fract_array
+              map 'zFract', to: :z_fract_array
             end
-
           end
         end
       end

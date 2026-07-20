@@ -32,14 +32,14 @@ module Chemicalml
     # Adding a new root type = adding one entry here. OCP — no
     # existing code changes.
     KNOWN_ROOTS = {
-      "cml"          => :Document,
-      "molecule"     => :Molecule,
-      "reaction"     => :Reaction,
-      "reactionList" => :ReactionList,
-      "module"       => :Module,
-      "dictionary"   => :Dictionary,
-      "unitList"     => :UnitList,
-      "unitTypeList" => :UnitTypeList,
+      'cml' => :Document,
+      'molecule' => :Molecule,
+      'reaction' => :Reaction,
+      'reactionList' => :ReactionList,
+      'module' => :Module,
+      'dictionary' => :Dictionary,
+      'unitList' => :UnitList,
+      'unitTypeList' => :UnitTypeList
     }.freeze
 
     def parse(xml, namespace_exist: true)
@@ -57,7 +57,7 @@ module Chemicalml
       unless const_defined?(class_name, false)
         raise ArgumentError,
               "#{name} does not define #{class_name} " \
-              "(not all root elements exist in every schema version)"
+              '(not all root elements exist in every schema version)'
       end
 
       const_get(class_name).from_xml(
@@ -83,7 +83,7 @@ module Chemicalml
       match = xml.match(/<([a-zA-Z][\w.-]*)(?::[a-zA-Z][\w.-]*)?/)
       return match[1] if match
 
-      raise ArgumentError, "could not detect root element in XML"
+      raise ArgumentError, 'could not detect root element in XML'
     end
 
     def xml_input(xml, namespace_exist, root)

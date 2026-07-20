@@ -13,7 +13,7 @@ module Chemicalml
     # walks the schema module's constants lazily.
     module WireClassRegistry
       SCHEMA_MODULES = {
-        schema3:  Chemicalml::Cml::Schema3,
+        schema3: Chemicalml::Cml::Schema3,
         schema24: Chemicalml::Cml::Schema24
       }.freeze
 
@@ -26,14 +26,14 @@ module Chemicalml
         unless schema_module.const_defined?(role_name, false)
           raise ArgumentError,
                 "#{schema_module.name} does not define #{role_name} " \
-                "(not all elements exist in every schema version)"
+                '(not all elements exist in every schema version)'
         end
 
         schema_module.const_get(role_name, false)
       end
 
       def self.role_name_for(role)
-        return role.name.split("::").last if role.is_a?(::Module)
+        return role.name.split('::').last if role.is_a?(::Module)
 
         role.to_s
       end

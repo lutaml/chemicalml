@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Tcell
+
             attribute :units, :string
             attribute :data_type, :string
             attribute :title, :string
@@ -17,24 +18,23 @@ module Chemicalml
 
             xml do
               namespace Chemicalml::Cml::Namespace
-              root "tcell"
-              map_attribute "units", to: :units
-              map_attribute "dataType", to: :data_type
-              map_attribute "title", to: :title
-              map_attribute "id", to: :id
-              map_attribute "convention", to: :convention
-              map_attribute "dictRef", to: :dict_ref
+              root 'tcell'
+              map_attribute 'units', to: :units
+              map_attribute 'dataType', to: :data_type
+              map_attribute 'title', to: :title
+              map_attribute 'id', to: :id
+              map_attribute 'convention', to: :convention
+              map_attribute 'dictRef', to: :dict_ref
               map_content to: :content
             end
             key_value do
-              map "units", to: :units
-              map "dataType", to: :data_type
-              map "title", to: :title
-              map "id", to: :id
-              map "convention", to: :convention
-              map "dictRef", to: :dict_ref
+              map 'units', to: :units
+              map 'dataType', to: :data_type
+              map 'title', to: :title
+              map 'id', to: :id
+              map 'convention', to: :convention
+              map 'dictRef', to: :dict_ref
             end
-
           end
         end
       end
