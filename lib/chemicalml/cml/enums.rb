@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 module Chemicalml
   module Cml
     # Canonical Ruby source of truth for every XSD simpleType that
@@ -18,20 +16,23 @@ module Chemicalml
       # All 120 element type codes from XSD elementTypeType, including
       # the special "Du" (dummy) and "R" (undefined/group placeholder).
       # Use this to validate atom.elementType values.
-      ELEMENT_TYPE_VALUES = Set.new(%w[Ac Al Ag Am Ar As At Au B Ba Bh Bi Be Bk Br C Ca Cd Ce Cf Cl Cm Co Cr Cs Cu Db Dy Er Es Eu F Fe Fm Fr Ga Gd Ge H He Hf Hg Ho Hs I In Ir K Kr La Li Lr Lu Md Mg Mn Mo Mt N Na Nb Nd Ne Ni No Np O Os P Pa Pb Pd Pm Po Pr Pt Pu Ra Rb Re Rf Rh Rn Ru S Sb Sc Se Sg Si Sm Sn Sr Ta Tb Tc Te Th Ti Tl Tm U Uun Uuu Uub Uut Uuq Uup Uuh Uus Uuo V W Xe Y Yb Zn Zr Du R]).freeze
+      ELEMENT_TYPE_VALUES = Set.new(%w[Ac Al Ag Am Ar As At Au B Ba Bh Bi Be Bk Br C Ca Cd Ce Cf Cl Cm Co Cr Cs Cu Db
+                                       Dy Er Es Eu F Fe Fm Fr Ga Gd Ge H He Hf Hg Ho Hs I In Ir K Kr La Li Lr Lu Md Mg Mn Mo Mt N Na Nb Nd Ne Ni No Np O Os P Pa Pb Pd Pm Po Pr Pt Pu Ra Rb Re Rf Rh Rn Ru S Sb Sc Se Sg Si Sm Sn Sr Ta Tb Tc Te Th Ti Tl Tm U Uun Uuu Uub Uut Uuq Uup Uuh Uus Uuo V W Xe Y Yb Zn Zr Du R]).freeze
       ANGLEUNITS_VALUES = Set.new(%w[degrees radians]).freeze
       CELLPARAMETER_VALUES = Set.new(%w[length angle]).freeze
       CHIRALITY_VALUES = Set.new(%w[enantiomer racemate unknown other]).freeze
       DIMENSION_VALUES = Set.new(%w[mass length time current amount luminosity temperature dimensionless angle]).freeze
       EIGENORIENTATION_VALUES = Set.new(%w[columnVectors rowVectors other]).freeze
-      ERRORBASIS_VALUES = Set.new(%w[observedRange observedStandardDeviation observedStandardError estimatedStandardDeviation estimatedStandardError other]).freeze
+      ERRORBASIS_VALUES = Set.new(%w[observedRange observedStandardDeviation observedStandardError
+                                     estimatedStandardDeviation estimatedStandardError other]).freeze
       FORMAT_VALUES = Set.new(%w[1D 2Dsymm 2Dasymm other]).freeze
       FT_VALUES = Set.new(%w[raw transformed none other]).freeze
       INHERIT_VALUES = Set.new(%w[merge replace delete]).freeze
       LATTICE_VALUES = Set.new(%w[primitive full aCentred other]).freeze
       LINKTYPE_VALUES = Set.new(%w[extended locator arc]).freeze
       LM_VALUES = Set.new(%w[s p px py pz d dxy dyz dxz dx2y2 dz2 f g]).freeze
-      MATRIX_VALUES = Set.new(%w[rectangular square squareSymmetric squareSymmetricLT squareSymmetricUT squareAntisymmetric squareAntisymmetricLT squareAntisymmetricUT diagonal upperTriangular upperTriangularUT lowerTriangular lowerTriangularLT unit unitary rowEigenvectors rotation22 rotationTranslation32 homogeneous33 rotation33 rotationTranslation43 homogeneous44 other]).freeze
+      MATRIX_VALUES = Set.new(%w[rectangular square squareSymmetric squareSymmetricLT squareSymmetricUT
+                                 squareAntisymmetric squareAntisymmetricLT squareAntisymmetricUT diagonal upperTriangular upperTriangularUT lowerTriangular lowerTriangularLT unit unitary rowEigenvectors rotation22 rotationTranslation32 homogeneous33 rotation33 rotationTranslation43 homogeneous44 other]).freeze
       MEASUREMENT_VALUES = Set.new(%w[transmittance absorbance other]).freeze
       ORDER_VALUES = Set.new(%w[S 1 D 2 T 3 A unknown other]).freeze
       PEAKMULTIPLICITY_VALUES = Set.new(%w[singlet doublet triplet quartet quintet sextuplet multiplet other]).freeze

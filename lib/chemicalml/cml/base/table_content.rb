@@ -7,36 +7,36 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::TableContent
+
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
             attribute :convention, :string
 
-                        attribute :table_rows, :tableRow, collection: true
+            attribute :table_rows, :tableRow, collection: true
             attribute :table_row_lists, :tableRowList, collection: true
 
             attribute :delimiter, :string
             xml do
               namespace Chemicalml::Cml::Namespace
-              map_element "tableRow", to: :table_rows
-              map_element "tableRowList", to: :table_row_lists
-              root "tableContent"
-              map_attribute "id", to: :id
-              map_attribute "title", to: :title
-              map_attribute "dictRef", to: :dict_ref
-              map_attribute "convention", to: :convention
-              map_attribute "delimiter", to: :delimiter
+              map_element 'tableRow', to: :table_rows
+              map_element 'tableRowList', to: :table_row_lists
+              root 'tableContent'
+              map_attribute 'id', to: :id
+              map_attribute 'title', to: :title
+              map_attribute 'dictRef', to: :dict_ref
+              map_attribute 'convention', to: :convention
+              map_attribute 'delimiter', to: :delimiter
             end
             key_value do
-              map "tableRow", to: :table_rows
-              map "tableRowList", to: :table_row_lists
-              map "id", to: :id
-              map "title", to: :title
-              map "dictRef", to: :dict_ref
-              map "convention", to: :convention
-              map "delimiter", to: :delimiter
+              map 'tableRow', to: :table_rows
+              map 'tableRowList', to: :table_row_lists
+              map 'id', to: :id
+              map 'title', to: :title
+              map 'dictRef', to: :dict_ref
+              map 'convention', to: :convention
+              map 'delimiter', to: :delimiter
             end
-
           end
         end
       end

@@ -43,17 +43,16 @@ module Chemicalml
               map_attribute 'order', to: :order_array
             end
             key_value do
-              map "bond", to: :bonds
-              map "title", to: :title
-              map "id", to: :id
-              map "convention", to: :convention
-              map "dictRef", to: :dict_ref
-              map "bondID", to: :bond_id_array
-              map "atomRef1", to: :atom_ref1_array
-              map "atomRef2", to: :atom_ref2_array
-              map "order", to: :order_array
+              map 'bond', to: :bonds
+              map 'title', to: :title
+              map 'id', to: :id
+              map 'convention', to: :convention
+              map 'dictRef', to: :dict_ref
+              map 'bondID', to: :bond_id_array
+              map 'atomRef1', to: :atom_ref1_array
+              map 'atomRef2', to: :atom_ref2_array
+              map 'order', to: :order_array
             end
-
           end
         end
       end

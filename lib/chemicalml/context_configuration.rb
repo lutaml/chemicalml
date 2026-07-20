@@ -74,7 +74,9 @@ module Chemicalml
     def create_context(id:, registry: nil, fallback_to: [context_id])
       normalized_id = id.to_sym
       ensure_version_registered
-      Lutaml::Model::GlobalContext.unregister_context(normalized_id) if Lutaml::Model::GlobalContext.context(normalized_id)
+      if Lutaml::Model::GlobalContext.context(normalized_id)
+        Lutaml::Model::GlobalContext.unregister_context(normalized_id)
+      end
       Lutaml::Model::GlobalContext.create_context(
         id: normalized_id,
         registry: registry || Lutaml::Model::TypeRegistry.new,
@@ -122,7 +124,7 @@ module Chemicalml
     def version_parent_module
       return nil unless name
 
-      parent_const_name = name.split("::")[0..-2].join("::")
+      parent_const_name = name.split('::')[0..-2].join('::')
       return nil if parent_const_name.empty?
 
       Object.const_get(parent_const_name)

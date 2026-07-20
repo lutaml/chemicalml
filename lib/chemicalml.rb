@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "lutaml/model"
+require 'lutaml/model'
 
 # Chemicalml provides a Ruby object model for the Chemical Markup Language
 # (CML).
@@ -13,16 +13,16 @@ require "lutaml/model"
 # declared attributes and an XML mapping block. Serialization is
 # framework-backed — no hand-rolled XML in this library.
 module Chemicalml
-  autoload :Cml, "chemicalml/cml"
-  autoload :Cli, "chemicalml/cli"
-  autoload :ContextConfiguration, "chemicalml/context_configuration"
-  autoload :Convention, "chemicalml/convention"
-  autoload :Dictionary, "chemicalml/dictionary"
-  autoload :Error, "chemicalml/errors"
-  autoload :ParseError, "chemicalml/errors"
-  autoload :Schema, "chemicalml/schema"
-  autoload :VERSION, "chemicalml/version"
-  autoload :VersionedParser, "chemicalml/versioned_parser"
+  autoload :Cml, 'chemicalml/cml'
+  autoload :Cli, 'chemicalml/cli'
+  autoload :ContextConfiguration, 'chemicalml/context_configuration'
+  autoload :Convention, 'chemicalml/convention'
+  autoload :Dictionary, 'chemicalml/dictionary'
+  autoload :Error, 'chemicalml/errors'
+  autoload :ParseError, 'chemicalml/errors'
+  autoload :Schema, 'chemicalml/schema'
+  autoload :VERSION, 'chemicalml/version'
+  autoload :VersionedParser, 'chemicalml/versioned_parser'
 
   module_function
 
@@ -44,8 +44,8 @@ module Chemicalml
   # @example Parse a Schema2.4 document
   #   doc = Chemicalml.parse(xml, schema: :schema24)
   def parse(xml, schema: :schema3, namespace_exist: true)
-    raise ArgumentError, "xml must not be nil" if xml.nil?
-    raise ArgumentError, "xml must not be empty" if xml.to_s.strip.empty?
+    raise ArgumentError, 'xml must not be nil' if xml.nil?
+    raise ArgumentError, 'xml must not be empty' if xml.to_s.strip.empty?
 
     parser_for(schema).parse(xml, namespace_exist: namespace_exist)
   end
@@ -69,8 +69,8 @@ module Chemicalml
   # @param document [Lutaml::Model::Serializable] a CML wire instance.
   # @param opts [Hash] forwarded to `Lutaml::Model::Serializable#to_xml`.
   # @return [String] the serialized XML.
-  def serialize(document, **opts)
-    document.to_xml(**opts)
+  def serialize(document, **)
+    document.to_xml(**)
   end
 
   # Resolve the versioned-parser module for a schema id.
@@ -84,7 +84,7 @@ module Chemicalml
     when :schema24 then Chemicalml::Cml::Schema24
     else
       raise ArgumentError, "unsupported schema: #{schema.inspect} " \
-                           "(supported: :schema3, :schema24)"
+                           '(supported: :schema3, :schema24)'
     end
   end
 

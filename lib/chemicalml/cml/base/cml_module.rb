@@ -7,6 +7,7 @@ module Chemicalml
         def self.included(klass)
           klass.class_eval do
             include Chemicalml::Cml::Role::Module
+
             attribute :id, :string
             attribute :title, :string
             attribute :dict_ref, :string
@@ -24,39 +25,38 @@ module Chemicalml
 
             xml do
               namespace Chemicalml::Cml::Namespace
-              root "module"
-              map_attribute "id", to: :id
-              map_attribute "title", to: :title
-              map_attribute "dictRef", to: :dict_ref
-              map_attribute "convention", to: :convention
-              map_attribute "fileId", to: :file_id
-              map_attribute "version", to: :version
-              map_attribute "role", to: :role
-              map_attribute "serial", to: :serial
-              map_element "molecule", to: :molecules
-              map_element "module", to: :modules
-              map_element "parameterList", to: :parameter_lists
-              map_element "propertyList", to: :property_lists
-              map_element "metadataList", to: :metadata_lists
-              map_element "list", to: :lists
+              root 'module'
+              map_attribute 'id', to: :id
+              map_attribute 'title', to: :title
+              map_attribute 'dictRef', to: :dict_ref
+              map_attribute 'convention', to: :convention
+              map_attribute 'fileId', to: :file_id
+              map_attribute 'version', to: :version
+              map_attribute 'role', to: :role
+              map_attribute 'serial', to: :serial
+              map_element 'molecule', to: :molecules
+              map_element 'module', to: :modules
+              map_element 'parameterList', to: :parameter_lists
+              map_element 'propertyList', to: :property_lists
+              map_element 'metadataList', to: :metadata_lists
+              map_element 'list', to: :lists
             end
             key_value do
-              map "molecule", to: :molecules
-              map "module", to: :modules
-              map "parameterList", to: :parameter_lists
-              map "propertyList", to: :property_lists
-              map "metadataList", to: :metadata_lists
-              map "list", to: :lists
-              map "id", to: :id
-              map "title", to: :title
-              map "dictRef", to: :dict_ref
-              map "convention", to: :convention
-              map "fileId", to: :file_id
-              map "version", to: :version
-              map "role", to: :role
-              map "serial", to: :serial
+              map 'molecule', to: :molecules
+              map 'module', to: :modules
+              map 'parameterList', to: :parameter_lists
+              map 'propertyList', to: :property_lists
+              map 'metadataList', to: :metadata_lists
+              map 'list', to: :lists
+              map 'id', to: :id
+              map 'title', to: :title
+              map 'dictRef', to: :dict_ref
+              map 'convention', to: :convention
+              map 'fileId', to: :file_id
+              map 'version', to: :version
+              map 'role', to: :role
+              map 'serial', to: :serial
             end
-
           end
         end
       end
