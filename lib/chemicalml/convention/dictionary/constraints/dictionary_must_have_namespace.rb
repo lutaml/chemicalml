@@ -8,6 +8,7 @@ module Chemicalml
         # whose value is a valid URI defining the scope within which
         # the entry terms are unique.
         class DictionaryMustHaveNamespace < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<dictionary>` element MUST have a `namespace` attribute whose value is a valid URI defining the scope within which the entry terms are unique.'
           applies_to Chemicalml::Cml::Role::Dictionary
           def check_node(node, path)
             return [] unless node.namespace.to_s.empty?

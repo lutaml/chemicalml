@@ -7,6 +7,7 @@ module Chemicalml
         # A `<peakList>` MUST contain at least one `<peak>` or
         # `<peakGroup>` child. An empty peakList carries no data.
         class PeakListMustContainPeaks < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<peakList>` MUST contain at least one `<peak>` or `<peakGroup>` child. An empty peakList carries no data.'
           applies_to Chemicalml::Cml::Role::PeakList
 
           def check_node(node, _path)

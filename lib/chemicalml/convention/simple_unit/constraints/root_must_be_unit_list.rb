@@ -8,6 +8,7 @@ module Chemicalml
         # declaring `convention="convention:simpleUnit"`. Any other
         # root shape is rejected.
         class RootMustBeUnitList < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = 'The root of a simpleUnit document MUST be a `<unitList>` declaring `convention="convention:simpleUnit"`. Any other root shape is rejected.'
           def check(document)
             return [] if document.is_a?(Chemicalml::Cml::Role::UnitList) &&
                          document.convention == 'convention:simpleUnit'

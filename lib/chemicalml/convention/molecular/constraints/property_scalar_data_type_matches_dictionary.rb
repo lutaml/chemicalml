@@ -12,6 +12,7 @@ module Chemicalml
         #
         # Warning severity — some dictionaries allow multiple dataTypes.
         class PropertyScalarDataTypeMatchesDictionary < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<property>` with a `dictRef` whose dictionary entry declares a `dataType` SHOULD have a child `<scalar>` whose `dataType` attribute matches. Catches inconsistencies like a property'
           applies_to Chemicalml::Cml::Role::Property
 
           def check_node(node, _path)

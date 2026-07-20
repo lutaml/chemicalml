@@ -7,11 +7,11 @@ module Chemicalml
         # Molecular convention: `<bondStereo>` value C (cis) or T
         # (trans) MUST have `atomRefs4` and MUST NOT have `atomRefs2`.
         class BondStereoCisTransMustHaveAtomRefs4 < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: `<bondStereo>` value C (cis) or T (trans) MUST have `atomRefs4` and MUST NOT have `atomRefs2`.'
           applies_to Chemicalml::Cml::Role::BondStereo
           CIS_TRANS_VALUES = %w[C T].freeze
 
           def check_node(node, path)
-
             value = node.content.to_s.upcase
             return [] unless CIS_TRANS_VALUES.include?(value)
 

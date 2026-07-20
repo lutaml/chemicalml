@@ -9,6 +9,7 @@ module Chemicalml
         # Warning severity — CML permits extension values via
         # convention-specific dicts.
         class BondOrderShouldBeInEnum < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<bond>`'s `order` attribute SHOULD be one of the XSD orderType enum values: S/1/D/2/T/3/A/unknown/other. Warning severity — CML permits extension values via"
           include Chemicalml::Cml::Enums
 
           applies_to Chemicalml::Cml::Role::Bond

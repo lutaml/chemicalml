@@ -8,6 +8,7 @@ module Chemicalml
         # SHOULD reference four distinct atom ids. Duplicate ids make
         # the stereo descriptor meaningless. Warning severity.
         class BondStereoAtomRefs4ShouldBeDistinct < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<bondStereo>` with `atomRefs4` (used by C/T stereo) SHOULD reference four distinct atom ids. Duplicate ids make the stereo descriptor meaningless. Warning severity.'
           applies_to Chemicalml::Cml::Role::BondStereo
 
           def check_node(node, _path)

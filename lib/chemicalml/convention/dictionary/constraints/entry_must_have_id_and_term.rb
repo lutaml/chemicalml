@@ -7,9 +7,9 @@ module Chemicalml
         # Every entry MUST have an `id` and a `term` attribute per the
         # dictionary convention.
         class EntryMustHaveIdAndTerm < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Every entry MUST have an `id` and a `term` attribute per the dictionary convention.'
           applies_to Chemicalml::Cml::Role::DictionaryEntry
           def check_node(node, path)
-
             violations = []
             if node.id.to_s.empty?
               violations << violation(path: path.join('/'),

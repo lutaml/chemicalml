@@ -8,11 +8,11 @@ module Chemicalml
         # parameterList children directly. It MAY contain a
         # propertyList (which itself can hold parameters).
         class EnvironmentMustNotContainParameter < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'The environment module MUST NOT contain parameter or parameterList children directly. It MAY contain a propertyList (which itself can hold parameters).'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 
           def check_node(node, path)
-
             violations = []
             unless (node.parameter_lists || []).empty?
               violations << violation(path: path.join('/'),

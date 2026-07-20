@@ -12,6 +12,7 @@ module Chemicalml
         # DocumentConstraint because it needs the whole tree to
         # resolve references.
         class ReferencesShouldResolve < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = "Walks the document via `Cml::ReferenceResolver` and reports every bond whose `atomRefs2` references atoms that don't exist in the parent molecule. Warning severity — there are"
           def check(document)
             resolver = Chemicalml::Cml::ReferenceResolver.new(document)
             resolver.unresolved_refs.map do |entry|

@@ -8,6 +8,7 @@ module Chemicalml
         # moleculeIDType pattern (letter/underscore start, alphanumeric
         # body, optional namespace prefix). Warning severity.
         class MoleculeIdShouldMatchPattern < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<molecule>`'s `id` attribute SHOULD match the XSD moleculeIDType pattern (letter/underscore start, alphanumeric body, optional namespace prefix). Warning severity."
           include Chemicalml::Cml::Patterns
 
           applies_to Chemicalml::Cml::Role::Molecule

@@ -7,9 +7,9 @@ module Chemicalml
         # The `namespace` URI SHOULD end with `/` or `#` so terms can
         # be referenced by appending them to the URI. Warning level.
         class DictionaryNamespaceShouldEndWithSlashOrHash < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'The `namespace` URI SHOULD end with `/` or `#` so terms can be referenced by appending them to the URI. Warning level.'
           applies_to Chemicalml::Cml::Role::Dictionary
           def check_node(node, path)
-
             ns = node.namespace.to_s
             return [] if ns.empty?
             return [] if ns.end_with?('/', '#')

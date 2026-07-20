@@ -8,9 +8,9 @@ module Chemicalml
     module Compchem
       extend Base
 
-      autoload :Constraints, "chemicalml/convention/compchem/constraints"
+      autoload :Constraints, 'chemicalml/convention/compchem/constraints'
 
-      QNAME = "convention:compchem".freeze
+      QNAME = 'convention:compchem'
       NAMESPACE_URI = "#{Chemicalml::Convention::CONVENTION_NAMESPACE}compchem".freeze
 
       def self.qname

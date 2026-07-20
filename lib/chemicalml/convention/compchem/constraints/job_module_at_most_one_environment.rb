@@ -6,11 +6,11 @@ module Chemicalml
       module Constraints
         # A job module MUST contain at most one environment module.
         class JobModuleAtMostOneEnvironment < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A job module MUST contain at most one environment module.'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 
           def check_node(node, path)
-
             environments = child_modules_with(node, 'compchem:environment')
             return [] if environments.length <= 1
 

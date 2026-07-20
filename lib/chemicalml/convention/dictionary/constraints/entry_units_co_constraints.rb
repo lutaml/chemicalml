@@ -10,11 +10,11 @@ module Chemicalml
         # - If `unitType` is `none`, `units` MUST be present and point
         #   to `http://www.xml-cml.org/unit/si#none`.
         class EntryUnitsCoConstraints < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Co-constraint between `unitType` and `units`: - If `unitType` is `unknown`, `units` MUST NOT be present. - If `unitType` is `none`, `units` MUST be present and point'
           applies_to Chemicalml::Cml::Role::DictionaryEntry
           NONE_UNITS = 'http://www.xml-cml.org/unit/si#none'
 
           def check_node(node, path)
-
             unit_type = node.unit_type.to_s
             units = node.units.to_s
             violations = []

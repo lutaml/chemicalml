@@ -9,6 +9,7 @@ module Chemicalml
         # of a program) should reference `none` in the standard CML
         # unitType dictionary.
         class EntryMustHaveUnitType < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'An `<entry>` MUST have a `unitType` attribute. Entries describing concepts that should not have units (e.g. name of a program) should reference `none` in the standard CML'
           applies_to Chemicalml::Cml::Role::DictionaryEntry
           def check_node(node, path)
             return [] unless node.unit_type.to_s.empty?

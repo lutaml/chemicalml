@@ -15,9 +15,7 @@ module Chemicalml
       class << self
         # Returns the Role module(s) this constraint applies to, or
         # nil if it must run for every node.
-        def applies_to_roles
-          @applies_to_roles
-        end
+        attr_reader :applies_to_roles
 
         # Declare one or more Role modules this constraint handles.
         #   applies_to Chemicalml::Cml::Role::Atom
@@ -38,9 +36,7 @@ module Chemicalml
 
         # Set the description (DSL for subclasses).
         #   description "A <bond> must have an order attribute"
-        def description=(value)
-          @description = value
-        end
+        attr_writer :description
 
         # Severity this constraint emits. Subclasses MAY override.
         # Default `:error` — warning subclasses override to `:warning`.

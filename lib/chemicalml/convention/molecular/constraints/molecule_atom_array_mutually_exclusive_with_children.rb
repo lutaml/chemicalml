@@ -8,6 +8,7 @@ module Chemicalml
         # OR child `<molecule>` elements, but not both. The two are
         # mutually exclusive ways of describing composition.
         class MoleculeAtomArrayMutuallyExclusiveWithChildren < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: a `<molecule>` MAY hold an `atomArray` OR child `<molecule>` elements, but not both. The two are mutually exclusive ways of describing composition.'
           applies_to Chemicalml::Cml::Role::Molecule
           def check_node(node, path)
             return [] if node.atom_array.nil?

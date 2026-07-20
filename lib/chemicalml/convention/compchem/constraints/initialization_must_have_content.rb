@@ -8,6 +8,7 @@ module Chemicalml
         # `molecule`, `parameterList`, or a user-defined module child.
         # Per the compchem convention spec.
         class InitializationMustHaveContent < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'An `initialization` module MUST contain at least one of: `molecule`, `parameterList`, or a user-defined module child. Per the compchem convention spec.'
           applies_to Chemicalml::Cml::Role::Module
 
           def check_node(node, path)

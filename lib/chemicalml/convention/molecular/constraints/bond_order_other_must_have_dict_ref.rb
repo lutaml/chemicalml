@@ -9,6 +9,7 @@ module Chemicalml
         # the order semantics. The warning-level "should not be
         # numeric" rule is separate; this is the hard error.
         class BondOrderOtherMustHaveDictRef < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: `<bond>` with `order="other"` MUST have a `dictRef` pointing to the dictionary that defines the order semantics. The warning-level "should not be'
           applies_to Chemicalml::Cml::Role::Bond
           def check_node(node, path)
             return [] unless node.order.to_s.downcase == 'other'

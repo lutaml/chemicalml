@@ -9,6 +9,7 @@ module Chemicalml
         # the molecular convention: "spectrum — any number, each MUST
         # specify its own convention".
         class SpectrumMustHaveConvention < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<spectrum>` MUST declare its own convention attribute so consumers know how to interpret its format and peaks. Per the molecular convention: "spectrum — any number, each MUST'
           applies_to Chemicalml::Cml::Role::Spectrum
 
           def check_node(node, _path)

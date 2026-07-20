@@ -12,6 +12,7 @@ module Chemicalml
         # DocumentConstraint because it needs to walk the tree and
         # track parent-child relationships.
         class AtomParityShouldIncludeParentAtom < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = "Walks the document and warns on `<atomParity>` elements whose parent `<atom>`'s id does not appear in atomRefs4. The CML convention requires the parent atom to be one of"
           def check(document)
             violations = []
             visit_with_parent(document, nil) do |node, parent|

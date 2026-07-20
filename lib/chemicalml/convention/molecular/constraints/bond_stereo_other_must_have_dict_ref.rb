@@ -8,6 +8,7 @@ module Chemicalml
         # MUST have a `dictRef` pointing to the convention that
         # defines the stereo semantics.
         class BondStereoOtherMustHaveDictRef < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: `<bondStereo>` with value `other` MUST have a `dictRef` pointing to the convention that defines the stereo semantics.'
           applies_to Chemicalml::Cml::Role::BondStereo
           def check_node(node, path)
             return [] unless node.content.to_s.downcase == 'other'

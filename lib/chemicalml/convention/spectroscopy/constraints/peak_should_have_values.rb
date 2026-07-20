@@ -9,6 +9,7 @@ module Chemicalml
         # information. Warning severity — there are edge cases
         # (e.g. group-references) where this is intentional.
         class PeakShouldHaveValues < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<peak>` SHOULD declare at least one of `xValue` or `yValue`. A peak with neither carries no position information. Warning severity — there are edge cases'
           applies_to Chemicalml::Cml::Role::Peak
 
           def check_node(node, _path)

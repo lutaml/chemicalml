@@ -8,6 +8,7 @@ module Chemicalml
         # `molecule`, `propertyList`, or a user-defined module child.
         # Per the compchem convention spec.
         class FinalizationMustHaveContent < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `finalization` module MUST contain at least one of: `molecule`, `propertyList`, or a user-defined module child. Per the compchem convention spec.'
           applies_to Chemicalml::Cml::Role::Module
 
           def check_node(node, path)

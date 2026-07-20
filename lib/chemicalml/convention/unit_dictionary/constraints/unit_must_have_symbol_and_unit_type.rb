@@ -8,11 +8,11 @@ module Chemicalml
         # at least one of `multiplierToSI`/`constantToSI`, and
         # `unitType` per the unit-dictionary convention.
         class UnitMustHaveSymbolAndUnitType < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Every unit MUST have `id`, `title`, `symbol`, `parentSI`, at least one of `multiplierToSI`/`constantToSI`, and `unitType` per the unit-dictionary convention.'
           applies_to Chemicalml::Cml::Role::Unit
           REQUIRED = %i[title symbol parent_si unit_type].freeze
 
           def check_node(node, path)
-
             violations = []
             REQUIRED.each do |attr|
               val = node.public_send(attr)

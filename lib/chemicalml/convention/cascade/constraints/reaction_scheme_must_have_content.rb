@@ -8,6 +8,7 @@ module Chemicalml
         # `<reactionStepList>` or `<reaction>` child. An empty scheme
         # carries no cascade information.
         class ReactionSchemeMustHaveContent < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<reactionScheme>` MUST contain at least one `<reactionStepList>` or `<reaction>` child. An empty scheme carries no cascade information.'
           applies_to Chemicalml::Cml::Role::ReactionScheme
 
           def check_node(node, _path)

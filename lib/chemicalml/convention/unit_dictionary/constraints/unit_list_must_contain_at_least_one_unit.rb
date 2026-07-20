@@ -8,6 +8,7 @@ module Chemicalml
         # children, and MUST NOT contain any other CML-namespace
         # child elements.
         class UnitListMustContainAtLeastOneUnit < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unitList>` element MUST contain one or more `<unit>` children, and MUST NOT contain any other CML-namespace child elements.'
           applies_to Chemicalml::Cml::Role::UnitList
           def check_node(node, path)
             return [] if (node.units || []).length.positive?

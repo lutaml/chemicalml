@@ -8,6 +8,7 @@ module Chemicalml
         # pattern (letter start, alphanumeric body with dots/dashes).
         # Warning severity.
         class BondIdShouldMatchPattern < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<bond>`'s `id` attribute SHOULD match the XSD idType pattern (letter start, alphanumeric body with dots/dashes). Warning severity."
           include Chemicalml::Cml::Patterns
 
           applies_to Chemicalml::Cml::Role::Bond

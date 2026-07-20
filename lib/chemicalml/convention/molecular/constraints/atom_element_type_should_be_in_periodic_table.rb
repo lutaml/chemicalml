@@ -9,6 +9,7 @@ module Chemicalml
         # the special "Du" dummy and "R" group placeholder). Warns
         # on typos like "Carb" or "X".
         class AtomElementTypeShouldBeInPeriodicTable < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "An `<atom>`'s `elementType` attribute SHOULD be one of the XSD elementTypeType enum values (the periodic table plus the special \"Du\" dummy and \"R\" group placeholder). Warns"
           include Chemicalml::Cml::Enums
 
           applies_to Chemicalml::Cml::Role::Atom

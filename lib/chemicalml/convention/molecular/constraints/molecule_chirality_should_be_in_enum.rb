@@ -8,6 +8,7 @@ module Chemicalml
         # XSD chiralityType enum values:
         # enantiomer/racemate/unknown/other. Warning severity.
         class MoleculeChiralityShouldBeInEnum < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<molecule>`'s `chirality` attribute SHOULD be one of the XSD chiralityType enum values: enantiomer/racemate/unknown/other. Warning severity."
           include Chemicalml::Cml::Enums
 
           applies_to Chemicalml::Cml::Role::Molecule

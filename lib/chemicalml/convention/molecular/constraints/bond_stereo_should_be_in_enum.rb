@@ -8,6 +8,7 @@ module Chemicalml
         # XSD stereoType enum values: C/T/W/H/undefined/other.
         # Warning severity.
         class BondStereoShouldBeInEnum < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<bondStereo>`'s `value` attribute SHOULD be one of the XSD stereoType enum values: C/T/W/H/undefined/other. Warning severity."
           include Chemicalml::Cml::Enums
 
           applies_to Chemicalml::Cml::Role::BondStereo

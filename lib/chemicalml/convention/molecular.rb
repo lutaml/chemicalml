@@ -8,9 +8,9 @@ module Chemicalml
     module Molecular
       extend Base
 
-      autoload :Constraints, "chemicalml/convention/molecular/constraints"
+      autoload :Constraints, 'chemicalml/convention/molecular/constraints'
 
-      QNAME = "convention:molecular".freeze
+      QNAME = 'convention:molecular'
       NAMESPACE_URI = "#{Chemicalml::Convention::CONVENTION_NAMESPACE}molecular".freeze
 
       def self.qname

@@ -7,9 +7,9 @@ module Chemicalml
         # Entry ids MUST be unique within the parent dictionary per
         # the dictionary convention.
         class EntryIdsUniqueWithinDictionary < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Entry ids MUST be unique within the parent dictionary per the dictionary convention.'
           applies_to Chemicalml::Cml::Role::Dictionary
           def check_node(node, path)
-
             entries = node.entries || []
             ids = entries.map(&:id).compact
             duplicates = ids.group_by { |x| x }.select { |_, v| v.length > 1 }.keys

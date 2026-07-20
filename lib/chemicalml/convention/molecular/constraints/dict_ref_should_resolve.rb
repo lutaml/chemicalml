@@ -12,6 +12,7 @@ module Chemicalml
         # works per-node so it's just a wrapper around the per-node
         # check.
         class DictRefShouldResolve < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Walks the document and warns on any element whose `dictRef` attribute cannot be resolved against the built-in dictionaries. Catches typos like `dictRef="cml:bpingpoint"`.'
           applies_to Chemicalml::Cml::Role::Atom,
                      Chemicalml::Cml::Role::Bond,
                      Chemicalml::Cml::Role::Molecule,

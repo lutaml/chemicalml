@@ -7,11 +7,11 @@ module Chemicalml
         # Molecular convention: `<bondStereo>` value W (wedge) or H
         # (hatch) MUST have `atomRefs2` and MUST NOT have `atomRefs4`.
         class BondStereoWedgeHashMustHaveAtomRefs2 < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: `<bondStereo>` value W (wedge) or H (hatch) MUST have `atomRefs2` and MUST NOT have `atomRefs4`.'
           applies_to Chemicalml::Cml::Role::BondStereo
           WEDGE_HASH_VALUES = %w[W H].freeze
 
           def check_node(node, path)
-
             value = node.content.to_s.upcase
             return [] unless WEDGE_HASH_VALUES.include?(value)
 

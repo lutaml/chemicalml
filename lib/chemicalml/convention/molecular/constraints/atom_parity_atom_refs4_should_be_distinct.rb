@@ -9,6 +9,7 @@ module Chemicalml
         # Duplicate ids make the parity descriptor meaningless.
         # Warning severity.
         class AtomParityAtomRefs4ShouldBeDistinct < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "An `<atomParity>` element's `atomRefs4` attribute SHOULD reference four distinct atom ids around a chiral center. Duplicate ids make the parity descriptor meaningless."
           applies_to Chemicalml::Cml::Role::AtomParity
 
           def check_node(node, _path)

@@ -16,10 +16,10 @@ module Chemicalml
 
       def initialize(constraint_classes)
         @document_constraints = constraint_classes
-                                  .select { |c| c < Constraint::DocumentConstraint }
-                                  .map(&:new)
+                                .select { |c| c < Constraint::DocumentConstraint }
+                                .map(&:new)
         @node_constraints = constraint_constraints(constraint_classes)
-                              .map(&:new)
+                            .map(&:new)
         @always_applicable = []
         @by_role = Hash.new { |h, k| h[k] = [] }
         @node_constraints.each { |c| register(c) }
@@ -62,6 +62,7 @@ module Chemicalml
         applicable = @always_applicable
         node.class.ancestors.each do |ancestor|
           next unless ancestor.is_a?(::Module)
+
           bucket = @by_role[ancestor]
           next unless bucket
 

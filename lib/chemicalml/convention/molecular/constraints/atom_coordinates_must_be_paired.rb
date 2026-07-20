@@ -5,9 +5,9 @@ module Chemicalml
     module Molecular
       module Constraints
         class AtomCoordinatesMustBePaired < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = '<atom> 2D coordinates (x2, y2) must appear together; 3D coordinates (x3, y3, z3) must appear together.'
           applies_to Chemicalml::Cml::Role::Atom
           def check_node(node, path)
-
             violations = []
             has_x2 = !node.x2.to_s.empty?
             has_y2 = !node.y2.to_s.empty?

@@ -7,6 +7,7 @@ module Chemicalml
         # A `<spectrum>` MUST have a `format` attribute (e.g. "mass",
         # "ir", "nmr", "uv") so consumers know the measurement type.
         class SpectrumMustHaveFormat < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<spectrum>` MUST have a `format` attribute (e.g. "mass", "ir", "nmr", "uv") so consumers know the measurement type.'
           applies_to Chemicalml::Cml::Role::Spectrum
 
           def check_node(node, _path)

@@ -7,6 +7,7 @@ module Chemicalml
         # Bonds MUST reference atoms within the same parent molecule
         # per the molecular convention.
         class BondMustReferenceAtomsInSameMolecule < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = 'Bonds MUST reference atoms within the same parent molecule per the molecular convention.'
           def check(document)
             violations = []
             walk_nodes(document) do |node, path|

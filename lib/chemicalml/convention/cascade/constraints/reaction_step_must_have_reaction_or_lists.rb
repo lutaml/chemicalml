@@ -8,6 +8,7 @@ module Chemicalml
         # or explicit `<reactantList>` + `<productList>` children. An
         # empty step is a dead-end in the cascade.
         class ReactionStepMustHaveReactionOrLists < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<reactionStep>` MUST contain either a `<reaction>` child or explicit `<reactantList>` + `<productList>` children. An empty step is a dead-end in the cascade.'
           applies_to Chemicalml::Cml::Role::ReactionStep
 
           def check_node(node, _path)

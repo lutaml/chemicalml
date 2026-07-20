@@ -8,13 +8,13 @@ module Chemicalml
         # attribute (≥ 1); `dataType` MUST be integer or double;
         # MUST have `units`.
         class ArrayRules < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'CompChem `array` value-container rules: MUST have `size` attribute (≥ 1); `dataType` MUST be integer or double; MUST have `units`.'
           applies_to Chemicalml::Cml::Role::Array
           include ModulePredicates
 
           ALLOWED_TYPES = %w[xsd:integer xsd:double].freeze
 
           def check_node(node, path)
-
             violations = []
             if node.size.to_s.empty? || node.size.to_i < 1
               violations << violation(path: path.join('/'),

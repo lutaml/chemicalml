@@ -8,6 +8,7 @@ module Chemicalml
         # human-readable name of the unit). Per the unit-dictionary
         # convention spec.
         class UnitMustHaveTitle < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unit>` element MUST have a `title` attribute (the full human-readable name of the unit). Per the unit-dictionary convention spec.'
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)
