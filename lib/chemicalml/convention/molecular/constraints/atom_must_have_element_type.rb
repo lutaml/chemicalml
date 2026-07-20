@@ -5,9 +5,9 @@ module Chemicalml
     module Molecular
       module Constraints
         class AtomMustHaveElementType < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'An <atom> inside an atomArray in a molecule MUST have an elementType attribute.'
           applies_to Chemicalml::Cml::Role::Atom
           def check_node(node, path)
-
             return [] unless node.element_type.to_s.empty?
 
             [violation(path: path.empty? ? 'atom' : path.join('/'),

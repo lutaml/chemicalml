@@ -11,6 +11,7 @@ module Chemicalml
         # Cross-component check parallel to UnitUnitTypeShouldResolve
         # and the molecular convention's DictRefShouldResolve.
         class UnitParentSiShouldResolve < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<unit>`'s `parentSI` attribute SHOULD reference a unit that exists in a built-in dictionary (typically the SI dictionary). Catches typos like `parentSI=\"si:metr\"`."
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)

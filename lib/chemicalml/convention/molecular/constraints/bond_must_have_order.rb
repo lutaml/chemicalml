@@ -9,7 +9,6 @@ module Chemicalml
           self.description = 'A <bond> MUST have an order attribute (S/D/T/A recommended).'
 
           def check_node(node, path)
-
             return [] unless node.order.to_s.strip.empty?
 
             [violation(path: path.empty? ? 'bond' : path.join('/'),

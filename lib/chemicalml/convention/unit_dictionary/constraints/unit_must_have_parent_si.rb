@@ -8,6 +8,7 @@ module Chemicalml
         # QName referencing the SI unit it derives from. Per the
         # unit-dictionary convention spec.
         class UnitMustHaveParentSi < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unit>` element MUST have a `parentSI` attribute — a QName referencing the SI unit it derives from. Per the unit-dictionary convention spec.'
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)

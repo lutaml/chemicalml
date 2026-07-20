@@ -5,11 +5,11 @@ module Chemicalml
     module Molecular
       module Constraints
         class AtomIdMustMatchPattern < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "An <atom>'s id attribute SHOULD start with a letter and contain only letters, digits, dot, hyphen, or underscore."
           applies_to Chemicalml::Cml::Role::Atom
           ID_PATTERN = /\A[A-Za-z][A-Za-z0-9._-]*\z/
 
           def check_node(node, path)
-
             id = node.id.to_s
             return [] if id.empty?
             return [] if id.match?(ID_PATTERN)

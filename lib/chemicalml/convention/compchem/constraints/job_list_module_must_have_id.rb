@@ -7,6 +7,7 @@ module Chemicalml
         # A jobList module MUST have an `id` unique within the
         # compchem module.
         class JobListModuleMustHaveId < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A jobList module MUST have an `id` unique within the compchem module.'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 

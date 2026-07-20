@@ -25,13 +25,16 @@ Chemicalml::Convention::Registry.each do |conv|
   output << "- **Constraint count**: #{conv.constraint_count}"
   output << ""
 
-  output << "| Constraint | Applies to |"
-  output << "|---|---|"
+  output << "| Constraint | Applies to | Description |"
+  output << "|---|---|---|"
   conv.constraints.each do |klass|
     name = klass.name.split("::").last
     roles = klass.applies_to_roles
     applies = roles.nil? ? "_(document-wide)_" : roles.map { |r| r.name.split("::").last }.join(", ")
-    output << "| `#{name}` | #{applies} |"
+    desc = klass.description
+    desc = "" if desc == name
+    desc_escaped = desc.gsub("|", "\\|")
+    output << "| `#{name}` | #{applies} | #{desc_escaped} |"
   end
   output << ""
 end

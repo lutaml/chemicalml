@@ -9,6 +9,7 @@ module Chemicalml
         # indistinguishable from a placeholder. Warning severity —
         # consumers may use `ref` or external context instead.
         class ReactiveCentreAtomRefsShouldBePresent < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<reactiveCentre>` SHOULD declare its `atomRefs` attribute. Without atom references the reactive centre is indistinguishable from a placeholder. Warning severity —'
           applies_to Chemicalml::Cml::Role::ReactiveCentre
 
           def check_node(node, _path)

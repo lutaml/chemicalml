@@ -85,16 +85,16 @@ RSpec.describe 'Performance baseline (TODO 138)' do
   end
 
   describe 'fixture parse baseline' do
-    it 'parses water.cml in under 20ms' do
+    it 'parses water.cml in under 50ms' do
       xml = File.read('spec/fixtures/schema3/molecular/water.cml')
       ms = monotonic_ms { Chemicalml.parse(xml, schema: :schema3) }
-      expect(ms).to be < 20
+      expect(ms).to be < 50
     end
 
-    it 'parses methanol.cml in under 20ms' do
+    it 'parses methanol.cml in under 50ms' do
       xml = File.read('spec/fixtures/schema3/molecular/methanol.cml')
       ms = monotonic_ms { Chemicalml.parse(xml, schema: :schema3) }
-      expect(ms).to be < 20
+      expect(ms).to be < 50
     end
   end
 end

@@ -7,9 +7,9 @@ module Chemicalml
         # Every unitType MUST have an `id` and a `name` attribute per
         # the unitType-dictionary convention.
         class UnitTypeMustHaveIdAndName < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Every unitType MUST have an `id` and a `name` attribute per the unitType-dictionary convention.'
           applies_to Chemicalml::Cml::Role::UnitType
           def check_node(node, path)
-
             violations = []
             if node.id.to_s.empty?
               violations << violation(path: path.join('/'),

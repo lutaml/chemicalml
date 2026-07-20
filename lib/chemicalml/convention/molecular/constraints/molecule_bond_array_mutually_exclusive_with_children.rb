@@ -7,6 +7,7 @@ module Chemicalml
         # Molecular convention: a `<molecule>` MAY hold a `bondArray`
         # OR child `<molecule>` elements, but not both.
         class MoleculeBondArrayMutuallyExclusiveWithChildren < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: a `<molecule>` MAY hold a `bondArray` OR child `<molecule>` elements, but not both.'
           applies_to Chemicalml::Cml::Role::Molecule
           def check_node(node, path)
             return [] if node.bond_array.nil?

@@ -7,6 +7,7 @@ module Chemicalml
         # A job module MUST contain exactly one initialization module
         # child per the compchem convention.
         class JobMustContainInitialization < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A job module MUST contain exactly one initialization module child per the compchem convention.'
           applies_to Chemicalml::Cml::Role::Module
           def check_node(node, path)
             return [] unless node.dict_ref == 'compchem:job'

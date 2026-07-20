@@ -8,9 +8,9 @@ module Chemicalml
     module UnitDictionary
       extend Base
 
-      autoload :Constraints, "chemicalml/convention/unit_dictionary/constraints"
+      autoload :Constraints, 'chemicalml/convention/unit_dictionary/constraints'
 
-      QNAME = "convention:unit-dictionary".freeze
+      QNAME = 'convention:unit-dictionary'
       NAMESPACE_URI = "#{Chemicalml::Convention::CONVENTION_NAMESPACE}unit-dictionary".freeze
 
       def self.qname

@@ -7,6 +7,7 @@ module Chemicalml
         # Molecular convention: `<bondArray>` MUST be a child of
         # `<molecule>`. Any other parent is invalid.
         class BondArrayMustBeChildOfMolecule < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'Molecular convention: `<bondArray>` MUST be a child of `<molecule>`. Any other parent is invalid.'
           def check_node(node, path)
             return [] if molecule?(node)
 

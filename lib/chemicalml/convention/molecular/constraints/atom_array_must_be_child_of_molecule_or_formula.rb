@@ -10,6 +10,7 @@ module Chemicalml
         # when visiting a non-molecule/non-formula node, look for
         # misplaced atomArray children.
         class AtomArrayMustBeChildOfMoleculeOrFormula < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "Molecular convention: `<atomArray>` MUST be a child of `<molecule>` or `<formula>`. Any other parent is invalid. Checked from the parent's perspective during the walk —"
           def check_node(node, path)
             return [] if allowed_parent?(node)
 

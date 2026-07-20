@@ -7,6 +7,7 @@ module Chemicalml
         # Atom ids MUST be unique within the eldest containing molecule
         # per the molecular convention.
         class AtomIdsUniqueWithinMolecule < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = 'Atom ids MUST be unique within the eldest containing molecule per the molecular convention.'
           def check(document)
             violations = []
             walk_nodes(document) do |node, path|

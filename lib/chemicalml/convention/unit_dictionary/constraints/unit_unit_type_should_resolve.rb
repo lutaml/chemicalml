@@ -12,6 +12,7 @@ module Chemicalml
         # built-in dictionary. Cross-component check parallel to
         # DictRefShouldResolve in the molecular convention.
         class UnitUnitTypeShouldResolve < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<unit>`'s `unitType` attribute SHOULD reference a unitType that exists in a built-in unitType-dictionary. Catches typos like `unitType=\"unitType:lenght\"` (misspelled)."
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)

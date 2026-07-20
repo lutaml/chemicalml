@@ -7,11 +7,11 @@ module Chemicalml
         # The finalization module MUST NOT contain more than one
         # molecule child.
         class FinalizationAtMostOneMolecule < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'The finalization module MUST NOT contain more than one molecule child.'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 
           def check_node(node, path)
-
             molecules = node.molecules || []
             return [] if molecules.length <= 1
 

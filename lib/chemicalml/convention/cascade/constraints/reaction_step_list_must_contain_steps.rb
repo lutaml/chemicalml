@@ -8,6 +8,7 @@ module Chemicalml
         # `<reactionStep>` child. An empty step list breaks the
         # cascade chain.
         class ReactionStepListMustContainSteps < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<reactionStepList>` MUST contain at least one `<reactionStep>` child. An empty step list breaks the cascade chain.'
           applies_to Chemicalml::Cml::Role::ReactionStepList
 
           def check_node(node, _path)

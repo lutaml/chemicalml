@@ -8,6 +8,7 @@ module Chemicalml
         # be in the child form (`<atom>` elements) or the parallel-array
         # form (`atomID` attribute with whitespace-separated ids).
         class AtomArrayMustContainAtoms < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = '`atomArray` MUST contain at least one atom. The atoms can be in the child form (`<atom>` elements) or the parallel-array form (`atomID` attribute with whitespace-separated ids).'
           applies_to Chemicalml::Cml::Role::Molecule
           def check_node(node, path)
             return [] unless node.atom_array

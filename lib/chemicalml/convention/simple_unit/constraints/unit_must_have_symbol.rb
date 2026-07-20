@@ -8,6 +8,7 @@ module Chemicalml
         # `symbol` attribute. Without a symbol the unit cannot be
         # rendered in formulae.
         class UnitMustHaveSymbol < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unit>` under simpleUnit MUST declare a non-empty `symbol` attribute. Without a symbol the unit cannot be rendered in formulae.'
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)

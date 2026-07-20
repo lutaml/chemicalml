@@ -8,13 +8,13 @@ module Chemicalml
         # `xsd:integer` or `xsd:double` MUST have `units`; `scalar`
         # with dataType `xsd:string` MUST NOT have `units`.
         class ScalarUnits < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'CompChem value-container rules: `scalar` with dataType `xsd:integer` or `xsd:double` MUST have `units`; `scalar` with dataType `xsd:string` MUST NOT have `units`.'
           applies_to Chemicalml::Cml::Role::Scalar
           include ModulePredicates
 
           NUMERIC_TYPES = %w[xsd:integer xsd:double].freeze
 
           def check_node(node, path)
-
             data_type = node.data_type.to_s
             units = node.units.to_s
             violations = []

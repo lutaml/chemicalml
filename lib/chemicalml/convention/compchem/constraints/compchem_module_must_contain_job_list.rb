@@ -7,6 +7,7 @@ module Chemicalml
         # A CompChem module MUST contain at least one jobList module
         # child per the compchem convention.
         class CompchemModuleMustContainJobList < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A CompChem module MUST contain at least one jobList module child per the compchem convention.'
           def check_node(node, path)
             return [] unless compchem_root?(node)
 

@@ -7,6 +7,7 @@ module Chemicalml
         # A `<unit>` under simpleUnit MUST declare a `power` attribute
         # (integer). Without a power the unit's exponent is undefined.
         class UnitMustHavePower < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<unit>` under simpleUnit MUST declare a `power` attribute (integer). Without a power the unit's exponent is undefined."
           applies_to Chemicalml::Cml::Role::Unit
 
           def check_node(node, _path)

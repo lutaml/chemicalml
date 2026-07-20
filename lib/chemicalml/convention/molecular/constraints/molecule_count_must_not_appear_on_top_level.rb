@@ -8,6 +8,7 @@ module Chemicalml
         # molecules (direct children of `<cml>`). It is REQUIRED on
         # molecules nested inside another `<molecule>`.
         class MoleculeCountMustNotAppearOnTopLevel < Chemicalml::Convention::Constraint::DocumentConstraint
+          self.description = 'Molecular convention: `count` MUST NOT appear on top-level molecules (direct children of `<cml>`). It is REQUIRED on molecules nested inside another `<molecule>`.'
           def check(document)
             violations = []
             top_level_molecules(document).each do |mol, path|

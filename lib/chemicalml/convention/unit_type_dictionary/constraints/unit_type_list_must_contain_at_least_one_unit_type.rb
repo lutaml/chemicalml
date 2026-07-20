@@ -7,6 +7,7 @@ module Chemicalml
         # A `<unitTypeList>` MUST contain one or more `<unitType>`
         # children.
         class UnitTypeListMustContainAtLeastOneUnitType < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unitTypeList>` MUST contain one or more `<unitType>` children.'
           applies_to Chemicalml::Cml::Role::UnitTypeList
           def check_node(node, path)
             return [] if (node.unit_types || []).length.positive?

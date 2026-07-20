@@ -7,6 +7,7 @@ module Chemicalml
         # A `<unitType>` MUST contain a single `<definition>` child
         # with XHTML content.
         class UnitTypeMustContainDefinition < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unitType>` MUST contain a single `<definition>` child with XHTML content.'
           applies_to Chemicalml::Cml::Role::UnitType
           def check_node(node, path)
             return [] unless node.definition.to_s.strip.empty?

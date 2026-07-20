@@ -9,6 +9,7 @@ module Chemicalml
         # Warning severity — there are edge cases in non-classical
         # chemistry (e.g. agostic interactions).
         class BondAtomRefs2ShouldBeDistinct < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = "A `<bond>`'s `atomRefs2` SHOULD reference two distinct atom ids. A self-bond (`a1 a1`) is chemically meaningless. Warning severity — there are edge cases in non-classical"
           applies_to Chemicalml::Cml::Role::Bond
 
           def check_node(node, _path)

@@ -8,11 +8,11 @@ module Chemicalml
         # parameterList children directly. (Parameters belong in
         # initialization.)
         class FinalizationMustNotContainParameter < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'The finalization module MUST NOT contain parameter or parameterList children directly. (Parameters belong in initialization.)'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 
           def check_node(node, path)
-
             violations = []
             unless (node.parameter_lists || []).empty?
               violations << violation(path: path.join('/'),

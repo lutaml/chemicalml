@@ -8,13 +8,13 @@ module Chemicalml
         # and `columns` attributes (each ≥ 1); `dataType` MUST be
         # integer or double; MUST have `units`.
         class MatrixRules < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'CompChem `matrix` value-container rules: MUST have `rows` and `columns` attributes (each ≥ 1); `dataType` MUST be integer or double; MUST have `units`.'
           applies_to Chemicalml::Cml::Role::Matrix
           include ModulePredicates
 
           ALLOWED_TYPES = %w[xsd:integer xsd:double].freeze
 
           def check_node(node, path)
-
             violations = []
             if node.rows.to_s.empty? || node.rows.to_i < 1
               violations << violation(path: path.join('/'),

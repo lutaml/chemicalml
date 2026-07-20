@@ -8,9 +8,9 @@ module Chemicalml
         # whose value is a valid URI defining the scope within which
         # the unit ids are unique. SHOULD end with `/` or `#`.
         class UnitListMustHaveNamespace < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<unitList>` element MUST have a `namespace` attribute whose value is a valid URI defining the scope within which the unit ids are unique. SHOULD end with `/` or `#`.'
           applies_to Chemicalml::Cml::Role::UnitList
           def check_node(node, path)
-
             violations = []
             ns = node.namespace.to_s
             if ns.empty?

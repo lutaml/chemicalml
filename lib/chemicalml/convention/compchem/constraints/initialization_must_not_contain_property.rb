@@ -8,11 +8,11 @@ module Chemicalml
         # propertyList children directly. (Properties belong in
         # finalization.)
         class InitializationMustNotContainProperty < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'The initialization module MUST NOT contain property or propertyList children directly. (Properties belong in finalization.)'
           applies_to Chemicalml::Cml::Role::Module
           include ModulePredicates
 
           def check_node(node, path)
-
             violations = []
             unless (node.property_lists || []).empty?
               violations << violation(path: path.join('/'),

@@ -7,6 +7,7 @@ module Chemicalml
         # A `<spectrum>` MUST contain at least one of: `<xaxis>`,
         # `<yaxis>`, `<peakList>`. An empty spectrum carries no data.
         class SpectrumMustHaveContent < Chemicalml::Convention::Constraint::NodeConstraint
+          self.description = 'A `<spectrum>` MUST contain at least one of: `<xaxis>`, `<yaxis>`, `<peakList>`. An empty spectrum carries no data.'
           applies_to Chemicalml::Cml::Role::Spectrum
 
           def check_node(node, _path)
