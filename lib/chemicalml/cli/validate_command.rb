@@ -6,27 +6,27 @@ module Chemicalml
     # print violations. With `--json` / `-j`, emits machine-readable
     # JSON.
     class ValidateCommand < Command
-      # @param options [Hash] must include `:file`; optional `:json`.
       def run(options)
         path = options[:file]
         unless path
-          stderr 'validate requires a <file> argument'
+          logger.error 'validate requires a <file> argument'
           return 2
         end
 
+        logger.info "Validating #{path}" unless options[:json]
         doc = Chemicalml.parse(File.read(path), schema: :schema3)
         report = Chemicalml.validate(doc)
 
         if options[:json]
           puts json_report(report, path)
         elsif report.ok? && !report.has_warnings?
-          puts "OK: #{path}"
+          logger.info "OK: #{path}"
         else
-          stderr report.summary
+          logger.error report.summary
         end
         report.ok? ? 0 : 1
       rescue ArgumentError, Lutaml::Model::InvalidFormatError => e
-        stderr "FAIL: #{e.message}"
+        logger.error "FAIL: #{e.message}"
         2
       end
 

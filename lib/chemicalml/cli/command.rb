@@ -4,15 +4,24 @@ module Chemicalml
   module Cli
     # Base class for every command. Subclasses implement `#run(options)`.
     #
-    # The `options` hash carries both positional args and flags
-    # (Thor parses both, the dispatcher merges them). This matches the
-    # requested invocation pattern:
-    #
-    #   MyCommandClass.new.run(options)
+    # Each command receives a `Chemicalml::Logger` in its constructor.
+    # When dispatched via Thor (the normal CLI path), the logger is
+    # bridged to Thor's shell for coloured output. When invoked
+    # directly (MyCommand.new.run(options)), the logger writes plain
+    # text to $stderr.
     class Command
+      attr_reader :logger
+
+      # @param logger [Chemicalml::Logger] the logger to use. Defaults
+      #   to a plain stderr logger. The Thor dispatcher passes one
+      #   bridged to Thor's shell for colour.
+      def initialize(logger: Chemicalml::Logger.default)
+        @logger = logger
+      end
+
       class << self
-        def run(options = {})
-          new.run(options)
+        def run(options = {}, logger: Chemicalml::Logger.default)
+          new(logger: logger).run(options)
         end
       end
 
@@ -22,12 +31,12 @@ module Chemicalml
 
       private
 
-      def puts(*)
-        $stdout.puts(*)
+      def puts(*args)
+        $stdout.puts(*args)
       end
 
-      def stderr(*)
-        warn(*)
+      def stderr(*args)
+        $stderr.puts(*args)
       end
     end
   end

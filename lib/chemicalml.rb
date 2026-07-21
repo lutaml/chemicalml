@@ -19,6 +19,13 @@ module Chemicalml
   autoload :Convention, 'chemicalml/convention'
   autoload :Dictionary, 'chemicalml/dictionary'
   autoload :Error, 'chemicalml/errors'
+  autoload :Logger, 'chemicalml/logger'
+  autoload :ParseError, 'chemicalml/errors'
+  autoload :Schema, 'chemicalml/schema'
+  autoload :VERSION, 'chemicalml/version'
+  autoload :VersionedParser, 'chemicalml/versioned_parser'
+  autoload :Dictionary, 'chemicalml/dictionary'
+  autoload :Error, 'chemicalml/errors'
   autoload :ParseError, 'chemicalml/errors'
   autoload :Schema, 'chemicalml/schema'
   autoload :VERSION, 'chemicalml/version'
@@ -92,9 +99,13 @@ module Chemicalml
   # Top-level convenience for `Convention.detect_and_validate`.
   #
   # @param document [Lutaml::Model::Serializable] the CML document.
+  # @param logger [Chemicalml::Logger, nil] optional logger for progress.
   # @return [Chemicalml::Convention::ValidationReport] the report.
   # @raise [ArgumentError] if no convention is declared.
-  def validate(document)
-    Convention.detect_and_validate(document)
+  def validate(document, logger: nil)
+    logger&.info 'Auto-detecting convention…'
+    report = Convention.detect_and_validate(document)
+    logger&.info "Validation complete: #{report.size} violation(s)"
+    report
   end
 end
