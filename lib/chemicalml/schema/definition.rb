@@ -19,7 +19,7 @@ module Chemicalml
       end
 
       def wire_namespace_constant
-        ruby_namespace.split("::").reduce(Object) { |ns, name| ns.const_get(name) }
+        ruby_namespace.split('::').reduce(Object) { |ns, name| ns.const_get(name) }
       end
 
       def eql?(other)
@@ -34,7 +34,7 @@ module Chemicalml
       private
 
       def project_root
-        File.expand_path("../../..", __dir__)
+        File.expand_path('../../..', __dir__)
       end
     end
   end

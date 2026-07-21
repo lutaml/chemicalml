@@ -19,23 +19,23 @@ module Chemicalml
   #   cascade              http://www.xml-cml.org/convention/cascade
   #   simpleUnit           http://www.xml-cml.org/convention/simpleUnit
   module Convention
-    autoload :Base,                "chemicalml/convention/base"
-    autoload :Cascade,             "chemicalml/convention/cascade"
-    autoload :Compchem,            "chemicalml/convention/compchem"
-    autoload :Constraint,          "chemicalml/convention/constraint"
-    autoload :Coordinator,         "chemicalml/convention/coordinator"
-    autoload :Detection,           "chemicalml/convention/detection"
-    autoload :Dictionary,          "chemicalml/convention/dictionary"
-    autoload :Molecular,           "chemicalml/convention/molecular"
-    autoload :Registry,            "chemicalml/convention/registry"
-    autoload :SimpleUnit,          "chemicalml/convention/simple_unit"
-    autoload :Spectroscopy,        "chemicalml/convention/spectroscopy"
-    autoload :UnitDictionary,      "chemicalml/convention/unit_dictionary"
-    autoload :UnitTypeDictionary,  "chemicalml/convention/unit_type_dictionary"
-    autoload :ValidationReport,    "chemicalml/convention/validation_report"
-    autoload :Violation,           "chemicalml/convention/violation"
+    autoload :Base,                'chemicalml/convention/base'
+    autoload :Cascade,             'chemicalml/convention/cascade'
+    autoload :Compchem,            'chemicalml/convention/compchem'
+    autoload :Constraint,          'chemicalml/convention/constraint'
+    autoload :Coordinator,         'chemicalml/convention/coordinator'
+    autoload :Detection,           'chemicalml/convention/detection'
+    autoload :Dictionary,          'chemicalml/convention/dictionary'
+    autoload :Molecular,           'chemicalml/convention/molecular'
+    autoload :Registry,            'chemicalml/convention/registry'
+    autoload :SimpleUnit,          'chemicalml/convention/simple_unit'
+    autoload :Spectroscopy,        'chemicalml/convention/spectroscopy'
+    autoload :UnitDictionary,      'chemicalml/convention/unit_dictionary'
+    autoload :UnitTypeDictionary,  'chemicalml/convention/unit_type_dictionary'
+    autoload :ValidationReport,    'chemicalml/convention/validation_report'
+    autoload :Violation,           'chemicalml/convention/violation'
 
-    CONVENTION_NAMESPACE = "http://www.xml-cml.org/convention/".freeze
+    CONVENTION_NAMESPACE = 'http://www.xml-cml.org/convention/'
 
     # Look up a convention by QName (e.g. "convention:molecular").
     # @param qname [String] the convention QName.

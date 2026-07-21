@@ -10,7 +10,7 @@ module Chemicalml
       def run(options)
         path = options[:file]
         unless path
-          warn 'validate requires a <file> argument'
+          stderr 'validate requires a <file> argument'
           return 2
         end
 
@@ -22,11 +22,11 @@ module Chemicalml
         elsif report.ok? && !report.has_warnings?
           puts "OK: #{path}"
         else
-          warn report.summary
+          stderr report.summary
         end
         report.ok? ? 0 : 1
       rescue ArgumentError, Lutaml::Model::InvalidFormatError => e
-        warn "FAIL: #{e.message}"
+        stderr "FAIL: #{e.message}"
         2
       end
 
