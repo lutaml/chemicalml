@@ -18,16 +18,16 @@ module Chemicalml
   #      invokes `<Name>Command.new.run(args, options)`.
   #   3. Add the autoload entry below.
   module Cli
-    autoload :Base,           "chemicalml/cli/base"
-    autoload :Command,        "chemicalml/cli/command"
-    autoload :ValidateCommand,    "chemicalml/cli/validate_command"
-    autoload :InspectCommand,     "chemicalml/cli/inspect_command"
-    autoload :ConventionsCommand, "chemicalml/cli/conventions_command"
-    autoload :DictionariesCommand, "chemicalml/cli/dictionaries_command"
-    autoload :ElementsCommand,    "chemicalml/cli/elements_command"
-    autoload :ConstraintsCommand, "chemicalml/cli/constraints_command"
-    autoload :EnumsCommand,       "chemicalml/cli/enums_command"
-    autoload :InfoCommand,        "chemicalml/cli/info_command"
+    autoload :Base,           'chemicalml/cli/base'
+    autoload :Command,        'chemicalml/cli/command'
+    autoload :ValidateCommand,    'chemicalml/cli/validate_command'
+    autoload :InspectCommand,     'chemicalml/cli/inspect_command'
+    autoload :ConventionsCommand, 'chemicalml/cli/conventions_command'
+    autoload :DictionariesCommand, 'chemicalml/cli/dictionaries_command'
+    autoload :ElementsCommand,    'chemicalml/cli/elements_command'
+    autoload :ConstraintsCommand, 'chemicalml/cli/constraints_command'
+    autoload :EnumsCommand,       'chemicalml/cli/enums_command'
+    autoload :InfoCommand,        'chemicalml/cli/info_command'
 
     # Backward-compatible entry point used by `exe/chemicalml` and tests.
     # @param argv [Array<String>] the command line.

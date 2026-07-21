@@ -8,14 +8,14 @@ module Chemicalml
   # Built-in dictionaries ship as YAML under `data/dictionaries/` and
   # are loaded into `Chemicalml::Dictionary::Registry` lazily.
   module Dictionary
-    autoload :Entry,   "chemicalml/dictionary/entry"
-    autoload :Enum,    "chemicalml/dictionary/enum"
-    autoload :Link,    "chemicalml/dictionary/link"
-    autoload :Loader,  "chemicalml/dictionary/loader"
-    autoload :Model,   "chemicalml/dictionary/model"
-    autoload :Registry, "chemicalml/dictionary/registry"
+    autoload :Entry,   'chemicalml/dictionary/entry'
+    autoload :Enum,    'chemicalml/dictionary/enum'
+    autoload :Link,    'chemicalml/dictionary/link'
+    autoload :Loader,  'chemicalml/dictionary/loader'
+    autoload :Model,   'chemicalml/dictionary/model'
+    autoload :Registry, 'chemicalml/dictionary/registry'
 
-    BUILTIN_DIR = File.expand_path("../../data/dictionaries", __dir__).freeze
+    BUILTIN_DIR = File.expand_path('../../data/dictionaries', __dir__).freeze
 
     # Convenience: load a built-in dictionary by short name.
     #

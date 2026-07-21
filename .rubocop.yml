@@ -10,11 +10,34 @@ AllCops:
     - "coverage/**/*"
     - "reference-docs/**/*"
     - "spec/fixtures/**/*"
+    - "data/**/*"
 
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
     - "*.gemspec"
+    - "lib/chemicalml/cml/base/**/*.rb"
+
+# Base::* modules are structurally long: each declares every attribute
+# and both xml + key_value mapping blocks for one CML element in a
+# single `self.included` hook. This is the correct structure — the
+# alternative (splitting into smaller methods) would scatter one
+# element's declarations across multiple files.
+Metrics/MethodLength:
+  Exclude:
+    - "lib/chemicalml/cml/base/**/*.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "lib/chemicalml/cml/base/**/*.rb"
+
+Metrics/ModuleLength:
+  Exclude:
+    - "lib/chemicalml/cml/base/**/*.rb"
+
+Layout/LineLength:
+  Exclude:
+    - "lib/chemicalml/cml/base/**/*.rb"
 
 Style/Documentation:
   Enabled: false

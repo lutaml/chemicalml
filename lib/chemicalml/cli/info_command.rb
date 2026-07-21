@@ -8,13 +8,13 @@ module Chemicalml
       def run(options)
         name = options[:element]
         unless name
-          warn 'info requires an <element-name> argument (e.g. "atom")'
+          stderr 'info requires an <element-name> argument (e.g. "atom")'
           return 2
         end
 
         klass = Chemicalml::Cml.for_xml_name(name)
         unless klass
-          warn "unknown element: #{name}"
+          stderr "unknown element: #{name}"
           return 2
         end
 

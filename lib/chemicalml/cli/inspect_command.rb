@@ -8,7 +8,7 @@ module Chemicalml
       def run(options)
         path = options[:file]
         unless path
-          warn 'inspect requires a <file> argument'
+          stderr 'inspect requires a <file> argument'
           return 2
         end
 
@@ -16,7 +16,7 @@ module Chemicalml
         print_tree(doc, 0)
         0
       rescue ArgumentError, Lutaml::Model::InvalidFormatError => e
-        warn "FAIL: #{e.message}"
+        stderr "FAIL: #{e.message}"
         2
       end
 
