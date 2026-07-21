@@ -8,7 +8,7 @@ module Chemicalml
       def run(options)
         name = options[:element]
         unless name
-          stderr 'info requires an <element-name> argument (e.g. "atom")'
+          logger.error 'info requires an <element-name> argument (e.g. "atom")'
           return 2
         end
 
