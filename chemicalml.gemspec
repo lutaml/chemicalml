@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "logger", "~> 1.6"
-  spec.add_dependency "lutaml-model", "~> 0.8"
+  spec.add_dependency "lutaml-model", "~> 0.8.114"
 end

@@ -7,7 +7,7 @@ gemspec
 gem "rake", "~> 13.2"
 
 group :development do
-  gem "canon"
+  gem "canon", "~> 0.3.101"
   gem "nokogiri"
   gem "rspec", "~> 3.13"
   gem "rubocop", "~> 1.66", require: false
