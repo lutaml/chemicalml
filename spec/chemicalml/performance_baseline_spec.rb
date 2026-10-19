@@ -2,7 +2,14 @@
 
 require 'spec_helper'
 
+# Development-time regression tripwires (mirrors the asciichem
+# convention: benchmarks are not CI). Absolute wall-clock budgets
+# flake on shared CI runners - 2.2-3.2s against a 2s budget on
+# idle-fast machines - so they are enforced locally and skipped
+# under CI.
 RSpec.describe 'Performance baseline (TODO 138)' do
+  before { skip 'perf budgets are development-time tripwires; CI runners are too noisy' if ENV['CI'] }
+
   before do
     Chemicalml::Cml::Schema3::Configuration.ensure_registered!
     Chemicalml::Cml::Schema24::Configuration.ensure_registered!
