@@ -3,6 +3,18 @@
 All notable changes to Chemicalml are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [0.4.1] - 2026-10-20
+
+### Fixed
+- Ruby 4.0 support: `logger` left Ruby's default gems in 4.0, so
+  the bare `require 'logger'` in `Chemicalml::Logger` raised
+  LoadError for every Ruby 4 consumer of the published 0.4.0 gem.
+  Declared explicitly (`~> 1.6`). Also un-reds main CI: the TODO 138
+  wall-clock budgets are CI-gated (development-time tripwires), and
+  the two dead cimas workflows that could never pass
+  (`performance.yml`, `opal.yml` — rake tasks never defined) are
+  removed.
+
 ## [Unreleased]
 
 ### Added
