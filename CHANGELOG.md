@@ -5,6 +5,17 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Rich-text dictionary content: `<definition>` and `<description>`
+  now carry their `<xhtml:p>` paragraphs instead of flattening them
+  into strings. `Xhtml::P` is a wire class owning the XHTML
+  namespace (lutaml-model assigns one namespace per model class);
+  `DictionaryEntry`/`Dictionary` type definition/description to the
+  structured classes, the entry-must-contain-definition constraint
+  reads both shapes (plain string or structured), and the two
+  dictionary fixtures graduate from PENDING_SEMANTIC to full
+  semantic round-trip comparison (closes #19).
+
 ### Fixed
 - Container child declarations that round-tripping silently dropped:
   `<cml>`/`<module>` now carry `reactionScheme` and `spectrum`

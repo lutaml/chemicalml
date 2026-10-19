@@ -13,6 +13,7 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
             attribute :content, :string
+            attribute :paragraphs, Chemicalml::Cml::Xhtml::P, collection: true
 
             xml do
               namespace Chemicalml::Cml::Namespace
@@ -22,6 +23,7 @@ module Chemicalml
               map_attribute 'dictRef', to: :dict_ref
               map_attribute 'convention', to: :convention
               map_content to: :content
+              map_element 'p', to: :paragraphs
             end
             key_value do
               map 'id', to: :id
