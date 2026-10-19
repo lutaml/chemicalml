@@ -37,6 +37,7 @@ module Chemicalml
             attribute :y_max, :string
             attribute :y_width, :string
             attribute :atom_refs, :string
+            attribute :atom_refs_values, :string, collection: true
             attribute :bond_refs, :string
             attribute :molecule_refs, :string
             xml do
@@ -69,6 +70,7 @@ module Chemicalml
               map_attribute 'yMax', to: :y_max
               map_attribute 'yWidth', to: :y_width
               map_attribute 'atomRefs', to: :atom_refs
+              map_element 'atomRefs', to: :atom_refs_values
               map_attribute 'bondRefs', to: :bond_refs
               map_attribute 'moleculeRefs', to: :molecule_refs
             end
@@ -103,7 +105,7 @@ module Chemicalml
               map 'yMin', to: :y_min
               map 'yMax', to: :y_max
               map 'yWidth', to: :y_width
-              map 'atomRefs', to: :atom_refs
+              map 'atomRefs', to: :atom_refs_values
               map 'bondRefs', to: :bond_refs
               map 'moleculeRefs', to: :molecule_refs
             end

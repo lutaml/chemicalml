@@ -14,6 +14,7 @@ module Chemicalml
             attribute :dict_ref, :string
             attribute :convention, :string
             attribute :units, :string
+            attribute :multipler, :string
             attribute :multiplier, :string
 
             attribute :ref, :string
@@ -28,6 +29,7 @@ module Chemicalml
               map_attribute 'dictRef', to: :dict_ref
               map_attribute 'convention', to: :convention
               map_attribute 'units', to: :units
+              map_attribute 'multipler', to: :multipler
               map_attribute 'multiplier', to: :multiplier
               map_attribute 'ref', to: :ref
               map_attribute 'multiplierToData', to: :multiplier_to_data

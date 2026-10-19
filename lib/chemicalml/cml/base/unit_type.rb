@@ -19,6 +19,7 @@ module Chemicalml
             attribute :abbreviation, :string
             attribute :preserve, :string
             attribute :symbol, :string
+            attribute :dimensions, :dimension, collection: true
             xml do
               namespace Chemicalml::Cml::Namespace
               root 'unitType'
@@ -26,6 +27,7 @@ module Chemicalml
               map_attribute 'name', to: :name
               map_element 'definition', to: :definition
               map_element 'description', to: :description
+              map_element 'dimension', to: :dimensions
               map_attribute 'title', to: :title
               map_attribute 'parentSI', to: :parent_s_i
               map_attribute 'abbreviation', to: :abbreviation
@@ -37,6 +39,7 @@ module Chemicalml
               map 'label', to: :labels
               map 'name', to: :names
               map 'description', to: :descriptions
+              map 'dimension', to: :dimensions
               map 'definition', to: :definition
               map 'description', to: :description
               map 'id', to: :id

@@ -10,6 +10,7 @@ module Chemicalml
             include Chemicalml::Cml::Base::CommonChildren
 
             attribute :id, :string
+            attribute :concise, :string
             attribute :title, :string
             attribute :count, :string
             attribute :formal_charge, :string
@@ -48,6 +49,7 @@ module Chemicalml
               namespace Chemicalml::Cml::Namespace
               root 'molecule'
               map_attribute 'id', to: :id
+              map_attribute 'concise', to: :concise
               map_attribute 'title', to: :title
               map_attribute 'count', to: :count
               map_attribute 'formalCharge', to: :formal_charge

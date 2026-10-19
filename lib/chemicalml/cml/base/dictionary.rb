@@ -15,6 +15,7 @@ module Chemicalml
             attribute :convention, :string
             attribute :description, :string
             attribute :entries, :entry, collection: true
+            attribute :definitions, :definition, collection: true
 
             attribute :id, :string
             attribute :dict_ref, :string
@@ -27,6 +28,7 @@ module Chemicalml
               map_attribute 'dictionaryPrefix', to: :dictionary_prefix
               map_attribute 'convention', to: :convention
               map_element 'description', to: :description
+              map_element 'definition', to: :definitions
               map_element 'entry', to: :entries
               map_attribute 'id', to: :id
               map_attribute 'dictRef', to: :dict_ref
@@ -38,6 +40,7 @@ module Chemicalml
               map 'name', to: :names
               map 'description', to: :descriptions
               map 'description', to: :description
+              map 'definition', to: :definitions
               map 'entry', to: :entries
               map 'title', to: :title
               map 'namespace', to: :namespace
