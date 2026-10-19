@@ -30,5 +30,6 @@ jobs:
     with:
       next_version: ${{ github.event.inputs.next_version }}
       acknowledge_breaking_in_patch: ${{ inputs.acknowledge_breaking_in_patch }}
-    secrets:
-      rubygems-api-key: ${{ secrets.LUTAML_CI_RUBYGEMS_API_KEY }}
+    # OMIT rubygems-api-key: metanorma/ci switched to OIDC Trusted
+    # Publishing when the secret is empty. The July-era caller passing
+    # the now-undeclared rubygems-api-key secret causes startup_failure.
