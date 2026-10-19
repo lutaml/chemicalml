@@ -28,15 +28,9 @@ RSpec.describe "fixture round-trip" do
   # model yet (e.g. <crystal> children, deeply nested <list> with
   # arbitrary content). Skip the semantic comparison for those —
   # the structural re-parse check still runs.
-  # The dictionary fixtures carry xhtml-namespaced mixed content
-  # (<definition><xhtml:p>) that the string-typed definition/description
-  # mappings flatten; modeling foreign-namespace rich content is
-  # tracked in lutaml/chemicalml#19.
   PENDING_SEMANTIC = %w[
     spec/fixtures/schema3/compchem/co2_dft_full.cml
     spec/fixtures/schema24/crystal_nacl.cml
-    spec/fixtures/schema3/dictionary/chemistry_concepts.cml
-    spec/fixtures/schema24/example_dictionary.cml
   ].freeze
 
   fixtures.each do |path|

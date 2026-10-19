@@ -156,7 +156,9 @@ RSpec.describe Chemicalml::Cml::Dictionary do
           term: "Foo",
           data_type: "xsd:string",
           unit_type: "unitType:none",
-          definition: "A foo is a foo."
+          definition: Chemicalml::Cml::Definition.new(
+            content: "A foo is a foo."
+          )
         )
       ]
     )
