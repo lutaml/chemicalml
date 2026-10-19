@@ -22,6 +22,8 @@ module Chemicalml
             attribute :property_lists, :propertyList, collection: true
             attribute :metadata_lists, :metadataList, collection: true
             attribute :lists, :list, collection: true
+            attribute :reaction_schemes, :reactionScheme, collection: true
+            attribute :spectra, :spectrum, collection: true
 
             xml do
               namespace Chemicalml::Cml::Namespace
@@ -40,6 +42,8 @@ module Chemicalml
               map_element 'propertyList', to: :property_lists
               map_element 'metadataList', to: :metadata_lists
               map_element 'list', to: :lists
+              map_element 'reactionScheme', to: :reaction_schemes
+              map_element 'spectrum', to: :spectra
             end
             key_value do
               map 'molecule', to: :molecules
@@ -48,6 +52,8 @@ module Chemicalml
               map 'propertyList', to: :property_lists
               map 'metadataList', to: :metadata_lists
               map 'list', to: :lists
+              map 'reactionScheme', to: :reaction_schemes
+              map 'spectrum', to: :spectra
               map 'id', to: :id
               map 'title', to: :title
               map 'dictRef', to: :dict_ref

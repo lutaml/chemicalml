@@ -15,6 +15,7 @@ module Chemicalml
     autoload :Namespace,         'chemicalml/cml/namespace'
     autoload :Patterns,          'chemicalml/cml/patterns'
     autoload :ReferenceResolver, 'chemicalml/cml/reference_resolver'
+    autoload :Xhtml,             'chemicalml/cml/xhtml'
     autoload :Role,              'chemicalml/cml/role'
     autoload :Schema3,           'chemicalml/cml/schema3'
     autoload :Schema24,          'chemicalml/cml/schema24'

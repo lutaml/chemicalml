@@ -3,6 +3,38 @@
 All notable changes to Chemicalml are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- Rich-text dictionary content: `<definition>` and `<description>`
+  now carry their `<xhtml:p>` paragraphs instead of flattening them
+  into strings. `Xhtml::P` is a wire class owning the XHTML
+  namespace (lutaml-model assigns one namespace per model class);
+  `DictionaryEntry`/`Dictionary` type definition/description to the
+  structured classes, the entry-must-contain-definition constraint
+  reads both shapes (plain string or structured), and the two
+  dictionary fixtures graduate from PENDING_SEMANTIC to full
+  semantic round-trip comparison (closes #19).
+
+### Fixed
+- Container child declarations that round-tripping silently dropped:
+  `<cml>`/`<module>` now carry `reactionScheme` and `spectrum`
+  children, `<dictionary>` carries dictionary-level `<definition>`,
+  `<unitType>` carries `<dimension>`, `<molecule>` carries the
+  `concise` formula attribute, `<peak>` carries the `<atomRefs>`
+  child-element form (the attribute form was already mapped), and
+  `<xaxis>`/`<yaxis>` carry CML's `multipler` attribute. Every
+  schema3 fixture now round-trips semantically except the two
+  dictionary fixtures whose xhtml-namespaced mixed content needs a
+  rich-content model (lutaml/chemicalml#19, marked PENDING_SEMANTIC
+  with the structural re-parse check still running).
+
+### Changed
+- `lutaml-model` pin aligned to the pessimistic house convention
+  (`~> 0.8`). The full suite passes against the current stack
+  (lutaml-model 0.8.114, moxml 0.5.146, leptris 1.9.372, canon
+  with processing-instruction tree-diff support - lutaml/canon#271).
+
 ## [0.2.0] - 2026-07-14
 
 ### Added

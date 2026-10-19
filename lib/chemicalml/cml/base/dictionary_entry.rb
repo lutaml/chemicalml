@@ -13,8 +13,8 @@ module Chemicalml
             attribute :data_type, :string
             attribute :unit_type, :string
             attribute :units, :string
-            attribute :definition, :string
-            attribute :description, :string
+            attribute :definition, :definition
+            attribute :description, :description
             attribute :title, :string
             attribute :convention, :string
 

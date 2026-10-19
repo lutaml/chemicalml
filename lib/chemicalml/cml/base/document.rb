@@ -15,6 +15,8 @@ module Chemicalml
             attribute :molecules, :molecule, collection: true
             attribute :reaction_lists, :reactionList, collection: true
             attribute :reactions, :reaction, collection: true
+            attribute :reaction_schemes, :reactionScheme, collection: true
+            attribute :spectra, :spectrum, collection: true
 
             xml do
               namespace Chemicalml::Cml::Namespace
@@ -26,11 +28,15 @@ module Chemicalml
               map_element 'molecule', to: :molecules
               map_element 'reactionList', to: :reaction_lists
               map_element 'reaction', to: :reactions
+              map_element 'reactionScheme', to: :reaction_schemes
+              map_element 'spectrum', to: :spectra
             end
             key_value do
               map 'molecule', to: :molecules
               map 'reactionList', to: :reaction_lists
               map 'reaction', to: :reactions
+              map 'reactionScheme', to: :reaction_schemes
+              map 'spectrum', to: :spectra
               map 'id', to: :id
               map 'title', to: :title
               map 'dictRef', to: :dict_ref
